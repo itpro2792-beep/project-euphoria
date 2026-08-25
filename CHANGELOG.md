@@ -1,8 +1,15 @@
 # Changelog
 
-Project Euphoria is a public alpha. This file separates release-candidate work from behavior verified on the public site. Version 0.3 remains a candidate until its exact release commit is deployed and smoke-checked.
+Project Euphoria is a public alpha. This file separates release-candidate work from behavior verified on the public site. Version 0.3.0 is Live: its exact release payload was deployed and smoke-checked before the release label changed. Later changes require their own receipt.
 
-## 0.3.0 release candidate — 2026-08-25
+## 0.3.0 — 2026-08-25
+
+### Deployment receipt
+
+- **State:** Live. Product commit [`4188f347`](https://github.com/itpro2792-beep/project-euphoria/commit/4188f3478087b4f77ef5837e763a7e073e9250aa), tree `06d68b6e6aae8c6bbb2cf2256c95c54e4c718261`, was successfully deployed by [GitHub Pages](https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905974873) and verified at the public origin on August 25, 2026 at 22:28 UTC.
+- [PR #1](https://github.com/itpro2792-beep/project-euphoria/pull/1), its [four-gate candidate run](https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905793295), and the [post-merge run](https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905975771) passed. The nine-route smoke set was `/`, `/toolbox/`, `/questions/`, `/status/`, `/book/`, `/book/summary/`, `/music/`, `/saga/`, and `/receipts/`.
+- Versioned JavaScript SHA-256: `839a302a18de0f6f0388615fad615b12db6188942f966effbf3eb962b2562979`. Versioned CSS SHA-256: `c8f814da8ce62291d1bbae55932cdbae17695d9c957b83759f81088fbb2f4d05`. The frozen 0.2 application and CSS remained exact at `056fd25e3e3d249d31b68cc557e1a88dc77b4ed3b1b943b539a82a8db32fc46f` and `b355adec0311b7fa4ff2312372ae1d6f4ed1ce1ffb7ecd2843f4fbd51135a0be`.
+- This establishes public reachability, expected boundary copy, media types, and named served bytes at that verification time. It does not establish future uptime, human benefit, privacy-by-design, clinical suitability, independent accessibility conformance, or Siren receipt, retention, understanding, or action.
 
 ### Added
 

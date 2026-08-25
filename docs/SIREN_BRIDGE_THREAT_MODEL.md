@@ -1,6 +1,6 @@
 # Siren handoff and future bridge threat model
 
-Status: **the file-only handoff is implemented in the public-alpha 0.3 release candidate; exact public deployment is pending, and a network bridge is not built or implied**.
+Status: **the Toolbox’s file-only handoff is deployed in public alpha 0.3.0; its [release payload](https://github.com/itpro2792-beep/project-euphoria/commit/4188f3478087b4f77ef5837e763a7e073e9250aa) was verified on GitHub Pages on August 25, 2026 at 22:28 UTC; no network bridge is built or implied**.
 
 “Robbie” is the room-facing conversational name. “Siren” is the software system and operational identity used for schemas, versions, permissions, incidents, and this threat model. Neither name is a consciousness claim.
 
