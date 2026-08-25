@@ -1,0 +1,9 @@
+{
+  "name": "project-euphoria",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs && node scripts/static-check.mjs",
+    "test:timezones": "TZ=America/New_York node --test tests/toolbox.test.mjs && TZ=UTC node --test tests/toolbox.test.mjs && TZ=Pacific/Auckland node --test tests/toolbox.test.mjs"
+  }
+}
