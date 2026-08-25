@@ -690,7 +690,7 @@ test("corrupt browser data can be backed up, explicitly erased, and replaced by 
   await page.evaluate((raw) => localStorage.setItem("euphoria_toolbox_v3", raw), damaged);
   await page.goto(TOOLBOX_PATH);
   await expect(page.locator("body")).toHaveAttribute("data-writer-state", "error");
-  await expect(page.locator("#storageWarning")).toContainText("appears damaged and has been left untouched");
+  await expect(page.locator("#storageWarning")).toContainText("failed validation and was left untouched");
 
   const downloadPromise = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download backup" }).click();

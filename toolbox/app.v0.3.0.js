@@ -691,23 +691,11 @@ export function mergeStates(baseValue, currentValue, latestValue) {
     base.agreement,
     current.agreement,
     latest.agreement,
-    ["protocol", "people", "signal", "pause", "limit", "reviewAt", "reviewTimezone", "consent"],
+    ["protocol", "people", "signal", "pause", "limit", "reviewAt", "reviewTimezone", "consent", "checkin"],
     "agreement",
     conflicts
   );
   agreement.updatedAt = newestTimestamp(current.agreement.updatedAt, latest.agreement.updatedAt);
-  agreement.checkin = mergeObjectFields(
-    base.agreement.checkin,
-    current.agreement.checkin,
-    latest.agreement.checkin,
-    ["consent", "tension", "worked", "change", "next"],
-    "agreement.checkin",
-    conflicts
-  );
-  agreement.checkin.updatedAt = newestTimestamp(
-    current.agreement.checkin.updatedAt,
-    latest.agreement.checkin.updatedAt
-  );
   const ledger = mergeArrayById(
     base.ledger,
     current.ledger,

@@ -458,6 +458,35 @@ test("three-way merge keeps consent-bearing cards atomic across concurrent edits
   agreementElsewhere.agreement.pause = "Either person says stop.";
   agreementElsewhere.agreement.consent = true;
   assert.ok(mergeStates(base, agreementHere, agreementElsewhere).conflicts.includes("agreement.card"));
+
+  const checkedAgreement = createDefaultState();
+  checkedAgreement.agreement.signal = "Blue card";
+  checkedAgreement.agreement.pause = "Either person can stop.";
+  checkedAgreement.agreement.reviewAt = Date.UTC(2026, 7, 25, 14);
+  checkedAgreement.agreement.reviewTimezone = "UTC";
+  checkedAgreement.agreement.consent = true;
+  checkedAgreement.agreement.updatedAt = Date.UTC(2026, 7, 25, 12);
+  checkedAgreement.agreement.checkin = {
+    consent: "Yes",
+    tension: "Lower",
+    worked: "The first version worked.",
+    change: "",
+    next: "Revise",
+    updatedAt: Date.UTC(2026, 7, 25, 13)
+  };
+  const revisedAgreement = clone(checkedAgreement);
+  revisedAgreement.agreement.signal = "Green card";
+  revisedAgreement.agreement.updatedAt = Date.UTC(2026, 7, 25, 13, 30);
+  revisedAgreement.agreement.checkin = createDefaultState().agreement.checkin;
+  const invalidated = mergeStates(checkedAgreement, revisedAgreement, checkedAgreement);
+  assert.deepEqual(invalidated.conflicts, []);
+  assert.equal(invalidated.state.agreement.signal, "Green card");
+  assert.deepEqual(invalidated.state.agreement.checkin, createDefaultState().agreement.checkin);
+
+  const concurrentCheckin = clone(checkedAgreement);
+  concurrentCheckin.agreement.checkin.worked = "A concurrent old-agreement check-in.";
+  concurrentCheckin.agreement.checkin.updatedAt = Date.UTC(2026, 7, 25, 13, 45);
+  assert.ok(mergeStates(checkedAgreement, revisedAgreement, concurrentCheckin).conflicts.includes("agreement.card"));
 });
 
 test("a stale tab does not resurrect rows cleared elsewhere", () => {
