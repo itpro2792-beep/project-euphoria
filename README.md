@@ -38,7 +38,9 @@ That is a design goal, not a consciousness claim and not a statement that every 
 
 **4. The Content Engine — throughout.** The pipeline that founded this project *is* the product demo: raw voice → record → distillation → artifact. Channels run answer-first short-form as the doorway into long-form and the catalog. Organic spine first; paid spend only where a format proves retention.
 
-## The Toolbox — public alpha 0.3 release candidate
+## The Toolbox — public alpha 0.3.0 · Live
+
+**Release receipt:** product commit [`4188f347`](https://github.com/itpro2792-beep/project-euphoria/commit/4188f3478087b4f77ef5837e763a7e073e9250aa) was successfully deployed by GitHub Pages and the public site was verified on August 25, 2026 at 22:28 UTC. All nine HTML routes and the versioned JavaScript/CSS matched that release payload byte-for-byte. [Read the hashes, routes, CI runs, and limits.](https://itpro2792-beep.github.io/project-euphoria/receipts/#release-0-3-0)
 
 The current source includes:
 
@@ -88,7 +90,7 @@ The first Book was an AI debate simulation, not a council of participating human
 
 ## Receipts—with limits attached
 
-The [`/receipts/`](https://itpro2792-beep.github.io/project-euphoria/receipts/) route records public repository history, corrections, bounded evidence-record zeroes, and pending work. Commit links establish source history, not human benefit or exact deployment time. The page deliberately separates build and claim-accounting receipts from public human-outcome evidence, of which none is published. Customer and revenue milestones are not established by the public evidence record.
+The [`/receipts/`](https://itpro2792-beep.github.io/project-euphoria/receipts/) route records public repository history, corrections, bounded evidence-record zeroes, and pending work. Repository links establish source history; the dated alpha 0.3.0 deployment receipt separately establishes that one exact build was served at one check. Neither establishes continuous uptime or human benefit. The page deliberately separates build and claim-accounting receipts from public human-outcome evidence, of which none is published. Customer and revenue milestones are not established by the public evidence record.
 
 ## The first harvest
 
@@ -98,7 +100,7 @@ Original titles coined in the founding session, dated 2026-08-25:
 
 ## Roadmap
 
-- **Release candidate — Toolbox alpha 0.3:** bounded local-first tools, explicit data controls, a deterministic chooser, the Use-Tonight Plan, and a file-only Siren handoff. It becomes Live only after this exact release commit is deployed and smoke-checked.
+- **Live — Toolbox alpha 0.3.0:** bounded local-first tools, explicit data controls, a deterministic chooser, the Use-Tonight Plan, and a file-only Siren handoff. Product commit [`4188f347`](https://github.com/itpro2792-beep/project-euphoria/commit/4188f3478087b4f77ef5837e763a7e073e9250aa) (tree `06d68b6e6aae8c6bbb2cf2256c95c54e4c718261`) was verified on the public site on August 25, 2026 at 22:28 UTC; the [complete receipt](https://itpro2792-beep.github.io/project-euphoria/receipts/#release-0-3-0) names what that check does and does not establish.
 - **Blocked on privacy review — dedicated Toolbox origin:** origin isolation, response headers, storage scope, update and rollback paths, backup, recovery, and deletion must be reviewed and tested before “private-by-design” language is earned. See [`docs/DEDICATED_ORIGIN.md`](docs/DEDICATED_ORIGIN.md).
 - **Planned — qualified review:** clinical copy, safeguarding, and independent accessibility review.
 - **Planned — Siren engineering:** disclosed speech output, opt-in attribution that preserves unknown, and an audited access door; each must be verified separately. The current handoff remains file-only. See [`docs/SIREN_BRIDGE_THREAT_MODEL.md`](docs/SIREN_BRIDGE_THREAT_MODEL.md).

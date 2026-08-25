@@ -12,6 +12,7 @@ const deployedStyles = fs.readFileSync(path.join(root, "toolbox", "styles.css"))
 const frozenToolboxHtml = fs.readFileSync(path.join(root, "tests", "fixtures", "toolbox-v0.2.html.txt"));
 const home = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const readme = fs.readFileSync(path.join(root, "README.md"), "utf8");
+const changelog = fs.readFileSync(path.join(root, "CHANGELOG.md"), "utf8");
 const questions = fs.readFileSync(path.join(root, "questions", "index.html"), "utf8");
 const questionContent = JSON.parse(fs.readFileSync(path.join(root, "questions", "content.v1.json"), "utf8"));
 const status = fs.readFileSync(path.join(root, "status", "index.html"), "utf8");
@@ -19,6 +20,7 @@ const book = fs.readFileSync(path.join(root, "book", "index.html"), "utf8");
 const bookSummary = fs.readFileSync(path.join(root, "book", "summary", "index.html"), "utf8");
 const saga = fs.readFileSync(path.join(root, "saga", "index.html"), "utf8");
 const receipts = fs.readFileSync(path.join(root, "receipts", "index.html"), "utf8");
+const receiptsStyles = fs.readFileSync(path.join(root, "receipts", "styles.css"), "utf8");
 const sirenThreatModel = fs.readFileSync(path.join(root, "docs", "SIREN_BRIDGE_THREAT_MODEL.md"), "utf8");
 const feedbackTemplate = fs.readFileSync(path.join(root, ".github", "ISSUE_TEMPLATE", "toolbox-feedback.yml"), "utf8");
 const questionTemplate = fs.readFileSync(path.join(root, ".github", "ISSUE_TEMPLATE", "general-question.yml"), "utf8");
@@ -31,6 +33,21 @@ const requireIn = (source, pattern, message) => {
   if (!pattern.test(source)) failures.push(message);
 };
 const sha256 = (source) => crypto.createHash("sha256").update(source).digest("hex");
+const releaseReceipt = Object.freeze({
+  commit: "4188f3478087b4f77ef5837e763a7e073e9250aa",
+  tree: "06d68b6e6aae8c6bbb2cf2256c95c54e4c718261",
+  verifiedAt: "August 25, 2026 at 22:28 UTC",
+  candidateCi: "https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905793295",
+  postMergeCi: "https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905975771",
+  pagesRun: "https://github.com/itpro2792-beep/project-euphoria/actions/runs/32905974873",
+  pagesDeployment: "6093247816",
+  pagesSuccessAt: "2026-08-25 22:24:58 UTC",
+  publicOrigin: "https://itpro2792-beep.github.io/project-euphoria/",
+  appHash: "839a302a18de0f6f0388615fad615b12db6188942f966effbf3eb962b2562979",
+  stylesHash: "c8f814da8ce62291d1bbae55932cdbae17695d9c957b83759f81088fbb2f4d05",
+  compatAppHash: "056fd25e3e3d249d31b68cc557e1a88dc77b4ed3b1b943b539a82a8db32fc46f",
+  compatStylesHash: "b355adec0311b7fa4ff2312372ae1d6f4ed1ce1ffb7ecd2843f4fbd51135a0be"
+});
 
 const cards = [...html.matchAll(/<details class="protocol-card" id="([^"]+)">([\s\S]*?)<\/details>/g)];
 if (cards.length !== 7) failures.push(`Expected exactly 7 protocol cards; found ${cards.length}.`);
@@ -71,10 +88,12 @@ if (app.includes("migration-tombstone")) failures.push("Current Toolbox code mus
 if (!html.includes('<link rel="stylesheet" href="styles.v0.3.0.css">') || !html.includes('<script type="module" src="app.v0.3.0.js"></script>')) {
   failures.push("Toolbox 0.3 HTML must reference only its versioned 0.3 code and style assets.");
 }
-if (sha256(deployedApp) !== "056fd25e3e3d249d31b68cc557e1a88dc77b4ed3b1b943b539a82a8db32fc46f") {
+if (sha256(app) !== releaseReceipt.appHash) failures.push("The versioned 0.3.0 application asset changed after public verification.");
+if (sha256(currentStyles) !== releaseReceipt.stylesHash) failures.push("The versioned 0.3.0 stylesheet changed after public verification.");
+if (sha256(deployedApp) !== releaseReceipt.compatAppHash) {
   failures.push("The deployed 0.2 app.js cache-compatibility asset changed.");
 }
-if (sha256(deployedStyles) !== "b355adec0311b7fa4ff2312372ae1d6f4ed1ce1ffb7ecd2843f4fbd51135a0be") {
+if (sha256(deployedStyles) !== releaseReceipt.compatStylesHash) {
   failures.push("The deployed 0.2 styles.css cache-compatibility asset changed.");
 }
 if (sha256(frozenToolboxHtml) !== "d778967d8b701d28ffbad886ac698856a640a847138001c5697fe944a00cfffb") {
@@ -148,11 +167,39 @@ if (/Council of (?:Indigenous Knowledge|Science|Abrahamic Faith)|<blockquote>|li
 }
 requireIn(saga, /FICTION \/ EVIDENCE BOUNDARY/, "The Saga must carry a persistent fiction/evidence boundary.");
 requireIn(saga, /not an operational status page or consciousness claim/, "The Saga must not present mythology as status or consciousness evidence.");
-requireIn(sirenThreatModel, /implemented in the public-alpha 0\.3 release candidate; exact public deployment is pending/, "The Siren threat model must not call the release candidate live before deployment.");
+requireIn(sirenThreatModel, /Toolbox’s file-only handoff is deployed in public alpha 0\.3\.0/, "The Siren threat model must report the verified file-only release without implying a live bridge.");
+requireIn(sirenThreatModel, new RegExp(releaseReceipt.commit), "The Siren threat model must tie the live claim to the verified product commit.");
 
 requireIn(receipts, /connect-src 'none'/, "Receipts CSP must block scripted network connections.");
 requireIn(receipts, /script-src 'none'/, "Receipts must remain a no-JavaScript page.");
 requireIn(receipts, /Build receipts are not outcome evidence/, "Receipts must distinguish source history from human outcomes.");
+const receiptSection = receipts.match(/<section id="release-0-3-0"[\s\S]*?<\/section>/)?.[0] || "";
+if (!receiptSection) failures.push("Receipts must carry a structured alpha 0.3.0 release record.");
+for (const [value, message] of [
+  [releaseReceipt.commit, "commit"],
+  [releaseReceipt.tree, "tree"],
+  [releaseReceipt.verifiedAt, "verification timestamp"],
+  [releaseReceipt.candidateCi, "candidate CI run"],
+  [releaseReceipt.postMergeCi, "post-merge CI run"],
+  [releaseReceipt.pagesRun, "Pages deployment run"],
+  [releaseReceipt.pagesDeployment, "Pages deployment ID"],
+  [releaseReceipt.pagesSuccessAt, "Pages success timestamp"],
+  [releaseReceipt.publicOrigin, "public origin"],
+  [releaseReceipt.appHash, "versioned application hash"],
+  [releaseReceipt.stylesHash, "versioned stylesheet hash"],
+  [releaseReceipt.compatAppHash, "frozen 0.2 application hash"],
+  [releaseReceipt.compatStylesHash, "frozen 0.2 stylesheet hash"]
+]) {
+  if (!receiptSection.includes(value)) failures.push(`Release receipt is missing its ${message}.`);
+}
+for (const route of ["/", "/toolbox/", "/questions/", "/status/", "/book/", "/book/summary/", "/music/", "/saga/", "/receipts/"]) {
+  if (!receiptSection.includes(`<code>${route}</code>`)) failures.push(`Release receipt is missing smoke route ${route}.`);
+}
+for (const limit of ["future uptime", "human benefit", "privacy-by-design", "clinical suitability", "independent accessibility conformance", "Siren receipt, retention, understanding, or action"]) {
+  if (!receiptSection.includes(limit)) failures.push(`Release receipt is missing limitation: ${limit}.`);
+}
+requireIn(receiptsStyles, /\.badge\.live\s*\{/, "Receipts must style its Live badge.");
+requireIn(receiptsStyles, /code\s*\{[^}]*overflow-wrap:\s*anywhere/, "Receipts must wrap long release hashes.");
 requireIn(receipts, /bounded to review records published by this project as of August 25, 2026/, "Receipts must bound its zeroes to the public project record.");
 requireIn(receipts, /Public human-outcome receipts published/, "Receipts must disclose the empty outcome-evidence column.");
 requireIn(receipts, /days without missing a shipment[\s\S]*intentionally not reported/i, "Receipts must explain why the self-expiring shipping streak was removed.");
@@ -160,6 +207,25 @@ for (const unsupported of ["ten questions answered", "no rented intelligence", "
   if (receipts.includes(unsupported)) failures.push(`Receipts retained an unsupported or self-expiring claim: ${unsupported}.`);
 }
 if (/\sstyle=/.test(receipts) || /\sstyle=/.test(bookSummary)) failures.push("New Receipts and Book-summary routes must not use inline style attributes.");
+
+requireIn(home, /Live &mdash; Toolbox alpha 0\.3\.0/, "Home must label the verified alpha 0.3.0 release Live.");
+requireIn(status, /Toolbox public alpha 0\.3\.0[\s\S]*release payload deployed and smoke-checked August 25, 2026 at 22:28 UTC/, "Status must report the verified live alpha 0.3.0 release.");
+const statusLiveCheckedRows = status.match(/<span class="badge live">Live<\/span>\s*<span class="badge tested">(?:Internal|Structural) checks<\/span>/g) || [];
+if (statusLiveCheckedRows.length !== 5) failures.push(`Expected five separately labeled Live and Tested status rows; found ${statusLiveCheckedRows.length}.`);
+requireIn(readme, /The Toolbox — public alpha 0\.3\.0 · Live/, "README must label the verified alpha 0.3.0 release Live.");
+requireIn(changelog, /Version 0\.3\.0 is Live/, "Changelog must record the live alpha 0.3.0 release.");
+for (const staleReleaseClaim of [
+  "Version 0.3 remains a candidate",
+  "Toolbox public alpha 0.3 release candidate",
+  "0.3 candidate",
+  "exact public deployment is pending",
+  "Deploy and smoke-check the exact public-alpha 0.3 release commit",
+  "It becomes Live only after"
+]) {
+  for (const [name, content] of [["README", readme], ["Changelog", changelog], ["Home", home], ["Status", status], ["Receipts", receipts], ["Siren threat model", sirenThreatModel]]) {
+    if (content.includes(staleReleaseClaim)) failures.push(`${name} retained stale release copy: ${staleReleaseClaim}.`);
+  }
+}
 
 for (const [relativePath, purpose] of [
   ["CHANGELOG.md", "changelog"],
