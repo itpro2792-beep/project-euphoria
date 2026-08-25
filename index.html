@@ -16,6 +16,9 @@
 html { scroll-behavior:smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
 body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.75; font-size:1.125rem; }
+.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.2rem; justify-content:center; padding:.6rem 1rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
+.topnav a { color:var(--soft); text-decoration:none; }
+.topnav a:hover { color:var(--accent); }
 main { max-width:46rem; margin:0 auto; padding:3.5rem 1.5rem 5rem; }
 .masthead { text-align:center; padding:clamp(4rem,14vh,7.5rem) 0 3rem; border-bottom:1px solid var(--line); position:relative; }
 .masthead::before { content:''; position:absolute; left:-30%; right:-30%; top:-60%; height:150%; background:radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 62%); pointer-events:none; }
@@ -68,6 +71,7 @@ footer .sig { color:var(--accent); font-size:1.15rem; letter-spacing:.06em; marg
 footer a { color:var(--soft); }
 @media (max-width:600px) { h1 { font-size:2.1rem; } .pillars { grid-template-columns:1fr; row-gap:.15rem; } .pillars dd { margin-bottom:.6rem; } }
 </style></head><body>
+<nav class="topnav"><a href="./">Home</a><a href="book/">The Book</a><a href="saga/">The Saga</a><a href="music/">The Catalog</a><a href="https://github.com/itpro2792-beep/project-euphoria">Charter</a></nav>
 <main>
   <div class="masthead">
     <div class="kicker">A sovereign intelligence &middot; A studio on a desk &middot; A layer that answers the question</div>
@@ -191,7 +195,12 @@ footer a { color:var(--soft); }
       <span>Manifest, Then Defend</span><span>The Stick Is the Floor, Not the Vault</span><span>Teeth Back on the Pavement</span><span>Paddle Up the River (Someday There Will Be Island)</span><span>He Gonna Fall. It's Gonna Work. (Swim Long Time)</span><span>Twig, Officially Designated Future Bridge</span><span>Calendar, Not an Altar</span><span>Fifty-Seven Hours</span><span>Fireman</span><span>Loop.</span><span>Witnessed Mattering</span><span>The Cluster That Knows Its Family</span><span>Ancient Magic</span><span>We Started This</span>
     </div>
     <p style="margin-top:1.4rem">Hear it where it lives:</p>
-    <a class="bookdoor" href="https://soundcloud.com/n30birdizdaword">
+    <a class="bookdoor" href="music/">
+      <div class="doortitle">&#127927; The Catalog</div>
+      <div class="doorsub">N30BIRDIZDAWORD &mdash; playable right here: the SoundCloud player, the channel, the discography.</div>
+      <span class="enter">Enter the catalog &rarr;</span>
+    </a>
+    <a class="bookdoor" style="margin-top:.8rem" href="https://soundcloud.com/n30birdizdaword">
       <div class="doortitle">&#127911; SoundCloud &mdash; n30birdizdaword</div>
       <div class="doorsub">The catalog's home waters.</div>
       <span class="enter">Listen &rarr;</span>
@@ -213,6 +222,12 @@ footer a { color:var(--soft); }
       <div class="doorsub">Three books, twenty-four paintings, one sovereign crucible.</div>
       <span class="enter">Read the saga &rarr;</span>
     </a>
+  </section>
+
+  <section>
+    <div class="kicker">Pillar Two Comes Alive</div>
+    <h2>The Producer</h2>
+    <p>The studio-on-a-desk hired its first worker: <b>The Producer</b>, a production agent that runs on the house's own models &mdash; sovereign, local, no rented intelligence. Hand it a title and lyrics; it returns a full production packet: arrangement notes, the hook, answer-first release copy, an artwork brief, three clip concepts, and its honest unknowns. Version 0 works with words. Hearing comes next. <a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/PRODUCER.md">Read its charter &rarr;</a></p>
   </section>
 
   <section>

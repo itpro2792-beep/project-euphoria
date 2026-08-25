@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Catalog — Project Euphoria</title>
+<meta name="description" content="N30BIRDIZDAWORD — the Second Architect's catalog: freestyles, instrumentals, and duet challenges, playable here.">
+<meta property="og:title" content="The Catalog — Project Euphoria">
+<meta property="og:description" content="N30BIRDIZDAWORD — freestyles, instrumentals, duet challenges. Hear it where it lives.">
+<meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%A7%3C/text%3E%3C/svg%3E">
+<style>
+:root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; } }
+:root[data-theme="dark"] { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.75; font-size:1.125rem; }
+.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.2rem; justify-content:center; padding:.6rem 1rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
+.topnav a { color:var(--soft); text-decoration:none; }
+.topnav a:hover, .topnav a.here { color:var(--accent); }
+main { max-width:46rem; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
+.kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
+h1 { font-weight:normal; font-size:clamp(2.2rem,6vw,3.2rem); letter-spacing:.1em; color:var(--accent); margin:.4rem 0 .5rem; text-wrap:balance; }
+.sub { font-style:italic; color:var(--soft); margin-bottom:2rem; }
+h2 { font-size:1.7rem; font-weight:normal; margin:2.2rem 0 .9rem; }
+p { margin-bottom:.8rem; }
+a { color:var(--accent); }
+.player { border:1px solid var(--line); border-radius:12px; overflow:hidden; margin:1rem 0 1.8rem; background:var(--card); }
+.player iframe { display:block; width:100%; border:0; }
+.disc { list-style:none; padding:0; counter-reset:trk; }
+.disc li { counter-increment:trk; display:flex; gap:1rem; align-items:baseline; padding:.55rem .2rem; border-bottom:1px solid var(--line); }
+.disc li::before { content:counter(trk,decimal-leading-zero); color:var(--accent); font-family:ui-monospace,monospace; font-size:.85rem; }
+.note { font-size:.9rem; color:var(--soft); font-style:italic; }
+footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
+</style></head><body>
+<nav class="topnav"><a href="../">Home</a><a href="../book/">The Book</a><a href="../saga/">The Saga</a><a class="here" href="./">The Catalog</a><a href="https://github.com/itpro2792-beep/project-euphoria">Charter</a></nav>
+<main>
+  <div class="kicker">The Second Architect's Catalog</div>
+  <h1>N30BIRDIZDAWORD</h1>
+  <div class="sub">Freestyles, instrumentals, duet challenges &mdash; self-produced, self-owned, hear it where it lives.</div>
+
+  <h2>Listen</h2>
+  <div class="player"><iframe title="N30BIRDIZDAWORD on SoundCloud" height="450" loading="lazy" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fn30birdizdaword&color=%238a6d3b&auto_play=false&show_user=true&show_reposts=false"></iframe></div>
+  <p class="note">Player not loading? <a href="https://soundcloud.com/n30birdizdaword">Open the profile on SoundCloud &rarr;</a></p>
+
+  <h2>Watch</h2>
+  <div class="player"><iframe title="Christian's uploads on YouTube" height="315" loading="lazy" allowfullscreen src="https://www.youtube.com/embed/videoseries?list=UUHmLADbSArRzuuemYs0qLDQ"></iframe></div>
+  <p class="note">Or visit the channel: <a href="https://www.youtube.com/@ChristianHolder-camoh">youtube.com/@ChristianHolder-camoh &rarr;</a></p>
+
+  <h2>Selected tracks</h2>
+  <ol class="disc">
+    <li>YHWH (Freestyle) [2027 Song Of The Year]</li>
+    <li>Massive (YouTube Freestyle)</li>
+    <li>Os and Ws (prod. by himself)</li>
+    <li>Saturday (MU$IC VIBE)</li>
+    <li>&#127829; &ldquo;Competition Came With Pizza&rdquo; &#127829;</li>
+    <li>Alicia Keys Duet Challenge</li>
+    <li>Unrehearsed Alicia Keys Facebook Duet Challenge</li>
+    <li>The Anticipation (Instrumental)</li>
+    <li>Freely Structured (Instrumental)</li>
+    <li>Thunder Zone (Instrumental)</li>
+  </ol>
+
+  <h2>What's coming</h2>
+  <p>Fourteen more titles are already coined and waiting in <a href="../#top">the First Harvest</a> &mdash; and the house's own production agent, <a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/PRODUCER.md">The Producer</a>, is now on staff to help them arrive.</p>
+
+  <footer>&ldquo;We started this.&rdquo; &mdash; the room, August 25, 2026</footer>
+</main>
+</body></html>
