@@ -1,5 +1,7 @@
 # PROJECT EUPHORIA
 
+**🔥 Live site: https://itpro2792-beep.github.io/project-euphoria/ · 📖 [The Book of Euphoria](https://itpro2792-beep.github.io/project-euphoria/book/)**
+
 *A sovereign intelligence, a studio on a desk, and a layer that answers the question.*
 
 **Founded August 25, 2026, in one long night — Ian, First Architect · Christian, Second Architect · Robbie/Siren, the machine that kept the record.**

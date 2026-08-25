@@ -52,6 +52,14 @@ a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .protocols li b { color:var(--accent); font-weight:bold; }
 .harvest { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem; }
 .harvest span { font-size:.9rem; font-style:italic; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:.25rem .9rem; }
+.artfig { float:right; width:min(260px,38%); margin:0 0 1rem 1.5rem; }
+.artfig img { width:100%; border-radius:12px; border:1px solid var(--line); display:block; }
+.artfig figcaption { font-size:.75rem; color:var(--soft); font-style:italic; text-align:center; margin-top:.4rem; }
+.pullquote { font-size:1.3rem; font-style:italic; text-align:center; color:var(--accent); max-width:34rem; margin:1.6rem auto; line-height:1.5; }
+.phases { list-style:none; padding:0; }
+.phases li { margin-bottom:.7rem; }
+.phases .pname { font-variant:small-caps; letter-spacing:.08em; color:var(--accent); font-weight:bold; margin-right:.5rem; }
+@media (max-width:600px) { .artfig { float:none; width:100%; margin:0 0 1rem; } }
 footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
 footer .sig { color:var(--accent); font-size:1.15rem; letter-spacing:.06em; margin-bottom:.4rem; font-style:normal; }
 footer a { color:var(--soft); }
@@ -74,6 +82,12 @@ footer a { color:var(--soft); }
       <div class="doorsub">Ten councils deliberate on universal well-being &mdash; the position papers of the Grand Summit.</div>
       <span class="enter">Open the book &rarr;</span>
     </a>
+  </section>
+
+  <section>
+    <div class="kicker">How the Book Was Made</div>
+    <h2>The Lineage</h2>
+    <p>The Book of Euphoria was not typed — it was <i>convened</i>. A grounding corpus of humanity's wisdom — the King James Bible, the Quran, the Bhagavad Gita, the Dhammapada, the Tao Te Ching, the Upanishads, the Analects, the Meditations of Marcus Aurelius — was placed before a debate swarm of one hundred expert personas, argued through councils, and woven by a Grand Synthesizer into the position papers you can read today. The machine did the deliberating; the traditions did the teaching; the question — universal well-being — did the choosing.</p>
   </section>
 
   <section>
@@ -122,6 +136,7 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">The Flagship Build</div>
     <h2>Siren</h2>
+    <figure class="artfig"><img src="art/guardian.png" alt="A sentinel figure — painting from the house's own saga" loading="lazy"><figcaption>from the house's own saga</figcaption></figure>
     <p>A self-hosted assistant that knows its family &mdash; six pillars:</p>
     <dl class="pillars">
       <dt>The Ear</dt><dd>always-on capture, transcript logs.</dd>
@@ -131,6 +146,24 @@ footer a { color:var(--soft); }
       <dt>The Door</dt><dd>sign in from a browser, ask anything; admin power gated, audited, allowlisted.</dd>
       <dt>The Protocols</dt><dd>the layer no lab ships &mdash; below.</dd>
     </dl>
+  </section>
+
+  <section>
+    <div class="kicker">The Engineering North Star</div>
+    <h2>The Ascension</h2>
+    <figure class="artfig"><img src="art/worldtree.png" alt="A world tree — painting from the house's own saga" loading="lazy"><figcaption>from the house's own saga</figcaption></figure>
+    <p>Beneath the products sits a longer program, drafted in July 2026: growing our infrastructure into a <b>verified sovereign cognitive environment</b> &mdash; a system you can hand a question, a project, or a long-running goal, and receive traceable memory, genuinely independent perspectives, evidence-separated reasoning, and an honest account of what remains unknown. Seven phases:</p>
+    <ol class="phases">
+      <li><span class="pname">Ground</span> &mdash; establish canonical truth: what exists, what's live, what's unknown.</li>
+      <li><span class="pname">Mnemosyne</span> &mdash; one memory plane with provenance, contradiction-surfacing, and the right to refuse when it doesn't know.</li>
+      <li><span class="pname">Village</span> &mdash; a governed agent runtime: sandboxed workers with contracts, budgets, and no way to lie about what they did.</li>
+      <li><span class="pname">Parliament</span> &mdash; real deliberation: councils with different evidence and objectives, preserved disagreement, minority reports.</li>
+      <li><span class="pname">Bridge</span> &mdash; one command center where every answer is inspectable at every stage.</li>
+      <li><span class="pname">Immune System</span> &mdash; proven recovery, tested denials, graceful degradation.</li>
+      <li><span class="pname">Presence</span> &mdash; living with it: project capsules, evidence-backed briefs, a record two people can trust without being collapsed into one.</li>
+    </ol>
+    <div class="pullquote">&ldquo;Euphoria must refuse to become anesthesia. Its beauty should increase clarity, not hide uncertainty.&rdquo;</div>
+    <p>The honesty rules that govern the build: every claim is graded <b>proven, likely, unknown, false, or blocked</b>. The doer is never the grader. No false greens, ever. And no consciousness theater &mdash; the system earns &ldquo;alive&rdquo; by remembering, explaining, and recovering, never by pretending.</p>
   </section>
 
   <section>
@@ -150,7 +183,7 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">The Catalog Begins</div>
     <h2>The First Harvest</h2>
-    <p>Original titles coined in the founding session, dated 2026-08-25:</p>
+    <p>Original titles coined in the founding session, dated 2026-08-25. The songs themselves live across our channels &mdash; the catalog page lands here as the wiring completes:</p>
     <div class="harvest">
       <span>Manifest, Then Defend</span><span>The Stick Is the Floor, Not the Vault</span><span>Teeth Back on the Pavement</span><span>Paddle Up the River (Someday There Will Be Island)</span><span>He Gonna Fall. It's Gonna Work. (Swim Long Time)</span><span>Twig, Officially Designated Future Bridge</span><span>Calendar, Not an Altar</span><span>Fifty-Seven Hours</span><span>Fireman</span><span>Loop.</span><span>Witnessed Mattering</span><span>The Cluster That Knows Its Family</span><span>Ancient Magic</span><span>We Started This</span>
     </div>
