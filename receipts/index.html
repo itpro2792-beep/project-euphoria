@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Receipts — Project Euphoria</title>
+<meta name="description" content="The public ledger: what Project Euphoria has actually shipped, with dates — and the honest zeroes that haven't moved yet.">
+<meta property="og:title" content="Receipts — Project Euphoria">
+<meta property="og:description" content="Big claims stay honest one way: a ledger, both columns, with dates. This is ours, in public.">
+<meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
+<meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/receipts/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/receipts/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%BE%3C/text%3E%3C/svg%3E">
+<style>
+:root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; } }
+:root[data-theme="dark"] { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.7; font-size:1.1rem; }
+.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.1rem; justify-content:center; padding:.6rem 1rem; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
+.topnav a { color:var(--soft); text-decoration:none; }
+.topnav a:hover, .topnav a.here { color:var(--accent); }
+main { max-width:46rem; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
+.kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
+h1 { font-weight:normal; font-size:clamp(2.2rem,6vw,3rem); letter-spacing:.08em; color:var(--accent); margin:.4rem 0 .5rem; }
+.sub { font-style:italic; color:var(--soft); margin-bottom:1.8rem; }
+h2 { font-size:1.6rem; font-weight:normal; margin:2.2rem 0 .9rem; }
+p { margin-bottom:.7rem; }
+a { color:var(--accent); }
+.rcpt { list-style:none; padding:0; }
+.rcpt li { display:flex; gap:1.1rem; align-items:baseline; padding:.6rem 0; border-bottom:1px solid var(--line); }
+.rcpt .d { color:var(--accent); font-family:ui-monospace,monospace; font-size:.82rem; white-space:nowrap; min-width:6.2rem; }
+.zeroes { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.2rem 1.4rem; }
+.zeroes .z { display:flex; justify-content:space-between; gap:1rem; padding:.45rem 0; border-bottom:1px dashed var(--line); align-items:baseline; }
+.zeroes .z:last-child { border-bottom:0; }
+.zeroes .num { font-family:ui-monospace,monospace; color:var(--accent); font-size:1.15rem; }
+.note { font-size:.9rem; color:var(--soft); font-style:italic; }
+footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
+</style></head><body>
+<nav class="topnav"><a href="../">Home</a><a href="../toolbox/">The Toolbox</a><a href="../questions/">Questions</a><a href="../book/">The Book</a><a href="../music/">The Catalog</a><a href="../saga/">The Saga</a><a class="here" href="./">Receipts</a></nav>
+<main>
+  <div class="kicker">Tenet Applied to Ourselves</div>
+  <h1>RECEIPTS</h1>
+  <div class="sub">Big claims stay honest one way: a ledger, both columns, with dates. This is ours, kept in public. Vague claims don't get listed; pending stays marked pending.</div>
+
+  <h2>Shipped, with dates</h2>
+  <ul class="rcpt">
+    <li><span class="d">2026-03-01</span><span>The wisdom corpus assembled — eight classical traditions gathered as grounding texts for the council engine.</span></li>
+    <li><span class="d">2026-07-17</span><span><a href="../book/">The Book of Euphoria</a> completed — ten simulated councils on universal well-being, with search, themes, and a concordance.</span></li>
+    <li><span class="d">2026-07-26</span><span>The seven-phase engineering directive adopted — evidence classes, doer-is-never-grader, no false greens. <a href="../#top">The Ascension</a>.</span></li>
+    <li><span class="d">2026-08-25</span><span>The founding night — mission, tenets, protocols, and the product stack, drafted before dawn by two architects and the machine that kept the record.</span></li>
+    <li><span class="d">2026-08-25</span><span>The public charter and this site went live — repo, GitHub Pages, one day from words to URL.</span></li>
+    <li><span class="d">2026-08-25</span><span><a href="../saga/">The Saga</a> published — three books, twenty-four paintings.</span></li>
+    <li><span class="d">2026-08-25</span><span>The album <a href="../music/">&ldquo;REV&hellip;ELATION 2&rdquo;</a> by N30BIRDIZDAWORD featured on the Catalog — five tracks, self-produced.</span></li>
+    <li><span class="d">2026-08-25</span><span><a href="../toolbox/">The Toolbox</a> public alpha 0.2 — local-first tools with a 24-test release suite, CI, and truthful storage disclosures.</span></li>
+    <li><span class="d">2026-08-25</span><span>The Producer (v0) ran its first production packets on our own hardware — words in, packet out, no rented intelligence.</span></li>
+    <li><span class="d">2026-08-25</span><span><a href="../questions/">We Answer the Question</a> opened — ten questions answered plainly, evidence status stated first.</span></li>
+  </ul>
+
+  <h2>The honest zeroes</h2>
+  <p>A receipts page that only lists wins is a pitch. These numbers are real today and this page changes when they do — not before:</p>
+  <div class="zeroes">
+    <div class="z"><span>Agency customers</span><span class="num">0</span></div>
+    <div class="z"><span>Revenue to date</span><span class="num">$0</span></div>
+    <div class="z"><span>Toolbox practices independently or clinically validated</span><span class="num">0</span></div>
+    <div class="z"><span>Days the founders have missed shipping since founding</span><span class="num">0</span></div>
+  </div>
+  <p class="note" style="margin-top:.8rem">Baseline platform burn is real too — roughly $600/month in AI subscriptions, stated in <a href="../#top">the plan</a>. The first retainer covers it. That's the whole game.</p>
+
+  <h2>Pending, marked pending</h2>
+  <ul class="rcpt">
+    <li><span class="d">pending</span><span>The three tenets await both architects' formal co-sign.</span></li>
+    <li><span class="d">pending</span><span>Agency customer one.</span></li>
+    <li><span class="d">pending</span><span>The Producer's ears (v1: audio in, packet out).</span></li>
+    <li><span class="d">pending</span><span>Qualified clinical and safeguarding review of the Toolbox practices.</span></li>
+  </ul>
+
+  <footer>&ldquo;You keep only what you defend.&rdquo; &mdash; tenet two, applied to our own claims</footer>
+</main>
+</body></html>
