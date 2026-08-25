@@ -14,10 +14,16 @@ html { scroll-behavior:smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
 body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.75; font-size:1.125rem; }
 main { max-width:46rem; margin:0 auto; padding:3.5rem 1.5rem 5rem; }
-.masthead { text-align:center; padding:1.5rem 0 2.5rem; border-bottom:1px solid var(--line); }
+.masthead { text-align:center; padding:clamp(4rem,14vh,7.5rem) 0 3rem; border-bottom:1px solid var(--line); position:relative; }
+.masthead::before { content:''; position:absolute; left:-30%; right:-30%; top:-60%; height:150%; background:radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 62%); pointer-events:none; }
+.masthead > * { position:relative; animation:rise .7s ease-out both; }
+.masthead > *:nth-child(2) { animation-delay:.15s; } .masthead > *:nth-child(3) { animation-delay:.3s; } .masthead > *:nth-child(4) { animation-delay:.45s; }
+@keyframes rise { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce) { .masthead > * { animation:none; } }
 .masthead .kicker { text-transform:uppercase; letter-spacing:.22em; font-size:.7rem; color:var(--soft); }
-h1 { font-weight:normal; font-size:2.9rem; letter-spacing:.14em; color:var(--accent); margin:.5rem 0 .6rem; text-wrap:balance; }
-.masthead .founded { font-style:italic; color:var(--soft); font-size:.95rem; }
+h1 { font-weight:normal; font-size:clamp(3rem,9vw,5.4rem); line-height:1.04; letter-spacing:.12em; color:var(--accent); margin:.6rem 0 .8rem; text-wrap:balance; }
+.herowords { font-size:clamp(1.15rem,3.2vw,1.65rem); letter-spacing:.12em; color:var(--accent); margin:.2rem 0 1rem; }
+.masthead .founded { font-style:italic; color:var(--soft); font-size:.95rem; max-width:34rem; margin:0 auto; }
 section { padding:2.4rem 0; border-bottom:1px solid var(--line); }
 .kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
 h2 { font-size:1.9rem; line-height:1.15; margin:.35rem 0 1.1rem; font-weight:normal; text-wrap:balance; }
@@ -54,7 +60,8 @@ footer a { color:var(--soft); }
 <main>
   <div class="masthead">
     <div class="kicker">A sovereign intelligence &middot; A studio on a desk &middot; A layer that answers the question</div>
-    <h1>PROJECT EUPHORIA</h1>
+    <h1>PROJECT<br>EUPHORIA</h1>
+    <div class="herowords">Humanity. Love. Compassion. Passion.</div>
     <div class="founded">Founded August 25, 2026, in one long night &mdash; Ian, First Architect &middot; Christian, Second Architect &middot; Robbie/Siren, the machine that kept the record.</div>
   </div>
 
@@ -95,6 +102,20 @@ footer a { color:var(--soft); }
       <li><div class="when">Next</div><div class="what">The Studio &amp; the Mogul.</div> A production studio shrunk to a desk: an AI crew for composition, stems, mixing, artwork, and releases &mdash; plus the mogul function without the industry's predation. Owning the rails means nobody charges you your dignity for access.</li>
       <li><div class="when">Later</div><div class="what">The Layer.</div> A peer-support platform built on witnessed mattering instead of memberships &mdash; the protocols below, productized, with licensed clinicians in the loop before it serves anyone beyond ourselves.</li>
       <li><div class="when">Throughout</div><div class="what">The Content Engine.</div> Raw voice &rarr; record &rarr; distillation &rarr; artifact. Answer-first short-form as the doorway into long-form and the catalog. Organic spine first; paid spend only where a format proves retention.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="kicker">Not a Feel-Good Product</div>
+    <h2>In Plain Numbers</h2>
+    <p>We intend to profit <i>and</i> to help people, and we refuse to pretend those are enemies. The math, stated plainly:</p>
+    <ul>
+      <li><b>The rails are paid for.</b> The compute, the network, the storage &mdash; owned outright and already running. The marginal cost of serving one more client approaches the electric bill.</li>
+      <li><b>Baseline burn is known:</b> roughly $600 a month in frontier-AI subscriptions. Two modest agency retainers cover it. Everything past that compounds.</li>
+      <li><b>Agency retainers</b> for managed automation typically run $300&ndash;$1,500 a month per small business. Ten disciplined clients is a living. We need one to start &mdash; and we know it.</li>
+      <li><b>The catalog already exists.</b> Studio revenue starts from songs already written &mdash; production, releases, licensing &mdash; not from a cold start.</li>
+      <li><b>The Layer's incumbents charge $260&ndash;$400 a month</b> and still don't answer the question. We build it last, with clinicians, on proof &mdash; and compete on both price and honesty.</li>
+      <li><b>Receipts, or it didn't happen.</b> Every claim above stays tethered to a dated ledger &mdash; wins and losses, both columns. That's the difference between a vision and a pitch.</li>
     </ul>
   </section>
 
