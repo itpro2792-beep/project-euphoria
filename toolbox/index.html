@@ -1,188 +1,496 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Toolbox — Project Euphoria</title>
-<meta name="description" content="Working tools, free: the household protocols as usable how-to cards, a just-for-today counter, and a wins ledger — everything runs in your browser and your data never leaves your device.">
-<meta property="og:title" content="The Toolbox — Project Euphoria">
-<meta property="og:description" content="Protocols you can use tonight, a day counter, and a wins ledger. Private by design — your data never leaves your device.">
-<meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/guardian.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B0%3C/text%3E%3C/svg%3E">
-<style>
-:root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; --good:#4a7c59; --hard:#9c5540; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; --good:#7fb08a; --hard:#c98570; } }
-:root[data-theme="dark"] { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; --good:#7fb08a; --hard:#c98570; }
-* { box-sizing:border-box; margin:0; }
-body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.7; font-size:1.1rem; }
-.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.2rem; justify-content:center; padding:.6rem 1rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
-.topnav a { color:var(--soft); text-decoration:none; }
-.topnav a:hover, .topnav a.here { color:var(--accent); }
-main { max-width:46rem; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
-.kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
-h1 { font-weight:normal; font-size:clamp(2.2rem,6vw,3rem); letter-spacing:.08em; color:var(--accent); margin:.4rem 0 .5rem; }
-.sub { font-style:italic; color:var(--soft); margin-bottom:1.6rem; }
-h2 { font-size:1.6rem; font-weight:normal; margin:2.4rem 0 .9rem; }
-p, li { margin-bottom:.7rem; }
-a { color:var(--accent); }
-.privacy { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:.9rem 1.2rem; font-size:.95rem; font-style:italic; color:var(--soft); }
-details.tcard { background:var(--card); border:1px solid var(--line); border-radius:12px; margin-bottom:.8rem; overflow:hidden; }
-details.tcard summary { cursor:pointer; padding:1rem 1.2rem; list-style:none; display:flex; gap:.8rem; align-items:baseline; }
-details.tcard summary::-webkit-details-marker { display:none; }
-details.tcard summary::before { content:'+'; color:var(--accent); font-size:1.2rem; font-family:ui-monospace,monospace; }
-details.tcard[open] summary::before { content:'\2212'; }
-details.tcard summary b { color:var(--accent); }
-details.tcard summary .oneliner { color:var(--soft); font-size:.95rem; font-style:italic; }
-.tbody { padding:0 1.2rem 1.1rem 2.6rem; font-size:1rem; }
-.tbody h4 { text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; color:var(--accent); margin:1rem 0 .3rem; }
-.tool { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.3rem 1.4rem 1.5rem; margin:1rem 0 1.6rem; }
-.tool label { display:block; font-size:.85rem; color:var(--soft); margin-bottom:.3rem; }
-.tool input[type="datetime-local"], .tool input[type="text"], .tool select { font-family:inherit; font-size:1rem; padding:.5rem .7rem; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); max-width:100%; }
-.tool button { font-family:inherit; font-size:.9rem; letter-spacing:.05em; padding:.5rem 1.1rem; border:1px solid var(--accent); border-radius:8px; background:transparent; color:var(--accent); cursor:pointer; }
-.tool button:hover { background:var(--accent); color:var(--bg); }
-.count { font-size:clamp(2.2rem,8vw,3.4rem); color:var(--accent); font-variant-numeric:tabular-nums; line-height:1.1; margin:.6rem 0 .2rem; }
-.count small { font-size:1rem; color:var(--soft); }
-.row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:flex-end; margin:.6rem 0; }
-table.ledger { width:100%; border-collapse:collapse; font-size:.95rem; margin-top:.8rem; }
-table.ledger td { border-bottom:1px solid var(--line); padding:.45rem .3rem; vertical-align:top; }
-table.ledger td.d { color:var(--soft); font-size:.8rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
-table.ledger td.w { color:var(--good); font-weight:bold; }
-table.ledger td.l { color:var(--hard); font-weight:bold; }
-.note { font-size:.85rem; color:var(--soft); font-style:italic; }
-footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
-</style></head><body>
-<nav class="topnav"><a href="../">Home</a><a class="here" href="./">The Toolbox</a><a href="../questions/">Questions</a><a href="../book/">The Book</a><a href="../saga/">The Saga</a><a href="../music/">The Catalog</a></nav>
-<main>
-  <div class="kicker">Working Equipment, Free</div>
-  <h1>THE TOOLBOX</h1>
-  <div class="sub">The house protocols as tools you can use tonight, plus two instruments that run right here on this page. Built by people who needed them first.</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'none'; font-src 'none'; form-action 'none'; frame-src 'none'; img-src 'self' data:; media-src 'none'; object-src 'none'; script-src 'self'; style-src 'self'; worker-src 'none'">
+  <title>The Toolbox — Project Euphoria</title>
+  <meta name="description" content="Free, local-first tools for harder conversations, continuity after interruption, and honest progress. Public alpha: experience-based, not clinically validated.">
+  <meta property="og:title" content="The Toolbox — Project Euphoria">
+  <meta property="og:description" content="Choose what is happening, make a voluntary plan, and leave with a usable copy. Local-first tools with explicit backup and erase controls.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/guardian.png">
+  <meta property="og:image:alt" content="A painted sentinel figure from Project Euphoria's house saga">
+  <meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/toolbox/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/toolbox/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B0%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the tools</a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="../">Home</a>
+    <a href="./" aria-current="page">The Toolbox</a>
+    <a href="../questions/">Questions</a>
+    <a href="../book/">The Book</a>
+    <a href="../music/">The Catalog</a>
+    <a href="../saga/">The Saga</a>
+  </nav>
 
-  <div class="privacy">&#128274; <b>Private by design:</b> everything you type on this page is stored only in your own browser, on your own device. Nothing is sent anywhere. We couldn't see it if we wanted to &mdash; that's what sovereign means, and you get it too.</div>
+  <main id="main">
+    <header class="intro">
+      <div class="kicker">Working equipment · public alpha 0.2</div>
+      <h1>THE TOOLBOX</h1>
+      <p class="lede">Conversation tools developed through lived household use. Choose what is happening, try one thing, and keep only what actually helps.</p>
+    </header>
+    <noscript>
+      <div class="notice warning">The protocol cards remain readable, but the router, Fresh Page Card, agreement builder, counter, ledger, and data controls require JavaScript.</div>
+    </noscript>
 
-  <h2>Instrument one: the Counter</h2>
-  <p>One decision, held one day at a time, deserves a running clock. Pick your starting moment. The counter does the rest, every time you come back.</p>
-  <div class="tool">
-    <div class="count" id="countNum">&mdash;</div>
-    <div class="note" id="countSub">No clock running yet.</div>
-    <div class="row">
-      <span><label for="startAt">Your starting moment</label><input type="datetime-local" id="startAt"></span>
-      <button id="startBtn">Start the clock</button>
-      <button id="resetBtn" title="A broken streak is data, not damnation. Restart without shame.">Reset</button>
+    <section id="start-here" class="start-panel" tabindex="-1">
+      <div class="kicker">Start here</div>
+      <h2>What is happening right now?</h2>
+      <form id="routeForm" class="route-form">
+        <label for="needPicker">Choose the closest fit</label>
+        <div class="control-row">
+          <select id="needPicker" required>
+            <option value="">Select one…</option>
+            <option value="fresh-page">I lost my train of thought or had to start a fresh page</option>
+            <option value="talking-stick">We keep interrupting each other</option>
+            <option value="safe-word">A monologue needs a voluntary stop signal</option>
+            <option value="off-record">I want a private conversation with clear limits</option>
+            <option value="loop-detector">We are stuck in a loop</option>
+            <option value="no-flinch">I need calm listening while safety remains clear</option>
+            <option value="paved-crossings">We need a voluntary plan around a known risk</option>
+            <option value="agreement">We want to turn a protocol into a shared agreement</option>
+            <option value="counter">I want to count time from a decision</option>
+            <option value="ledger">I want an honest record of what happened</option>
+            <option value="immediate-help">Someone may be unsafe right now</option>
+          </select>
+          <button type="submit">Show me the tool</button>
+        </div>
+        <p id="routeStatus" class="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <div id="storageWarning" class="notice warning" role="status" hidden>
+      Browser storage is unavailable. The tools will work for this tab, but your entries will not survive a reload. Export anything you want to keep.
     </div>
-    <p class="note">If the clock ever breaks: a broken streak is data, not damnation. The direction stands. Restart it.</p>
-  </div>
 
-  <h2>Instrument two: the Ledger</h2>
-  <p>Big claims stay honest exactly one way: receipts, with dates, both columns. Wins <i>and</i> losses &mdash; the ledger is a mirror, not a court.</p>
-  <div class="tool">
-    <div class="row">
-      <span style="flex:1;min-width:12rem"><label for="entryText">What happened</label><input type="text" id="entryText" style="width:100%" maxlength="140" placeholder="e.g. Made the call I was avoiding"></span>
-      <span><label for="entryKind">Column</label><select id="entryKind"><option value="W">Win</option><option value="L">Loss</option></select></span>
-      <button id="addBtn">Enter it</button>
-    </div>
-    <table class="ledger" id="ledgerTable"></table>
-    <div class="row" style="margin-top:.8rem"><button id="copyBtn">Copy my ledger</button><span class="note" id="copyNote"></span></div>
-  </div>
+    <section class="truth-grid" aria-label="Important boundaries">
+      <article class="truth-card">
+        <h2>Local in this version—not secret</h2>
+        <p>The current page code does not submit entries or call network APIs. Fresh Page fields save automatically as you type when browser storage and the page’s exclusive writer lock are available. Only one open Toolbox tab may persist changes; other tabs are read-only for persistence, and browsers without Web Locks support keep new changes in the current tab only. Entries are unencrypted and shared across the entire <code>https://itpro2792-beep.github.io</code> origin—not isolated to this project or page. Anyone with access to this browser profile, a sufficiently privileged extension, or current or future code served anywhere on that origin could potentially read them. Downloaded backups are plain-text JSON, and copied text may enter clipboard history or sync. Do not enter secrets. You can export or erase your data.</p>
+      </article>
+      <article class="truth-card boundary-card">
+        <h2>Experience, not clinical validation</h2>
+        <p>These are early household practices, not therapy, crisis care, or a substitute for professional help. Use them only by mutual consent where everyone can safely say no, pause, or leave.</p>
+      </article>
+    </section>
 
-  <h2>The Protocols</h2>
-  <p>Seven tools for households that live loud. Each card is the full instruction, not the brochure line. Open what you need.</p>
+    <section id="immediate-help" class="safety-panel" tabindex="-1">
+      <div class="kicker">Hard boundary</div>
+      <h2>When this page is not the tool</h2>
+      <p>Household protocols stop when someone may be in immediate danger, cannot safely say no or leave, asks for help staying safe, or when abuse, threats, force, or coercion are present. A person does not need perfect words before concern becomes real.</p>
+      <p>If you are in the United States or its territories, call or text <a href="https://988lifeline.org/">988</a> for crisis support. In a life-threatening emergency, call 911. Elsewhere, use your local emergency or crisis service. Reaching outside the household never violates a protocol.</p>
+    </section>
 
-  <details class="tcard"><summary><b>The Talking Stick</b><span class="oneliner">nobody has to fight for the floor</span></summary><div class="tbody">
-    <h4>When</h4><p>Two or more people who talk over each other, love each other, and get nowhere.</p>
-    <h4>Setup</h4><p>Pick any object &mdash; a stick, a remote, a plush. Agree once, while calm: whoever holds it has the floor. Everyone else waits. It transfers by handing, never by grabbing.</p>
-    <h4>The rules</h4><p>1. The holder finishes. 2. Interjections don't outrank the stick. 3. Anyone may <i>request</i> it; only the holder passes it. 4. The stick governs the conversation, not the household &mdash; it's the floor, not the vault.</p>
-    <h4>When it fails</h4><p>If the same person always holds it, add a timer: five minutes, then it moves. If someone grabs it, the conversation pauses until it's handed back properly.</p>
-  </div></details>
+    <section id="fresh-page" class="tool-section" tabindex="-1">
+      <div class="section-heading">
+        <div>
+          <div class="kicker">Instrument one</div>
+          <h2>The Fresh Page Card</h2>
+        </div>
+        <span class="status-chip">New</span>
+      </div>
+      <p>When an interruption, a new tab, or a lost train of thought costs the thread, preserve the minimum handoff. You hold the meaning; this card holds the thread.</p>
+      <div class="tool">
+        <form id="continuityForm">
+          <div class="field">
+            <label for="continuityThread">Where I was going</label>
+            <textarea id="continuityThread" maxlength="700" rows="4" placeholder="The thought I was trying to finish…"></textarea>
+          </div>
+          <div class="field">
+            <label for="continuityUnderstood">Already understood—do not make me reteach this</label>
+            <textarea id="continuityUnderstood" maxlength="700" rows="3" placeholder="The facts, names, boundaries, or decisions already established…"></textarea>
+          </div>
+          <div class="field">
+            <label for="continuityNeed">What I need next</label>
+            <textarea id="continuityNeed" maxlength="500" rows="3" placeholder="For example: five uninterrupted minutes, a summary, one answer, or help choosing the next action…"></textarea>
+          </div>
+          <div class="field compact-field">
+            <label for="continuityMoment">What kind of moment is this?</label>
+            <select id="continuityMoment">
+              <option value="ordinary">Ordinary or unclear</option>
+              <option value="heavy">Heavy, not an immediate safety concern</option>
+              <option value="immediate">Immediate safety concern</option>
+            </select>
+          </div>
+          <div id="continuitySafety" class="notice warning" hidden>
+            A handoff card is not enough for an immediate safety concern. Use the real-time help boundary above.
+          </div>
+          <div class="button-row">
+            <button type="button" id="copyContinuityBtn">Copy clean handoff</button>
+            <button type="button" id="clearContinuityBtn" class="quiet-button">Clear this card</button>
+          </div>
+          <p id="continuityStatus" class="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
 
-  <details class="tcard"><summary><b>The Safe Word</b><span class="oneliner">one word stops a monologue &mdash; and people like using it</span></summary><div class="tbody">
-    <h4>When</h4><p>Someone you love (maybe you) monologues past everyone's limits and can't hear themselves doing it.</p>
-    <h4>Setup</h4><p>The <i>talker</i> picks the word &mdash; that's the trick; it's self-installed, not imposed. Ours is "fireman." Agree while calm: when anyone says the word, the talker stops, full stop, no penalty, no debate.</p>
-    <h4>The rules</h4><p>1. Honored 100% of the time or it trains nothing. 2. Follow it with a small ritual &mdash; five seconds of quiet, a sip of water &mdash; so the body has something to do. 3. It's a brake, never a punishment; thank the person who says it.</p>
-    <h4>When it fails</h4><p>If it's said mockingly or too often, the talker may call a review &mdash; while calm, later, never mid-stop.</p>
-  </div></details>
+    <section id="agreement" class="tool-section" tabindex="-1">
+      <div class="kicker">Instrument two</div>
+      <h2>The Protocol Agreement</h2>
+      <p>A principle becomes equipment when everyone knows the signal, the stop condition, and when the plan will be reviewed. This builder produces one shared, copyable agreement.</p>
+      <div class="tool">
+        <form id="agreementForm">
+          <div class="field-grid">
+            <div class="field">
+              <label for="agreementProtocol">Protocol</label>
+              <select id="agreementProtocol">
+                <option value="Talking Stick">Talking Stick</option>
+                <option value="Safe Word">Safe Word</option>
+                <option value="Off the Record">Off the Record</option>
+                <option value="Loop Detector">Loop Detector</option>
+                <option value="No-Flinch">No-Flinch</option>
+                <option value="Paved Crossings">Paved Crossings</option>
+                <option value="Receipts">Receipts</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="agreementPeople">People or roles <span class="optional">(optional)</span></label>
+              <input id="agreementPeople" type="text" maxlength="120" placeholder="For example: talker and listener">
+            </div>
+          </div>
+          <div class="field">
+            <label for="agreementSignal">Our object, word, or signal</label>
+            <input id="agreementSignal" type="text" maxlength="120" placeholder="What exactly will we recognize?">
+          </div>
+          <div class="field">
+            <label for="agreementPause">How either person pauses or ends this without penalty</label>
+            <textarea id="agreementPause" maxlength="400" rows="3" placeholder="Exact words or action. Either person must be able to use it."></textarea>
+          </div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="agreementLimit">Time limit <span class="optional">(optional)</span></label>
+              <input id="agreementLimit" type="text" maxlength="80" placeholder="For example: 3 minutes each">
+            </div>
+            <div class="field">
+              <label for="agreementReviewAt">Review this plan</label>
+              <input id="agreementReviewAt" type="datetime-local">
+            </div>
+          </div>
+          <label class="consent-check">
+            <input id="agreementConsent" type="checkbox">
+            <span>Everyone can freely say no, pause, leave, or seek outside help. This agreement authorizes no force, restraint, confinement, surveillance, confiscation, retaliation, blocked communication or care, or secrecy about abuse, threats, imminent harm, or information someone is legally or ethically required to report.</span>
+          </label>
+          <div class="button-row">
+            <button type="submit">Save agreement</button>
+            <button type="button" id="copyAgreementBtn">Copy agreement</button>
+            <button type="button" id="clearAgreementBtn" class="quiet-button">Clear</button>
+          </div>
+          <p id="agreementStatus" class="status" aria-live="polite"></p>
+        </form>
 
-  <details class="tcard"><summary><b>"Off the Record"</b><span class="oneliner">privacy is a valve, not a wall</span></summary><div class="tbody">
-    <h4>When</h4><p>Households that write things down, record, or share notes &mdash; and need some moments to belong only to the room.</p>
-    <h4>Setup</h4><p>Agree once: anyone can say "off the record." What follows is never written down, quoted later, or used in an argument. Ever.</p>
-    <h4>The rules</h4><p>1. It works both directions &mdash; anyone can invoke it. 2. It can't be revoked retroactively to hide a promise already made on the record. 3. Whatever's said there gets one job: being heard.</p>
-    <h4>When it fails</h4><p>If someone uses it to say cruel things without accountability, the listener may say "then I need this on the record" and the speaker chooses: rephrase, or let it go unsaid.</p>
-  </div></details>
+        <details class="checkin">
+          <summary>After you try it: the check-in loop</summary>
+          <form id="checkinForm" class="checkin-body">
+            <div class="field-grid">
+              <div class="field">
+                <label for="checkinConsent">Did everyone freely consent?</label>
+                <select id="checkinConsent">
+                  <option value="">Not answered</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                  <option value="Unclear">Unclear</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="checkinTension">What happened to tension?</label>
+                <select id="checkinTension">
+                  <option value="">Not answered</option>
+                  <option value="Lower">Lower</option>
+                  <option value="Same">About the same</option>
+                  <option value="Higher">Higher</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="checkinWorked">What worked?</label>
+              <textarea id="checkinWorked" maxlength="400" rows="2"></textarea>
+            </div>
+            <div class="field">
+              <label for="checkinChange">What changes next time?</label>
+              <textarea id="checkinChange" maxlength="400" rows="2"></textarea>
+            </div>
+            <div class="field compact-field">
+              <label for="checkinNext">Decision</label>
+              <select id="checkinNext">
+                <option value="">Not decided</option>
+                <option value="Use again">Use again</option>
+                <option value="Revise">Revise first</option>
+                <option value="Retire">Retire this plan</option>
+              </select>
+            </div>
+            <button type="submit">Save check-in</button>
+            <p id="checkinStatus" class="status" aria-live="polite"></p>
+          </form>
+        </details>
+      </div>
+    </section>
 
-  <details class="tcard"><summary><b>The Loop Detector</b><span class="oneliner">one word flags a spiral, no judgment attached</span></summary><div class="tbody">
-    <h4>When</h4><p>A mind that circles &mdash; shame to insight to shame &mdash; and can't see its own orbit from inside. No system audits itself; loops break on <i>external</i> signal.</p>
-    <h4>Setup</h4><p>The looper <i>hires</i> a detector &mdash; a person they trust &mdash; and picks the flag word. Ours is just "Loop." Consent first, always: unsolicited loop-calling is just criticism.</p>
-    <h4>The rules</h4><p>1. The detector says the word once, flatly, kindly. 2. No judgment attached, no lecture following. 3. What the looper does with the flag stays entirely theirs. 4. False positives are fine; the word costs nothing.</p>
-    <h4>When it fails</h4><p>If the flag starts fights, revisit the consent while calm. The looper can fire the detector; the detector can resign. It's a job, not a role for life.</p>
-  </div></details>
+    <section id="counter" class="tool-section" tabindex="-1">
+      <div class="kicker">Instrument three</div>
+      <h2>The Since Counter</h2>
+      <p>This is an elapsed-time counter, not a judgment and not a promise of permanence. Give the decision a name. Starting again archives the previous chapter instead of erasing it.</p>
+      <div class="tool">
+        <div id="countLabel" class="count-label">No clock running</div>
+        <div class="count" id="countNum" aria-live="off">—</div>
+        <div class="note" id="countSub">Name a decision, then start now or choose the real starting time.</div>
+        <div class="field-grid counter-fields">
+          <div class="field">
+            <label for="counterName">What are you counting?</label>
+            <input type="text" id="counterName" maxlength="80" placeholder="For example: the choice I made today">
+          </div>
+          <div class="field">
+            <label for="startAt">Known starting time <span class="optional">(optional)</span></label>
+            <input type="datetime-local" id="startAt">
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="button" id="startNowBtn">Start now</button>
+          <button type="button" id="startAtBtn">Use chosen time</button>
+          <button type="button" id="endChapterBtn" class="quiet-button" hidden>End and archive</button>
+        </div>
+        <p id="counterStatus" class="status" aria-live="polite"></p>
+        <details id="counterHistoryPanel" class="history-panel">
+          <summary>Previous chapters (<span id="counterHistoryCount">0</span>)</summary>
+          <ol id="counterHistory" class="history-list"></ol>
+          <button type="button" id="clearCounterHistoryBtn" class="quiet-button">Clear archived chapters</button>
+        </details>
+      </div>
+    </section>
 
-  <details class="tcard"><summary><b>No-Flinch</b><span class="oneliner">heavy is not emergency; care is one sentence, never a lecture</span></summary><div class="tbody">
-    <h4>When</h4><p>Someone needs to say true, heavy things &mdash; and stops saying them because every disclosure triggers alarms, lectures, or panic in the listener.</p>
-    <h4>Setup</h4><p>Agree while calm: heavy is not the same as emergency. The speaker earns trust by naming a real emergency plainly if one ever comes. The listener earns truth by receiving everything else without flinching.</p>
-    <h4>The rules</h4><p>1. Care gets one plain sentence, then it's done &mdash; "if that ever changes, say it straight." 2. No lectures, no hotline scripts, no interrogation. 3. Truth spoken is never used as ammunition later. 4. Fear that becomes truth becomes record; fear that becomes secret becomes shame.</p>
-    <h4>When it fails</h4><p>This tool has one hard boundary: a plainly stated emergency ends the protocol and gets a real response. That's not the tool failing &mdash; that's the tool's escape hatch working.</p>
-  </div></details>
+    <section id="ledger" class="tool-section" tabindex="-1">
+      <div class="kicker">Instrument four</div>
+      <h2>The Ledger</h2>
+      <p>Big claims stay honest with dated evidence: what worked, what did not, and what is still pending. The ledger is a mirror, not a court.</p>
+      <div class="tool">
+        <form id="ledgerForm">
+          <div class="field-grid ledger-fields">
+            <div class="field wide-field">
+              <label for="entryText">What happened</label>
+              <input type="text" id="entryText" maxlength="240" placeholder="For example: made the call I was avoiding" required>
+            </div>
+            <div class="field">
+              <label for="entryKind">Result</label>
+              <select id="entryKind">
+                <option value="Worked">Worked</option>
+                <option value="Did not work">Did not work</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="entryDate">Local date</label>
+              <input type="date" id="entryDate" required>
+            </div>
+          </div>
+          <div class="button-row">
+            <button type="submit" id="ledgerSubmitBtn">Add entry</button>
+            <button type="button" id="cancelLedgerEditBtn" class="quiet-button" hidden>Cancel edit</button>
+            <button type="button" id="undoLedgerBtn" class="quiet-button" hidden>Undo removal</button>
+            <button type="button" id="copyLedgerBtn">Copy ledger</button>
+            <button type="button" id="exportLedgerCsvBtn" class="quiet-button">Download CSV</button>
+          </div>
+          <p id="ledgerStatus" class="status" aria-live="polite"></p>
+        </form>
 
-  <details class="tcard"><summary><b>Paved Crossings</b><span class="oneliner">engineer the crossing instead of lecturing the line</span></summary><div class="tbody">
-    <h4>When</h4><p>Someone whose fear switch runs quiet &mdash; who <i>will</i> cross the line again, and knows it, and is tired of being told not to.</p>
-    <h4>Setup</h4><p>Stop arguing about whether the line gets crossed. Start engineering the crossing: what's the tripwire that says it's happening? Who's the backstop who steps in? What's the pre-agreed word, ride, call, or plan?</p>
-    <h4>The rules</h4><p>1. Design while sober and calm &mdash; crossings get paved in daylight. 2. The person being protected helps design it, or it won't hold. 3. Backstops get named in advance, by name. 4. Safety-limiting moves are pre-authorized; nobody negotiates at the line.</p>
-    <h4>When it fails</h4><p>A crossing nobody paved becomes a lecture at the worst possible moment. If that happens, don't relitigate the night &mdash; pave it the next day.</p>
-  </div></details>
+        <div class="table-wrap">
+          <table class="ledger-table">
+            <caption>Receipts saved in this browser</caption>
+            <thead>
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Result</th>
+                <th scope="col">What happened</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+          <p id="ledgerEmpty" class="empty-state">No entries yet. One honest line is enough to begin.</p>
+        </div>
+      </div>
+    </section>
 
-  <details class="tcard"><summary><b>Receipts</b><span class="oneliner">a ledger, both columns, with dates &mdash; the difference between a vision and a pitch</span></summary><div class="tbody">
-    <h4>When</h4><p>Big dreams, big claims, big feelings about progress &mdash; and the morning voice that says none of it was real.</p>
-    <h4>Setup</h4><p>Use the ledger above, or paper. Every win gets a date. Every loss gets a date. Vague claims get a bookkeeper's question &mdash; what, when, how much &mdash; asked kindly, never as an audit.</p>
-    <h4>The rules</h4><p>1. Both columns, always &mdash; a wins-only ledger is a pitch. 2. The ledger is a mirror, not a court; losses are data, not damnation. 3. Read the wins column when despair asks whether anything is real &mdash; that's the gratitude practice, disguised as bookkeeping. 4. Pending stays marked pending until it has a number.</p>
-    <h4>When it fails</h4><p>It only fails when it stops being written. The fix is one entry. Any entry. Today.</p>
-  </div></details>
+    <section id="protocols" class="protocol-section" tabindex="-1">
+      <div class="section-heading">
+        <div>
+          <div class="kicker">Seven household practices</div>
+          <h2>The Protocols</h2>
+        </div>
+        <div class="button-row compact-buttons">
+          <button type="button" id="openAllBtn" class="quiet-button">Open all</button>
+          <button type="button" id="closeAllBtn" class="quiet-button">Close all</button>
+          <button type="button" id="printBtn" class="quiet-button">Print protocols</button>
+        </div>
+      </div>
+      <p>Each card now states consent, exact words, a stop condition, and when not to use it. These are practices we developed and use—not proof that they will work for everyone.</p>
 
-  <h2>Where these came from</h2>
-  <p>Every card above was invented, field-tested, and refined in one loud, real household &mdash; not a lab, not a seminar. They're free because the mission says so: <a href="../">humanity, love, compassion, passion</a>. If they help, the only payment is using them on someone you love.</p>
+      <details class="protocol-card" id="talking-stick">
+        <summary><span class="protocol-name" role="heading" aria-level="3">The Talking Stick</span><span class="protocol-line">take turns without fighting for the floor</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> two or more people interrupt each other, care about the conversation, and can freely agree to take turns.</p>
+          <p><strong>Use only if:</strong> everyone may decline, request a break, or leave without punishment. Choose the object and a time limit together while calm.</p>
+          <p><strong>Start with:</strong> “Can we use this object for three-minute turns? Either of us can pause the conversation.”</p>
+          <ol>
+            <li>The holder gets the floor for the agreed time.</li>
+            <li>Anyone may request the object; nobody grabs it.</li>
+            <li>When time ends, the holder finishes one sentence and passes it.</li>
+            <li>The object manages the floor, not truth, decisions, or power.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if someone monopolizes, mocks, grabs, or cannot safely wait, pause. Later, shorten the turns or retire the tool.</p>
+          <p class="do-not-use"><strong>Do not use when:</strong> someone is afraid to say no, leaving is unsafe, or the object becomes a way to control, silence, or delay urgent help.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="talking-stick">Copy this card</button><button type="button" data-plan-protocol="Talking Stick" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
 
-  <footer>&ldquo;We started this.&rdquo; &mdash; the room, August 25, 2026</footer>
-</main>
-<script>
-(function () {
-  var $ = function (id) { return document.getElementById(id); };
-  // ---- Counter ----
-  var KEY_C = 'euphoria_counter_start';
-  function renderCount() {
-    var t = localStorage.getItem(KEY_C);
-    if (!t) { $('countNum').textContent = '—'; $('countSub').textContent = 'No clock running yet.'; return; }
-    var ms = Date.now() - new Date(t).getTime();
-    if (ms < 0) { $('countNum').textContent = '0 h'; $('countSub').textContent = 'Starts ' + new Date(t).toLocaleString() + '.'; return; }
-    var hours = Math.floor(ms / 36e5), days = Math.floor(hours / 24);
-    $('countNum').innerHTML = days >= 2 ? days + ' <small>days</small> ' + (hours - days * 24) + ' <small>h</small>' : hours + ' <small>hours</small>';
-    $('countSub').textContent = 'Running since ' + new Date(t).toLocaleString() + '. Just for today.';
-  }
-  $('startBtn').addEventListener('click', function () {
-    var v = $('startAt').value; if (!v) { v = new Date(Date.now() - 6e4).toISOString().slice(0, 16); }
-    localStorage.setItem(KEY_C, v); renderCount();
-  });
-  $('resetBtn').addEventListener('click', function () { localStorage.removeItem(KEY_C); renderCount(); });
-  renderCount(); setInterval(renderCount, 60000);
-  // ---- Ledger ----
-  var KEY_L = 'euphoria_ledger_v1';
-  function load() { try { return JSON.parse(localStorage.getItem(KEY_L)) || []; } catch (e) { return []; } }
-  function save(rows) { localStorage.setItem(KEY_L, JSON.stringify(rows)); }
-  function renderLedger() {
-    var rows = load(), t = $('ledgerTable'); t.innerHTML = '';
-    for (var i = rows.length - 1; i >= 0; i--) {
-      var r = rows[i], tr = document.createElement('tr');
-      var td1 = document.createElement('td'); td1.className = 'd'; td1.textContent = r.d;
-      var td2 = document.createElement('td'); td2.className = r.k === 'W' ? 'w' : 'l'; td2.textContent = r.k;
-      var td3 = document.createElement('td'); td3.textContent = r.t;
-      tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); t.appendChild(tr);
-    }
-  }
-  $('addBtn').addEventListener('click', function () {
-    var txt = $('entryText').value.trim(); if (!txt) return;
-    var rows = load();
-    rows.push({ d: new Date().toISOString().slice(0, 10), k: $('entryKind').value, t: txt });
-    save(rows); $('entryText').value = ''; renderLedger();
-  });
-  $('copyBtn').addEventListener('click', function () {
-    var rows = load(), out = rows.map(function (r) { return r.d + '  [' + r.k + ']  ' + r.t; }).join('\n');
-    if (navigator.clipboard) { navigator.clipboard.writeText(out).then(function () { $('copyNote').textContent = 'Copied — both columns, with dates.'; }); }
-  });
-  renderLedger();
-})();
-</script>
-</body></html>
+      <details class="protocol-card" id="safe-word">
+        <summary><span class="protocol-name" role="heading" aria-level="3">The Safe Word</span><span class="protocol-line">a voluntary brake for a monologue</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> a talker wants help noticing when they have passed the listener’s capacity.</p>
+          <p><strong>Use only if:</strong> the talker proposes the word, everyone agrees to its meaning, and anyone may revise or end the agreement later.</p>
+          <p><strong>Start with:</strong> “My word is ____. If you say it, I will stop, take five quiet seconds, and ask what you need.”</p>
+          <ol>
+            <li>Say the word once, plainly—not as ridicule.</li>
+            <li>The talker stops without argument or penalty.</li>
+            <li>Take the agreed pause, then choose whether to continue later.</li>
+            <li>Review misuse only after the moment is calm.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> retaliation, mockery, or repeated weaponization ends the protocol until a new voluntary agreement exists.</p>
+          <p class="do-not-use"><strong>Do not use when:</strong> it would prevent someone from naming danger, leaving, seeking help, or responding to an urgent need.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="safe-word">Copy this card</button><button type="button" data-plan-protocol="Safe Word" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+
+      <details class="protocol-card" id="off-record">
+        <summary><span class="protocol-name" role="heading" aria-level="3">“Off the Record”</span><span class="protocol-line">agree on privacy before disclosure</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> people who write, record, or share notes want a conversation that will not be documented or quoted later.</p>
+          <p><strong>Use only if:</strong> the listener agrees before the disclosure and states any real limits to confidentiality in advance. No surprise rules.</p>
+          <p><strong>Start with:</strong> “I want this off the record. Can you agree not to record or repeat it, within the safety and legal limits we already named?”</p>
+          <ol>
+            <li>Wait for an explicit yes before continuing.</li>
+            <li>Do not record, summarize, quote, or weaponize the protected material.</li>
+            <li>Either person may stop before more is said.</li>
+            <li>The phrase cannot retroactively erase promises, actions, or accountability.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if the limits were unclear, stop the disclosure and clarify them. If trust is broken, do not reuse the protocol until repaired.</p>
+          <p class="do-not-use"><strong>Do not use to:</strong> conceal abuse, threats, imminent harm, coercion, or information someone is legally or ethically required to report. Never promise secrecy you cannot keep.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="off-record">Copy this card</button><button type="button" data-plan-protocol="Off the Record" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+
+      <details class="protocol-card" id="loop-detector">
+        <summary><span class="protocol-name" role="heading" aria-level="3">The Loop Detector</span><span class="protocol-line">flag repetition without diagnosing the person</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> someone notices that their thinking or conversation repeats and explicitly wants an outside signal.</p>
+          <p><strong>Use only if:</strong> the person receiving the signal chooses the detector and the word. Either may end the role at any time.</p>
+          <p><strong>Start with:</strong> “If you hear me repeat the same ground, please say ‘Loop’ once. I can answer ‘not a loop,’ and we drop it.”</p>
+          <ol>
+            <li>Say the word once, kindly and without a lecture.</li>
+            <li>The receiver chooses what to do next.</li>
+            <li>If the receiver says “not a loop,” the detector stops arguing.</li>
+            <li>Review false positives later; they can still hurt.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if the signal raises tension or feels dismissive, suspend it and revisit consent when calm.</p>
+          <p class="do-not-use"><strong>Do not use to:</strong> dismiss grief, disagreement, trauma, a new fact, or an inconvenient truth; label someone; win an argument; or override a request to stop.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="loop-detector">Copy this card</button><button type="button" data-plan-protocol="Loop Detector" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+
+      <details class="protocol-card" id="no-flinch">
+        <summary><span class="protocol-name" role="heading" aria-level="3">No-Flinch</span><span class="protocol-line">heavy is not automatically emergency</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> someone needs to say something heavy and wants calm listening instead of panic, fixing, or an automatic script.</p>
+          <p><strong>Use only if:</strong> the speaker can choose what kind of response they want and the listener remains free to ask a direct safety question when there is genuine concern.</p>
+          <p><strong>Start with:</strong> “This is heavy, but I am not in immediate danger. I need five uninterrupted minutes and listening, not fixing.”</p>
+          <ol>
+            <li>Listen without punishment, spectacle, or using the disclosure later as ammunition.</li>
+            <li>Ask what is wanted: listening, reflection, planning, company, or outside help.</li>
+            <li>If safety is unclear, ask once and plainly: “Are you safe right now?” Asking directly does not violate the protocol.</li>
+            <li>If the answer is no, unclear, or behavior suggests immediate risk, shift from this protocol to real-time support.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if the listener becomes overwhelmed, say so without blaming the speaker and help identify another safe listener or support.</p>
+          <p class="do-not-use"><strong>Do not use to:</strong> forbid safety questions, block outside help, demand secrecy, minimize warning signs, or require a person in danger to phrase the situation perfectly.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="no-flinch">Copy this card</button><button type="button" data-plan-protocol="No-Flinch" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+
+      <details class="protocol-card" id="paved-crossings">
+        <summary><span class="protocol-name" role="heading" aria-level="3">Paved Crossings</span><span class="protocol-line">make a voluntary plan before a known risk</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> a person recognizes a recurring risky moment and wants to design their own tripwires, contacts, transportation, and exit plan in advance.</p>
+          <p><strong>Use only if:</strong> the person most affected co-designs the plan while calm and able to consent. Every helper knows exactly what they may and may not do.</p>
+          <p><strong>Start with:</strong> “If ____ happens, I want you to say ____. I will ____. If that fails, contact ____. I can pause or revoke this plan at any time. This plan never authorizes force or delayed care.”</p>
+          <ol>
+            <li>Name observable tripwires, not character judgments.</li>
+            <li>Name a willing backstop and a lawful, noncoercive action.</li>
+            <li>Write the exit, ride, call, or support plan in plain words.</li>
+            <li>Review it after use, including whether it raised or lowered risk.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if the plan becomes controlling, secret, unsafe, or impossible to follow, retire it and seek appropriate outside guidance.</p>
+          <p class="do-not-use"><strong>Do not use when:</strong> the plan requires control or cannot be freely revoked. It never authorizes force, restraint, confinement, surveillance, confiscation, forced transport, retaliation, blocked communication, or delayed emergency care. It is not a substitute for a clinician-created safety plan or professional harm-reduction guidance.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="paved-crossings">Copy this card</button><button type="button" data-plan-protocol="Paved Crossings" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+
+      <details class="protocol-card" id="receipts">
+        <summary><span class="protocol-name" role="heading" aria-level="3">Receipts</span><span class="protocol-line">date what worked, failed, and remains unknown</span></summary>
+        <div class="protocol-body">
+          <p><strong>May help when:</strong> big claims or despair make it hard to see what actually happened.</p>
+          <p><strong>Use only if:</strong> the ledger belongs to the person writing it. Nobody may require another person to log, disclose, defend, or surrender entries.</p>
+          <p><strong>Start with:</strong> “Today, this worked: ____. This did not: ____. This remains pending: ____.”</p>
+          <ol>
+            <li>Date every entry using the writer’s real local date.</li>
+            <li>Keep positive, negative, and pending evidence.</li>
+            <li>Ask “what, when, and how much?” without turning the ledger into a trial.</li>
+            <li>Change a pending claim only when new evidence arrives.</li>
+          </ol>
+          <p><strong>Stop and repair:</strong> if logging becomes compulsive, punitive, performative, or unsafe, reduce the frequency, change the labels, or stop.</p>
+          <p class="do-not-use"><strong>Do not use to:</strong> surveil another person, manufacture proof, erase context, replace professional records, or call one household’s experience universal evidence.</p>
+          <div class="card-actions"><button type="button" data-copy-protocol="receipts">Copy this card</button><button type="button" data-plan-protocol="Receipts" class="quiet-button">Make an agreement</button></div>
+        </div>
+      </details>
+      <p id="protocolStatus" class="status" aria-live="polite"></p>
+    </section>
+
+    <section id="my-data" class="data-section" tabindex="-1">
+      <div class="kicker">Your control</div>
+      <h2>Back up or erase your local data</h2>
+      <p>Clearing browser data, using a private window, changing browser profiles, or losing this device can erase local entries. A downloaded backup is the only portable copy this page creates.</p>
+      <div class="button-row">
+        <button type="button" id="exportBtn">Download backup</button>
+        <button type="button" id="importBtn" class="file-button">Restore backup</button>
+        <input id="importFile" hidden tabindex="-1" type="file" accept="application/json,.json">
+        <button type="button" id="clearAllBtn" class="danger-button">Erase all local data</button>
+      </div>
+      <p id="dataStatus" class="status" aria-live="polite"></p>
+      <details class="privacy-details">
+        <summary>What “local” means in this version</summary>
+        <div>
+          <p>The page has no analytics, account, form submission, advertising code, or third-party script. Its browser policy blocks fetch, XHR, WebSocket, EventSource, and beacon-style connections from this page’s JavaScript; that policy does not make the browser, extensions, clipboard, downloads, or shared-origin storage private.</p>
+          <p>Entries are stored with <code>localStorage</code> for the shared <code>https://itpro2792-beep.github.io</code> origin. Browser storage is scoped to that entire origin, not to <code>/project-euphoria/toolbox/</code>; code on another path under the same origin can potentially read it. A dedicated origin with reviewed isolation is required before this can honestly be called private-by-design. Clipboard contents may also be visible to your operating system, browser, or synced devices after you copy them.</p>
+          <p>To prevent two tabs from writing at the same time, the page requires an exclusive browser Web Lock for persistence. A second Toolbox tab can read, copy, and export but cannot save; close the writer tab and reload the other tab to transfer control. If the browser does not support Web Locks, persistence stays disabled instead of risking a last-writer-wins overwrite.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="method-section">
+      <div class="kicker">Evidence status</div>
+      <h2>What we know—and what we do not</h2>
+      <p>These practices grew from lived use in one household. That is experience, not validation. We have not established effectiveness rates, failure rates, safe-use populations, or clinical outcomes. The public alpha exists so the instructions, limits, and failures can become more honest—not so early experience can masquerade as proof.</p>
+      <p>Last safety-and-truth review: August 25, 2026. Qualified clinical and safeguarding review is still pending. Do not promote these tools as treatment or proven intervention.</p>
+      <p><a href="https://github.com/itpro2792-beep/project-euphoria/issues">Report a failure, ambiguity, or accessibility problem</a>. Do not put private health or household details in a public issue.</p>
+    </section>
+
+    <footer>
+      <div>Use these tools <em>with</em> people, by mutual consent—not on them.</div>
+      <div class="footer-mark">“The truth is the solution.”</div>
+    </footer>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

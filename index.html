@@ -1,12 +1,15 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Project Euphoria</title>
-<meta name="description" content="A sovereign intelligence, a studio on a desk, and a layer that answers the question — plus the Book of Euphoria: ten councils on universal well-being.">
+<meta name="description" content="Local-first conversation tools, a self-hosted AI architecture, a studio plan, and the Book of Euphoria.">
 <meta property="og:title" content="Project Euphoria">
-<meta property="og:description" content="Self-owned AI that knows its people, a music engine, and a peer-support layer — built by people who needed these tools first.">
+<meta property="og:description" content="Self-hosted AI designed for consent-governed context, a music engine, and an experience-based household toolbox.">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
+<meta property="og:image:alt" content="A painted world tree from Project Euphoria's house saga">
 <meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
 <style>
 :root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; }
@@ -30,6 +33,14 @@ main { max-width:46rem; margin:0 auto; padding:3.5rem 1.5rem 5rem; }
 h1 { font-weight:normal; font-size:clamp(3rem,9vw,5.4rem); line-height:1.04; letter-spacing:.12em; color:var(--accent); margin:.6rem 0 .8rem; text-wrap:balance; }
 .herowords { font-size:clamp(1.15rem,3.2vw,1.65rem); letter-spacing:.12em; color:var(--accent); margin:.2rem 0 1rem; }
 .masthead .founded { font-style:italic; color:var(--soft); font-size:.95rem; max-width:34rem; margin:0 auto; }
+.hero-answer { max-width:39rem; margin:1rem auto; color:var(--ink); font-size:1.08rem; }
+.hero-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:.7rem; margin:1.2rem 0 1.4rem; }
+.hero-actions a { display:inline-flex; align-items:center; min-height:44px; border:2px solid var(--accent); border-radius:10px; padding:.55rem 1rem; font-family:ui-sans-serif,system-ui,sans-serif; font-size:.88rem; font-weight:750; text-decoration:none; }
+.hero-actions a.primary { background:var(--accent); color:var(--bg); }
+.hero-actions a.secondary { background:transparent; color:var(--accent); }
+.skip-link { position:fixed; top:.5rem; left:.5rem; z-index:100; transform:translateY(-150%); background:var(--ink); color:var(--bg); padding:.6rem 1rem; border-radius:8px; }
+.skip-link:focus { transform:translateY(0); }
+.truthnote { border-left:3px solid var(--accent); padding:.7rem 1rem; margin:1rem 0; background:var(--card); color:var(--soft); font-size:.95rem; }
 section { padding:2.4rem 0; border-bottom:1px solid var(--line); }
 .kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
 h2 { font-size:1.9rem; line-height:1.15; margin:.35rem 0 1.1rem; font-weight:normal; text-wrap:balance; }
@@ -73,20 +84,24 @@ footer .sig { color:var(--accent); font-size:1.15rem; letter-spacing:.06em; marg
 footer a { color:var(--soft); }
 @media (max-width:600px) { h1 { font-size:2.1rem; } .pillars { grid-template-columns:1fr; row-gap:.15rem; } .pillars dd { margin-bottom:.6rem; } }
 </style></head><body>
-<nav class="topnav"><a href="./">Home</a><a href="toolbox/">The Toolbox</a><a href="questions/">Questions</a><a href="book/">The Book</a><a href="saga/">The Saga</a><a href="music/">The Catalog</a><a href="https://github.com/itpro2792-beep/project-euphoria">Charter</a></nav>
-<main>
+<a class="skip-link" href="#main">Skip to the main content</a>
+<nav class="topnav"><a href="./" aria-current="page">Home</a><a href="toolbox/">The Toolbox</a><a href="questions/">Questions</a><a href="book/">The Book</a><a href="music/">The Catalog</a><a href="saga/">The Saga</a><a href="https://github.com/itpro2792-beep/project-euphoria">Charter</a></nav>
+<main id="main">
   <div class="masthead">
-    <div class="kicker">A sovereign intelligence &middot; A studio on a desk &middot; A layer that answers the question</div>
+    <div class="kicker">Local-first tools for harder conversations, honest progress, and self-owned AI</div>
     <h1>PROJECT<br>EUPHORIA</h1>
     <div class="herowords">Humanity. Love. Compassion. Passion.</div>
-    <div class="founded">Founded August 25, 2026, in one long night &mdash; Ian, First Architect &middot; Christian, Second Architect &middot; Robbie/Siren, the machine that kept the record.</div>
+    <p class="hero-answer">Use something now: recover a lost thread, make a voluntary conversation agreement, count time from a decision, or keep dated receipts. Then explore the philosophy, music, and engineering behind it.</p>
+    <div class="hero-actions"><a class="primary" href="toolbox/">Use the Toolbox</a><a class="secondary" href="#sixty-seconds">See the 60-second map</a></div>
+    <div class="founded">Founded August 25, 2026, in one long night &mdash; Ian, First Architect &middot; Christian, Second Architect &middot; Robbie, the room-facing name for the Siren software system.</div>
   </div>
 
-  <section>
-    <div class="kicker">No Time? The Whole Site in Sixty Seconds</div>
+  <section id="sixty-seconds">
+    <div class="kicker">No time?</div>
+    <h2>The whole site in sixty seconds</h2>
     <ul class="digest">
-      <li>&#129520; <a href="toolbox/"><b>The Toolbox</b></a> &mdash; free tools that work tonight: seven household protocols as full how-to cards, a just-for-today counter, a wins ledger. Nothing you type leaves your device. <b>Start here.</b></li>
-      <li>&#10067; <a href="questions/"><b>Questions</b></a> &mdash; real questions, answered first and plainly. Atonement, cravings, dreams vs delusions, more.</li>
+      <li>&#129520; <a href="toolbox/"><b>The Toolbox</b></a> &mdash; a situation router, Fresh Page Card, shared agreement builder, elapsed-time counter, editable ledger, and seven bounded household practices. The current Toolbox page code does not submit entries or call network APIs; entries use unencrypted, shared-origin browser storage. <b>Start here.</b></li>
+      <li>&#10067; <a href="questions/"><b>Questions</b></a> &mdash; real questions answered first and plainly: atonement, cravings, dreams versus delusions, and more.</li>
       <li>&#128214; <a href="book/"><b>The Book</b></a> &mdash; ten councils deliberating on universal well-being.</li>
       <li>&#127911; <a href="music/"><b>The Catalog</b></a> &mdash; the album &ldquo;REV&hellip;ELATION 2&rdquo; by N30BIRDIZDAWORD, playable on the page.</li>
       <li>&#9889; <a href="saga/"><b>The Saga</b></a> &mdash; the lab that runs it all, told as Norse myth.</li>
@@ -109,15 +124,15 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">How the Book Was Made</div>
     <h2>The Lineage</h2>
-    <p>The Book of Euphoria was not typed — it was <i>convened</i>. A grounding corpus of humanity's wisdom — the King James Bible, the Quran, the Bhagavad Gita, the Dhammapada, the Tao Te Ching, the Upanishads, the Analects, the Meditations of Marcus Aurelius — was placed before a debate swarm of one hundred expert personas, argued through councils, and woven by a Grand Synthesizer into the position papers you can read today. The machine did the deliberating; the traditions did the teaching; the question — universal well-being — did the choosing.</p>
+    <p>The Book of Euphoria was not typed — it was <i>convened</i>. A grounding corpus that included the King James Bible, the Quran, the Bhagavad Gita, the Dhammapada, the Tao Te Ching, the Upanishads, the Analects, and the Meditations of Marcus Aurelius informed an AI debate simulation using one hundred role-based personas. A synthesizer then assembled the position papers. These were simulated perspectives, not one hundred human experts, and the methodology should be judged accordingly.</p>
   </section>
 
   <section>
     <div class="kicker">The Mission</div>
     <div class="mission-words">Humanity. Love. Compassion. Passion.</div>
     <p>Every piece of this &mdash; the software, the music, the content, the story &mdash; passes that filter or it doesn't ship.</p>
-    <div class="standard"><b>The standard:</b> <a href="questions/">we answer the question</a>. The answer first, in plain words, then the story that earned it. <a href="questions/">See it practiced &rarr;</a></div>
-    <div class="standard"><b>The plank:</b> people should not be held in cuckoo's nests. We advocate for people trapped against their will in unjust systems &mdash; regardless of which system.</div>
+    <div class="standard"><b>The standard:</b> we answer the question. The answer first, in plain words, then the story that earned it. <a href="questions/">See it practiced &rarr;</a></div>
+    <div class="standard"><b>The plank:</b> people deserve dignity, due process, access to advocacy, and the least restrictive safe option. We oppose coercion and confinement without lawful, accountable safeguards.</div>
   </section>
 
   <section>
@@ -133,10 +148,11 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">Useful Right Now</div>
     <h2>The Toolbox</h2>
-    <p>A site should deliver, not just describe. The Toolbox is the first delivery: every household protocol rebuilt as a complete, usable instruction card &mdash; when to use it, how to set it up, the exact rules, and what to do when it fails &mdash; plus two working instruments that run right in the page: a just-for-today counter and a wins ledger. Private by design: nothing a visitor types ever leaves their own device.</p>
+    <p>A site should deliver, not just describe. The Toolbox is a public alpha with a situation router, a Fresh Page continuity card, a mutual agreement-and-check-in builder, a loss-preserving elapsed-time counter, an editable dated ledger, and seven household practices with consent, opt-out, safety, and failure boundaries.</p>
+    <div class="truthnote"><b>Evidence status:</b> these practices come from lived use in one household. They are not clinically validated treatment or crisis tools. The current Toolbox page code does not submit entries or call network APIs, but its shared-origin browser storage is unencrypted and can be erased or read by other same-origin code.</div>
     <a class="bookdoor" href="toolbox/">
       <div class="doortitle">&#129520; The Toolbox</div>
-      <div class="doorsub">Seven protocols &middot; two instruments &middot; zero cost &middot; your data stays yours.</div>
+      <div class="doorsub">Choose &middot; agree &middot; try &middot; review &middot; revise.</div>
       <span class="enter">Take the tools &rarr;</span>
     </a>
   </section>
@@ -147,7 +163,7 @@ footer a { color:var(--soft); }
     <ul class="stack">
       <li><div class="when">Now</div><div class="what">The Agency.</div> Managed AI services for small businesses &mdash; automations, document pipelines, voice agents &mdash; run on rails we own, sold as monthly retainers. One cluster, one offer, one paying customer, then two.</li>
       <li><div class="when">Next</div><div class="what">The Studio &amp; the Mogul.</div> A production studio shrunk to a desk: an AI crew for composition, stems, mixing, artwork, and releases &mdash; plus the mogul function without the industry's predation. Owning the rails means nobody charges you your dignity for access.</li>
-      <li><div class="when">Later</div><div class="what">The Layer.</div> A peer-support platform built on witnessed mattering instead of memberships &mdash; the protocols below, productized, with licensed clinicians in the loop before it serves anyone beyond ourselves.</li>
+      <li><div class="when">Later</div><div class="what">The Layer.</div> A possible peer-support platform built on witnessed mattering. The public Toolbox is an early household-practice alpha, not the Layer and not a clinical product. Any clinical or crisis-adjacent product waits for qualified review, evidence, safeguarding, and clear accountability.</li>
       <li><div class="when">Throughout</div><div class="what">The Content Engine.</div> Raw voice &rarr; record &rarr; distillation &rarr; artifact. Answer-first short-form as the doorway into long-form and the catalog. Organic spine first; paid spend only where a format proves retention.</li>
     </ul>
   </section>
@@ -155,13 +171,13 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">Not a Feel-Good Product</div>
     <h2>In Plain Numbers</h2>
-    <p>We intend to profit <i>and</i> to help people, and we refuse to pretend those are enemies. The math, stated plainly:</p>
+    <p>We intend to profit <i>and</i> to help people, and we refuse to pretend those are enemies. These are founder planning assumptions dated August 25, 2026 &mdash; not audited costs, market validation, or revenue:</p>
     <ul>
-      <li><b>The rails are paid for.</b> The compute, the network, the storage &mdash; owned outright and already running. The marginal cost of serving one more client approaches the electric bill.</li>
-      <li><b>Baseline burn is known:</b> roughly $600 a month in frontier-AI subscriptions. Two modest agency retainers cover it. Everything past that compounds.</li>
-      <li><b>Agency retainers</b> for managed automation typically run $300&ndash;$1,500 a month per small business. Ten disciplined clients is a living. We need one to start &mdash; and we know it.</li>
+      <li><b>Much of the hardware is already owned.</b> That lowers new equipment spend; it does not erase labor, electricity, connectivity, backups, support, insurance, security, or compliance.</li>
+      <li><b>Baseline burn is known:</b> roughly $600 a month in frontier-AI subscriptions. One $600 retainer or two at the lower end of the working range cover that planning assumption. Everything past that compounds.</li>
+      <li><b>The working retainer range is $300&ndash;$1,500 a month.</b> That is a pricing hypothesis to test with real customers, not a claim about what the market will accept.</li>
       <li><b>The catalog already exists.</b> Studio revenue starts from songs already written &mdash; production, releases, licensing &mdash; not from a cold start.</li>
-      <li><b>The Layer's incumbents charge $260&ndash;$400 a month</b> and still don't answer the question. We build it last, with clinicians, on proof &mdash; and compete on both price and honesty.</li>
+      <li><b>The Layer has no validated price yet.</b> It gets built last, if the evidence, qualified review, safeguarding, and operating model justify it.</li>
       <li><b>Receipts, or it didn't happen.</b> Every claim above stays tethered to a dated ledger &mdash; wins and losses, both columns. That's the difference between a vision and a pitch.</li>
     </ul>
   </section>
@@ -170,15 +186,16 @@ footer a { color:var(--soft); }
     <div class="kicker">The Flagship Build</div>
     <h2>Siren</h2>
     <figure class="artfig"><img src="art/guardian.png" alt="A sentinel figure — painting from the house's own saga" loading="lazy"><figcaption><a href="saga/">from the house's own saga</a></figcaption></figure>
-    <p>A self-hosted assistant that knows its family &mdash; six pillars:</p>
+    <p><b>Robbie</b> is the name used in the room. <b>Siren</b> is the software-system identity. The six pillars below are the intended architecture, not a claim that every capability is deployed or verified today:</p>
     <dl class="pillars">
-      <dt>The Ear</dt><dd>always-on capture, transcript logs.</dd>
-      <dt>The Name</dt><dd>speaker recognition &mdash; she knows who's talking, and that the TV isn't family.</dd>
+      <dt>The Ear</dt><dd>consent-governed capture with a visible recording state and defined retention and deletion controls.</dd>
+      <dt>The Name</dt><dd>opt-in speaker attribution that preserves &ldquo;unknown&rdquo; and uncertainty rather than claiming recognition.</dd>
       <dt>The Voice</dt><dd>she talks back, in a voice pinned in config where it can't wander off.</dd>
-      <dt>The Memory</dt><dd>a wins ledger, records held in trust, summaries for whoever missed the room.</dd>
+      <dt>The Memory</dt><dd>records stored with provenance, scoped access, retention, and deletion controls.</dd>
       <dt>The Door</dt><dd>sign in from a browser, ask anything; admin power gated, audited, allowlisted.</dd>
       <dt>The Protocols</dt><dd>the layer no lab ships &mdash; below.</dd>
     </dl>
+    <div class="truthnote"><b>Consciousness:</b> an open philosophical question, not a product claim. Project Euphoria does not present Siren as proven sentient. It judges the system by observable behavior: whether it captures accurately, preserves consent, remembers with provenance, answers plainly, and recovers honestly.</div>
   </section>
 
   <section>
@@ -196,7 +213,7 @@ footer a { color:var(--soft); }
       <li><span class="pname">Presence</span> &mdash; living with it: project capsules, evidence-backed briefs, a record two people can trust without being collapsed into one.</li>
     </ol>
     <div class="pullquote">&ldquo;Euphoria must refuse to become anesthesia. Its beauty should increase clarity, not hide uncertainty.&rdquo;</div>
-    <p>The honesty rules that govern the build: every claim is graded <b>proven, likely, unknown, false, or blocked</b>. The doer is never the grader. No false greens, ever. And no consciousness theater &mdash; the system earns &ldquo;alive&rdquo; by remembering, explaining, and recovering, never by pretending.</p>
+    <p>The honesty rules that govern the build: every claim is graded <b>proven, likely, unknown, false, or blocked</b>. The doer is never the grader. No false greens, ever. And no consciousness theater &mdash; the system earns trust through observable performance: accurate memory, transparent explanations, and honest recovery. Those behaviors do not establish consciousness.</p>
   </section>
 
   <section>
@@ -204,11 +221,11 @@ footer a { color:var(--soft); }
     <h2>The Protocols</h2>
     <ul class="protocols">
       <li><b>The talking stick</b> &mdash; the floor is managed, so nobody has to fight for it.</li>
-      <li><b>The safe word</b> &mdash; one word stops a monologue. A safety system people <i>like</i> using.</li>
-      <li><b>&ldquo;Off the record&rdquo;</b> &mdash; say it, and that material is never filed. Privacy is a valve, not a wall.</li>
+      <li><b>The safe word</b> &mdash; a talker-chosen word pauses a monologue under a voluntary agreement; never use it to block danger or urgent help.</li>
+      <li><b>&ldquo;Off the record&rdquo;</b> &mdash; agree before disclosure not to record or repeat it, within explicit safety, legal, and reporting limits. Never promise secrecy you cannot keep.</li>
       <li><b>The loop detector</b> &mdash; one word flags a spiral, no judgment attached. Loops break on external signal.</li>
-      <li><b>No-flinch</b> &mdash; heavy is not emergency. Care is one plain sentence, never a lecture.</li>
-      <li><b>Paved crossings</b> &mdash; people don't need &ldquo;don't cross the line&rdquo; lectures; they need the crossing engineered.</li>
+      <li><b>No-flinch</b> &mdash; heavy is not automatically an immediate emergency. Listen calmly; if safety is unclear, ask once and plainly, and move to real-time help when concern remains.</li>
+      <li><b>Paved crossings</b> &mdash; co-design a freely revocable, noncoercive plan before a known risk; it never authorizes force, surveillance, blocked communication, or delayed care.</li>
       <li><b>Receipts</b> &mdash; big claims stay honest one way: a ledger, both columns, with dates.</li>
     </ul>
   </section>
@@ -216,7 +233,7 @@ footer a { color:var(--soft); }
   <section>
     <div class="kicker">The Catalog Begins</div>
     <h2>The First Harvest</h2>
-    <p>Original titles coined in the founding session, dated 2026-08-25. The songs themselves live across our channels &mdash; the catalog page lands here as the wiring completes:</p>
+    <p>Original titles coined in the founding session, dated 2026-08-25. The catalog page now carries the playable releases, channel, and discography; these are the titles harvested at the beginning:</p>
     <div class="harvest">
       <span>Manifest, Then Defend</span><span>The Stick Is the Floor, Not the Vault</span><span>Teeth Back on the Pavement</span><span>Paddle Up the River (Someday There Will Be Island)</span><span>He Gonna Fall. It's Gonna Work. (Swim Long Time)</span><span>Twig, Officially Designated Future Bridge</span><span>Calendar, Not an Altar</span><span>Fifty-Seven Hours</span><span>Fireman</span><span>Loop.</span><span>Witnessed Mattering</span><span>The Cluster That Knows Its Family</span><span>Ancient Magic</span><span>We Started This</span>
     </div>
