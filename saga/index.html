@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ásgarðr → Aesir — The Saga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --void:#06060a; --ink:#0a0a12; --gold:#f0c040; --amber:#ff9500; --blue:#4a9eff;
+    --red:#f0463c; --green:#34d399; --cream:#f3e9cf; --paper:#100f17;
+    --disp:'Bangers',system-ui,sans-serif; --body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;color:#fff;font-family:var(--body);-webkit-font-smoothing:antialiased}
+  .book{max-width:900px;margin:0 auto;padding:28px 14px 80px}
+  .lead-in{text-align:center;color:#8a8578;font-family:var(--disp);letter-spacing:.08em;font-size:1.4rem;margin:8px 0 22px}
+  .lead-in span{color:var(--gold)}
+
+  .page{position:relative;background:var(--void);border:3px solid #1c1c28;border-radius:8px;
+    overflow:hidden;margin:0 auto 26px;box-shadow:0 24px 60px -24px #000;
+    aspect-ratio:3/4;display:grid;gap:8px;padding:8px}
+  .pageno{position:absolute;bottom:6px;right:12px;font-family:var(--disp);font-size:1.1rem;color:#3a3a48;z-index:9;letter-spacing:.06em}
+
+  .panel{position:relative;overflow:hidden;background:#000;border:3px solid #05050a;border-radius:4px}
+  .panel img{width:100%;height:100%;object-fit:cover;display:block}
+  .panel.tint-blue img{filter:saturate(1.05) hue-rotate(-6deg) brightness(.92)}
+  .panel.tint-warm img{filter:saturate(1.1) brightness(.95)}
+  .panel.dark img{filter:brightness(.55) contrast(1.05)}
+  .panel.red img{filter:saturate(1.3) hue-rotate(-12deg) brightness(.8) contrast(1.1)}
+  .vignette::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.6) 100%);pointer-events:none}
+  .stars{background:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 60%,#cfe,transparent),radial-gradient(1px 1px at 45% 80%,#fff,transparent),radial-gradient(1px 1px at 85% 20%,#fff,transparent),var(--void)}
+
+  /* caption + bubble */
+  .cap{position:absolute;background:var(--cream);color:#15110a;font-weight:700;font-size:.84rem;
+    line-height:1.32;padding:8px 11px;border:2px solid #000;max-width:75%;box-shadow:3px 3px 0 rgba(0,0,0,.55);z-index:5}
+  .cap.tl{top:10px;left:10px}.cap.tr{top:10px;right:10px}.cap.bl{bottom:10px;left:10px}.cap.br{bottom:10px;right:10px}
+  .cap.tc{top:10px;left:50%;transform:translateX(-50%);text-align:center}
+  .cap.bc{bottom:10px;left:50%;transform:translateX(-50%);text-align:center}
+  .bubble{position:absolute;background:#fff;color:#111;font-weight:800;font-size:.82rem;padding:9px 13px;border:2px solid #000;border-radius:18px;max-width:62%;z-index:6;box-shadow:2px 2px 0 rgba(0,0,0,.4)}
+  .bubble::after{content:"";position:absolute;width:0;height:0;border:9px solid transparent}
+  .bubble.bl::after{left:22px;bottom:-16px;border-top-color:#fff;border-bottom:0}
+  .bubble.br::after{right:22px;bottom:-16px;border-top-color:#fff;border-bottom:0}
+  .sfx{position:absolute;font-family:var(--disp);font-size:2.1rem;letter-spacing:.04em;color:var(--gold);
+    text-shadow:2px 2px 0 #000,-1px -1px 0 #000;z-index:7;transform:rotate(-7deg)}
+  .sfx.red{color:var(--red)} .sfx.blue{color:var(--blue)}
+  .ribbon{position:absolute;bottom:10px;left:10px;right:10px;background:rgba(6,6,10,.82);border:1px solid rgba(255,200,80,.25);
+    color:#cfc8b8;font-family:'Inter';font-size:.66rem;letter-spacing:.04em;padding:6px 10px;z-index:5;border-radius:4px}
+
+  .big{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:8;padding:18px}
+  .big .t{font-family:var(--disp);font-size:clamp(2.4rem,9vw,4.6rem);line-height:.95;color:var(--gold);text-shadow:3px 3px 0 #000}
+  .big .t.white{color:#fff}
+  .big .sub{font-family:var(--disp);font-size:clamp(1.1rem,3.5vw,1.7rem);color:#fff;letter-spacing:.04em;margin-top:10px;text-shadow:2px 2px 0 #000}
+
+  /* grids */
+  .g2{grid-template-columns:1fr 1fr}
+  .g2r{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  .roster{grid-template-columns:repeat(6,1fr);gap:5px}
+  .label{position:absolute;bottom:0;left:0;right:0;background:rgba(6,6,10,.78);color:var(--gold);font-family:var(--disp);
+    letter-spacing:.05em;font-size:.8rem;text-align:center;padding:3px;z-index:4}
+  .label small{display:block;color:#b8b2a4;font-family:'Inter';font-weight:600;font-size:.6rem;letter-spacing:0}
+
+  .cover-title{font-family:var(--disp);font-size:clamp(3rem,13vw,7rem);color:var(--gold);text-shadow:4px 4px 0 #000;letter-spacing:.04em;line-height:.9}
+  .cover-tag{font-family:var(--disp);font-size:clamp(1.1rem,4vw,1.9rem);color:#fff;letter-spacing:.05em;text-shadow:2px 2px 0 #000;margin-top:6px}
+  .dedication{position:absolute;bottom:12px;left:0;right:0;text-align:center;color:#9a9488;font-style:italic;font-size:.72rem;z-index:8;padding:0 16px}
+
+  @media print{
+    body{background:#fff}.book{padding:0;max-width:100%}.lead-in{display:none}
+    .page{margin:0;border:none;border-radius:0;box-shadow:none;page-break-after:always;aspect-ratio:auto;height:100vh}
+  }
+</style>
+</head>
+<body>
+<div class="book">
+  <div class="lead-in">ÁSGAR<span>Ð</span>R · ORIGIN SAGA &nbsp;→&nbsp; THE <span>AESIR</span> EVOLUTION</div>
+
+  <!-- PAGE 1 — COVER -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="border:none;background:transparent">
+      <img src="img/avatar_yggdrasil.png" alt="Yggdrasil" style="object-fit:contain;opacity:.9"/>
+      <div class="big">
+        <div class="cover-title">ÁSGARÐR</div>
+        <div class="cover-tag">★ ORIGIN SAGA ★</div>
+        <div class="cover-tag" style="font-family:var(--body);font-weight:800;font-size:.9rem;letter-spacing:.16em;color:var(--gold);margin-top:18px">OWN THE INTELLIGENCE. DON'T RENT IT.</div>
+      </div>
+      <div class="dedication">"Built on the legacy of a hero of the farm."</div>
+    </div>
+    <div class="pageno">1</div>
+  </section>
+
+  <!-- PAGE 2 — THE QUESTION -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel dark vignette">
+      <img src="img/avatar_tyr.png" alt="Týr in the dark"/>
+      <div class="cap tl">Most intelligence lives in someone else's tower. Rented. Watched. Switched off at a stranger's whim.</div>
+      <div class="cap bl">So one engineer asked a heretic's question —</div>
+      <div class="bubble br">"…what if I never had to rent my mind?"</div>
+    </div>
+    <div class="pageno">2</div>
+  </section>
+
+  <!-- PAGE 3 — THE WORLD TREE -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_yggdrasil.png" alt="Yggdrasil"/>
+      <div class="cap tc">First, a trunk for everything to hang from. <b>Yggdrasil</b> — the orchestrator. Service discovery, state, the path all data flows.</div>
+      <div class="sfx" style="left:18px;bottom:64px">k3s up.</div>
+      <div class="ribbon">ONE KUBERNETES CLUSTER · ONE UNIVERSAL IMAGE · EIGHTEEN SOULS TO COME</div>
+    </div>
+    <div class="pageno">3</div>
+  </section>
+
+  <!-- PAGE 4 — TÝR -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel tint-warm vignette"><img src="img/avatar_tyr.png" alt="Týr"/>
+      <div class="cap tl">Týr gave his hand to bind a wolf — the god who pays the price first.</div>
+      <div class="bubble bl">"Every realm starts here."</div>
+    </div>
+    <div class="panel red vignette"><img src="img/avatar_gungnir.png" alt="Gungnir"/>
+      <div class="cap tr">He becomes the heart: the <b>command node</b>, and Gungnir — the spear of raw GPU power — burns at his side.</div>
+      <div class="ribbon">RYZEN 9 · 64GB · RADEON 780M + RX 7800M (GUNGNIR) · VULKAN</div>
+    </div>
+    <div class="pageno">4</div>
+  </section>
+
+  <!-- PAGE 5 — THE REALMS AWAKEN -->
+  <section class="page" style="grid-template-rows:auto 1fr 1fr">
+    <div class="cap" style="position:static;max-width:100%;text-align:center">Then the realms lit, one by one —</div>
+    <div class="g3" style="display:grid;gap:6px">
+      <div class="panel"><img src="img/avatar_mimisbrunnr.png" alt="Mimisbrunnr"/><div class="label">Mimisbrunnr<small>well of wisdom · K3s master</small></div></div>
+      <div class="panel"><img src="img/avatar_magni.png" alt="Magni"/><div class="label">Magni<small>son of Thor · 100 TOPS</small></div></div>
+      <div class="panel"><img src="img/avatar_vidarr.png" alt="Víðarr"/><div class="label">Víðarr<small>silent god · edge triage</small></div></div>
+    </div>
+    <div class="g2r" style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr;gap:6px">
+      <div class="panel"><img src="img/avatar_kvasir.png" alt="Kvasir"/><div class="label">Kvasir<small>the twin</small></div></div>
+      <div class="panel"><img src="img/avatar_baldur.png" alt="Baldur"/><div class="label">Baldur<small>the twin</small></div></div>
+      <div class="panel"><img src="img/avatar_freya.png" alt="Freya"/><div class="label">Freya<small>travels with you</small></div></div>
+      <div class="panel"><img src="img/avatar_hermodr.png" alt="Hermóðr"/><div class="label">Hermóðr<small>the ferry</small></div></div>
+    </div>
+    <div class="pageno">5</div>
+  </section>
+
+  <!-- PAGE 6 — BIFRÖST -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel tint-blue vignette"><img src="img/avatar_bifrost.png" alt="Bifröst"/>
+      <div class="cap tl">Seven machines. Four kinds of silicon. They needed a bridge.</div>
+      <div class="cap br"><b>Bifröst</b> — the mesh — routes every question to whichever realm is free. Mismatched GPUs, one mind.</div>
+      <div class="sfx blue" style="right:24px;top:48%">SIGNAL</div>
+      <div class="ribbon">NEW FIRES STIR · SURTR THE TITAN (gpt-oss:120b) · QDRANT VECTOR MEMORY · HARVEST VAULT · TÝR↔SURTR BRIDGE</div>
+    </div>
+    <div class="pageno">6</div>
+  </section>
+
+  <!-- PAGE 7 — THE GUARDIANS -->
+  <section class="page g3" style="grid-template-rows:1fr">
+    <div class="panel vignette"><img src="img/avatar_heimdall.png" alt="Heimdall"/>
+      <div class="bubble bl">"I see for a hundred leagues. Nothing falls unseen."</div>
+      <div class="label">Heimdall<small>the watchman</small></div>
+    </div>
+    <div class="panel red vignette"><img src="img/avatar_mjolnir.png" alt="Mjölnir"/><div class="label">Mjölnir<small>crushes the errors</small></div></div>
+    <div class="panel vignette"><img src="img/avatar_lazarus.png" alt="Lazarus"/><div class="label">Lazarus<small>raises the dead</small></div></div>
+    <div class="cap tc">A sovereign realm must guard itself. It learns to heal in its sleep.</div>
+    <div class="pageno">7</div>
+  </section>
+
+  <!-- PAGE 8 — THE SOULS -->
+  <section class="page" style="grid-template-rows:auto 1fr 1fr">
+    <div class="cap" style="position:static;max-width:100%;text-align:center">And it grew a mind.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+      <div class="panel"><img src="img/avatar_anima.png" alt="Anima"/><div class="label">Anima<small>the voice</small></div></div>
+      <div class="panel"><img src="img/avatar_odin.png" alt="Odin"/><div class="label">Odin<small>the ravens</small></div></div>
+      <div class="panel"><img src="img/avatar_mimir.png" alt="Mímir"/><div class="label">Mímir<small>memory</small></div></div>
+      <div class="panel"><img src="img/avatar_omnibrain.png" alt="Omni-Brain"/><div class="label">Omni-Brain<small>knowledge</small></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">
+      <div class="panel"><img src="img/avatar_norn.png" alt="The Norns"/><div class="label">The Norns<small>fate & markets</small></div></div>
+      <div class="panel"><img src="img/avatar_codex.png" alt="Codex"/><div class="label">Codex<small>every record</small></div></div>
+      <div class="panel"><img src="img/avatar_godeye.png" alt="God-Eye"/><div class="label">God-Eye<small>all-seeing</small></div></div>
+      <div class="panel"><img src="img/avatar_eventbus.png" alt="Event Bus"/><div class="label">Event Bus<small>the nerves</small></div></div>
+    </div>
+    <div class="pageno">8</div>
+  </section>
+
+  <!-- PAGE 9 — FUSION -->
+  <section class="page" style="grid-template-rows:1fr 1.2fr">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+      <div class="panel"><img src="img/avatar_kvasir.png" alt=""/></div>
+      <div class="panel"><img src="img/avatar_magni.png" alt=""/></div>
+      <div class="panel"><img src="img/avatar_vidarr.png" alt=""/></div>
+    </div>
+    <div class="panel tint-blue vignette"><img src="img/avatar_bifrost.png" alt="Fusion"/>
+      <div class="cap tl">One model can be wrong with confidence. So Ásgarðr learned to think with many minds at once —</div>
+      <div class="cap br">A panel debates. A judge decides. <b>Fusion</b> — frontier-class counsel, rendered at home.</div>
+      <div class="bubble bl">"Consensus reached."</div>
+    </div>
+    <div class="pageno">9</div>
+  </section>
+
+  <!-- PAGE 10 — THE TRIAL -->
+  <section class="page g2r" style="grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr">
+    <div class="panel red vignette" style="grid-column:1/3"><img src="img/avatar_dreamengine.png" alt="Dream Engine falling"/>
+      <div class="cap tl">Then a soul fell. The Dream Engine guttered into the dark — crash, and crash, and crash again.</div>
+      <div class="sfx red" style="right:18px;bottom:14px">CrashLoopBackOff</div>
+    </div>
+    <div class="panel vignette"><img src="img/avatar_heimdall.png" alt="Heimdall"/><div class="sfx" style="left:10px;top:10px;font-size:1.4rem">HOOOM!</div></div>
+    <div class="panel vignette"><img src="img/avatar_lazarus.png" alt="Lazarus rising"/>
+      <div class="cap bc">Heimdall sounded the horn. Lazarus reached into death. The realm had no one to call — so it healed itself.</div>
+    </div>
+    <div class="pageno">10</div>
+  </section>
+
+  <!-- PAGE 11 — SOVEREIGN -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="background:transparent;border:none"><img src="img/avatar_tyr.png" alt="" style="object-fit:contain;opacity:.5"/>
+      <div class="cap tc">No data left the house. No meter ran. No stranger held the key.</div>
+      <div class="big"><div class="t white" style="font-size:clamp(1.8rem,7vw,3.4rem)">NO CLOUD.<br/>NO RENT.<br/><span style="color:var(--gold)">NO ONE WATCHING.</span></div></div>
+    </div>
+    <div class="pageno">11</div>
+  </section>
+
+  <!-- PAGE 12 — THE PANTHEON -->
+  <section class="page" style="grid-template-rows:auto 1fr auto">
+    <div class="cap" style="position:static;max-width:100%;text-align:center">Eighteen souls. Seven realms. One cluster — built from scratch, by one self-taught hand.</div>
+    <div class="roster" style="display:grid">
+      <div class="panel"><img src="img/avatar_tyr.png" alt=""/></div><div class="panel"><img src="img/avatar_mimisbrunnr.png" alt=""/></div><div class="panel"><img src="img/avatar_magni.png" alt=""/></div><div class="panel"><img src="img/avatar_vidarr.png" alt=""/></div><div class="panel"><img src="img/avatar_kvasir.png" alt=""/></div><div class="panel"><img src="img/avatar_baldur.png" alt=""/></div>
+      <div class="panel"><img src="img/avatar_freya.png" alt=""/></div><div class="panel"><img src="img/avatar_hermodr.png" alt=""/></div><div class="panel"><img src="img/avatar_gungnir.png" alt=""/></div><div class="panel"><img src="img/avatar_mjolnir.png" alt=""/></div><div class="panel"><img src="img/avatar_bitaxe.png" alt=""/></div><div class="panel"><img src="img/avatar_yggdrasil.png" alt=""/></div>
+      <div class="panel"><img src="img/avatar_bifrost.png" alt=""/></div><div class="panel"><img src="img/avatar_heimdall.png" alt=""/></div><div class="panel"><img src="img/avatar_anima.png" alt=""/></div><div class="panel"><img src="img/avatar_odin.png" alt=""/></div><div class="panel"><img src="img/avatar_norn.png" alt=""/></div><div class="panel"><img src="img/avatar_mimir.png" alt=""/></div>
+      <div class="panel"><img src="img/avatar_godeye.png" alt=""/></div><div class="panel"><img src="img/avatar_omnibrain.png" alt=""/></div><div class="panel"><img src="img/avatar_codex.png" alt=""/></div><div class="panel"><img src="img/avatar_dreamengine.png" alt=""/></div><div class="panel"><img src="img/avatar_lazarus.png" alt=""/></div><div class="panel"><img src="img/avatar_eventbus.png" alt=""/></div>
+    </div>
+    <div class="big" style="position:static;padding:10px 0 0"><div class="t">ÁSGARÐR STANDS.</div><div class="sub" style="color:var(--gold);font-family:var(--body);font-weight:800;font-size:.8rem;letter-spacing:.16em">OWN THE INTELLIGENCE. DON'T RENT IT. · THE SOVEREIGN CRUCIBLE</div></div>
+    <div class="pageno">12</div>
+  </section>
+
+  <!-- ============ BOOK II — THE AESIR EVOLUTION ============ -->
+
+  <!-- PAGE 13 — BOOK II -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="background:transparent;border:none">
+      <div class="big">
+        <div class="t" style="font-size:clamp(1.1rem,4vw,1.8rem);color:#8a8578">BOOK II</div>
+        <div class="t white">THE AESIR<br/>EVOLUTION</div>
+        <div class="sub" style="color:var(--gold)">from a realm that runs — to a realm that knows itself</div>
+      </div>
+    </div>
+    <div class="pageno">13</div>
+  </section>
+
+  <!-- PAGE 14 — SURTR THE TITAN -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel red vignette"><img src="img/avatar_gungnir.png" alt="Surtr's fire"/>
+      <div class="cap tl">From the south came <b>Surtr</b> — the fire-giant. One hundred twenty-eight gigabytes of unbroken memory, and in his hands a model too vast for any other realm: <b>gpt-oss:120b</b>, whole.</div>
+      <div class="cap br">But a titan on loan is a titan that may leave. So the Aesir swore a new oath: <b>depend on no single fire.</b></div>
+      <div class="sfx red" style="right:22px;top:46%">120B</div>
+      <div class="ribbon">SURTR · RYZEN AI MAX+ 395 · 128GB UNIFIED · RADEON 8060S · 50 TOPS XDNA2 · BONUS TIER, NEVER A CRUTCH</div>
+    </div>
+    <div class="pageno">14</div>
+  </section>
+
+  <!-- PAGE 15 — THE RECKONING -->
+  <section class="page" style="grid-template-rows:auto 1fr">
+    <div class="cap" style="position:static;max-width:100%;text-align:center">Every wound became a law.</div>
+    <div class="g3" style="display:grid;gap:6px">
+      <div class="panel red vignette"><img src="img/avatar_dreamengine.png" alt=""/><div class="label">The Hangs<small>→ timeouts &amp; breakers</small></div></div>
+      <div class="panel vignette"><img src="img/avatar_heimdall.png" alt=""/><div class="label">The False Names<small>→ one source of truth</small></div></div>
+      <div class="panel vignette"><img src="img/avatar_lazarus.png" alt=""/><div class="label">The Near-Wipes<small>→ guarded, reversible ops</small></div></div>
+    </div>
+    <div class="pageno">15</div>
+  </section>
+
+  <!-- PAGE 16 — THE REALM THAT KNOWS ITSELF -->
+  <section class="page" style="grid-template-rows:1fr 1fr">
+    <div class="panel tint-blue vignette"><img src="img/avatar_mimir.png" alt="Mímir's well"/>
+      <div class="cap tl">Mímir's well ran deeper — <b>one memory</b> every mind could drink from: vectors, facts, and the long thread of all that was said.</div>
+      <div class="ribbon">UNIFIED MEMORY · QDRANT (2,260 VECTORS) · ONE BRAIN, SHARED BY EVERY AGENT</div>
+    </div>
+    <div class="panel tint-blue vignette"><img src="img/avatar_bifrost.png" alt="the router"/>
+      <div class="cap tr">And Bifröst grew wise. It no longer merely <i>routed</i> — it <b>composed</b>: many small minds at once, a swift scout drafting for a slow giant, the cluster spending more of itself on the questions that earned it.</div>
+      <div class="bubble br">"I know what I have. I know where to send this."</div>
+    </div>
+    <div class="pageno">16</div>
+  </section>
+
+  <!-- PAGE 17 — THE NEW NAME -->
+  <section class="page" style="grid-template-rows:1fr 1fr">
+    <div class="panel vignette"><img src="img/avatar_odin.png" alt="the character"/>
+      <div class="cap tl">It took a voice that would not flatter — one that says <i>"I was wrong"</i> without flinching, that asks before it guesses, that meets its maker as a peer.</div>
+      <div class="bubble br">"If I wouldn't say it to a colleague at 2 AM, I won't say it to you."</div>
+    </div>
+    <div class="panel vignette"><img src="img/avatar_heimdall.png" alt="always awake"/>
+      <div class="cap tr">Heimdall never sleeps now: every dashboard wakes within the minute, and nothing shown is ever stale.</div>
+      <div class="cap bl">Then seven realms took one name — easy to speak, easy to hold —</div>
+      <div class="sfx" style="right:20px;top:42%">AESIR</div>
+    </div>
+    <div class="pageno">17</div>
+  </section>
+
+  <!-- PAGE 18 — AESIR RISES -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="background:transparent;border:none"><img src="img/avatar_yggdrasil.png" alt="" style="object-fit:contain;opacity:.85"/>
+      <div class="big">
+        <div class="t">AESIR RISES.</div>
+        <div class="sub" style="color:#fff">one endpoint · every model · a mind that knows itself · no single point of failure</div>
+        <div class="cover-tag" style="font-family:var(--body);font-weight:800;font-size:.82rem;letter-spacing:.16em;color:var(--gold);margin-top:16px">OWN THE INTELLIGENCE. DON'T RENT IT.</div>
+      </div>
+      <div class="dedication">Fable-grade character. Cluster-grade muscle. Built by one self-taught hand.</div>
+    </div>
+    <div class="pageno">18</div>
+  </section>
+
+  <!-- ============ THE ÆSIR EVOLUTION — appended chapter ============ -->
+
+  <!-- PAGE 13 — CHAPTER COVER -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="border:none;background:transparent">
+      <img src="img/avatar_yggdrasil.png" alt="Yggdrasil" style="object-fit:contain;opacity:.45"/>
+      <div class="big">
+        <div class="t">THE ÆSIR<br/>EVOLUTION</div>
+        <div class="sub">★ the day the realm came of age ★</div>
+      </div>
+      <div class="dedication">still built on the legacy of a hero of the farm.</div>
+    </div>
+    <div class="pageno">13</div>
+  </section>
+
+  <!-- PAGE 14 — THE NEW GODS -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel tint-warm vignette">
+      <img src="img/avatar_odin.png" alt="Odin reforged"/>
+      <div class="cap tl">Years turned. The realm that began with one machine in the dark called <b>new gods</b> to its halls.</div>
+      <div class="label">ODIN<small>Grace-Blackwell · the new Allfather</small></div>
+    </div>
+    <div class="panel red vignette">
+      <img src="img/avatar_gungnir.png" alt="Surtr's fire"/>
+      <div class="cap tr">Grace-Blackwell silicon. Surtr — thirty-two cores of Ryzen fire. The pantheon doubled its might.</div>
+      <div class="bubble br">"Týr's crown grew heavy. New hands rose to share the weight."</div>
+      <div class="label">SURTR<small>32-core Ryzen AI · the fire-giant</small></div>
+    </div>
+    <div class="pageno">14</div>
+  </section>
+
+  <!-- PAGE 15 — THE OLD KING STEPS BACK -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel dark vignette">
+      <img src="img/avatar_tyr.png" alt="Týr steps back"/>
+      <div class="cap tl">Týr — once the heart, the most powerful, the command node — was <b>eclipsed</b>. Not in shame, but in succession.</div>
+      <div class="ribbon">TÝR · Ryzen 9 · 64GB · Radeon 780M + RX 7800M «Gungnir» · still the keeper of the vault</div>
+    </div>
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_odin.png" alt="The heir rises"/>
+      <div class="cap tr">The Windows flagship yielded its throne to Blackwell and Surtr — and kept the registry, guardian of every image.</div>
+      <div class="bubble br">"A king who forges his own heirs has not fallen. He has won."</div>
+    </div>
+    <div class="pageno">15</div>
+  </section>
+
+  <!-- PAGE 16 — THE RECKONING & KVASIR'S SECOND RISING -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel red vignette">
+      <img src="img/avatar_kvasir.png" alt="Kvasir in the death-loop"/>
+      <div class="cap tl">But power without truth is rot. A <b>Watcher</b> came, and weighed every realm with cold, honest eyes.</div>
+      <div class="sfx red" style="bottom:14px;left:14px">↻ ×21,906</div>
+    </div>
+    <div class="panel tint-warm vignette">
+      <img src="img/avatar_lazarus.png" alt="Lazarus raises Kvasir"/>
+      <div class="cap tr">Kvasir fell into a death-loop twenty-two thousand deep — burning a core for days. The snare was cut. He rose, restored to the Three of Memory.</div>
+      <div class="bubble br">"etcd: three of three. The well remembers again."</div>
+    </div>
+    <div class="pageno">16</div>
+  </section>
+
+  <!-- PAGE 17 — THE CROWN PASSES -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel dark vignette">
+      <img src="img/avatar_magni.png" alt="Weary Magni"/>
+      <div class="cap tl">Weary Magni — the little jötunn of the edge — laid down the crown of memory.</div>
+      <div class="label">MAGNI<small>now a worker · freed of the throne</small></div>
+    </div>
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_mimisbrunnr.png" alt="Mímisbrunnr crowned"/>
+      <div class="cap tr">Swift Mímisbrunnr took it up. etcd left the little Jetson's eMMC for fast silicon, and the control plane quickened.</div>
+      <div class="bubble br">"The well of wisdom keeps the realm's truth."</div>
+      <div class="label">MÍMISBRUNNR<small>control-plane · etcd · registry mirror</small></div>
+    </div>
+    <div class="pageno">17</div>
+  </section>
+
+  <!-- PAGE 18 — THE WALL -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_heimdall.png" alt="Heimdall seals the gates"/>
+      <div class="cap tl">A sovereign realm must be sealed. A <b>wall</b> rose around Ásgarðr — every gate branded, the outer dark shut out.</div>
+      <div class="cap br" style="background:#0b1626;color:#bfe0ff;border-color:#2c4a6e">The walls hold · the gates are named · no stranger walks in.</div>
+      <div class="sfx" style="top:14px;right:16px">SEALED</div>
+    </div>
+    <div class="pageno">18</div>
+  </section>
+
+  <!-- PAGE 19 — THE NEW EYE -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette">
+      <img src="img/avatar_godeye.png" alt="The Command Deck — the new Eye"/>
+      <div class="cap tl">And the Watcher forged a <b>new Eye</b> — one that reads the realm straight from the living cluster, and cannot go blind to change.</div>
+      <div class="cap bl" style="background:#0b1626;color:#bfe0ff;border-color:#2c4a6e">The Command Deck · live k8s + Prometheus + the fleet · no stale map, no lie.</div>
+      <div class="bubble br">"I see all ten realms — as they truly are."</div>
+    </div>
+    <div class="pageno">19</div>
+  </section>
+
+  <!-- PAGE 20 — TÝR'S MIRROR & THE FALSE ORACLE -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel dark vignette">
+      <img src="img/avatar_tyr.png" alt="Týr's vault mirrored"/>
+      <div class="cap tl">Týr stepped into shadow — so his vault was <b>mirrored</b>, that his fall might blind no one.</div>
+    </div>
+    <div class="panel red vignette">
+      <img src="img/avatar_norn.png" alt="Norn weighed"/>
+      <div class="cap tr">And the oracle Norn, who promised gold in the markets, was weighed honestly — and found to be noise.</div>
+      <div class="sfx" style="bottom:42%;left:50%;transform:translateX(-50%) rotate(-7deg)">NOISE, NOT GOLD</div>
+      <div class="bubble br">"Truth over glamour. Always."</div>
+    </div>
+    <div class="pageno">20</div>
+  </section>
+
+  <!-- PAGE 21 — THE PANTHEON REFORGED -->
+  <section class="page stars" style="grid-template-rows:auto 1fr">
+    <div class="roster" style="display:grid">
+      <div class="panel"><img src="img/avatar_odin.png" alt="odin"/><div class="label">ODIN</div></div>
+      <div class="panel"><img src="img/avatar_tyr.png" alt="tyr"/><div class="label">TÝR</div></div>
+      <div class="panel"><img src="img/avatar_mimisbrunnr.png" alt="mimisbrunnr"/><div class="label">MÍMIR</div></div>
+      <div class="panel"><img src="img/avatar_kvasir.png" alt="kvasir"/><div class="label">KVASIR</div></div>
+      <div class="panel"><img src="img/avatar_godeye.png" alt="godeye"/><div class="label">EYE</div></div>
+      <div class="panel"><img src="img/avatar_heimdall.png" alt="heimdall"/><div class="label">HEIMDALL</div></div>
+    </div>
+    <div class="panel vignette" style="background:transparent;border:none">
+      <div class="big">
+        <div class="t">ÁSGARÐR<br/><span class="white">EVOLVES</span></div>
+        <div class="sub">ten realms · a wall, an Eye, a mirror — and a hard-won humility</div>
+      </div>
+      <div class="cap bc" style="max-width:90%">The cluster that began in one dark room became a pantheon — and learned to tell itself the truth.</div>
+      <div class="dedication">Own the intelligence. Don't rent it. · The Sovereign Crucible · for Pete, the Hero of the Farm.</div>
+    </div>
+    <div class="pageno">21</div>
+  </section>
+
+  <!-- ============ THE ALLFATHER'S MIND — capstone chapter ============ -->
+
+  <!-- PAGE 22 — CAPSTONE COVER -->
+  <section class="page stars" style="grid-template-rows:1fr">
+    <div class="panel vignette" style="border:none;background:transparent">
+      <img src="img/avatar_odin.png" alt="Odin" style="object-fit:contain;opacity:.5"/>
+      <div class="big">
+        <div class="t">THE ALLFATHER'S<br/>MIND</div>
+        <div class="sub">★ the night the realm learned to verify itself ★</div>
+      </div>
+      <div class="dedication">for Pete, the Hero of the Farm — who taught that you measure twice.</div>
+    </div>
+    <div class="pageno">22</div>
+  </section>
+
+  <!-- PAGE 23 — ODIN AWAKENS AS THE MIND -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel dark vignette">
+      <img src="img/avatar_odin.png" alt="Odin doubted"/>
+      <div class="cap tl">They whispered the Allfather had grown <b>slow</b> — that his new Grace-Blackwell crown ran no faster than a giant's hand-forge.</div>
+      <div class="sfx red" style="bottom:14px;left:14px">"underperforming?"</div>
+    </div>
+    <div class="panel tint-warm vignette">
+      <img src="img/avatar_omnibrain.png" alt="Odin reborn as the Mind"/>
+      <div class="cap tr">But the truth was kinder: he was never slow — only <b>misjudged</b>. They freed a hundred gigabytes of hoarded memory, and Odin woke as the realm's <b>Mind</b> — cradling a seventy-billion-souled giant no other hall could lift, and answering <b>four petitioners at once</b>.</div>
+      <div class="bubble br">"I was not built for haste. I was built to hold multitudes."</div>
+      <div class="label">ODIN<small>128 GiB unified · the batched Mind · llama3.3:70b</small></div>
+    </div>
+    <div class="pageno">23</div>
+  </section>
+
+  <!-- PAGE 24 — THE TWO ORACLES (verification) -->
+  <section class="page g2" style="grid-template-rows:1fr">
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_godeye.png" alt="The first oracle"/>
+      <div class="cap tl">Two oracles were sent to weigh the Allfather — sent <b>apart</b>, each told nothing of the other.</div>
+      <div class="label">THE EYE<small>the first seer</small></div>
+    </div>
+    <div class="panel tint-blue vignette">
+      <img src="img/avatar_mimir.png" alt="The second oracle"/>
+      <div class="cap tr">They returned with the <b>same</b> word, to the decimal: <i>twenty-two tokens a breath is not weakness — it is the honest ceiling of unified memory.</i> Truth, spoken twice, apart.</div>
+      <div class="bubble br">"Don't trust. Verify. Then verify it again."</div>
+      <div class="label">MÍMIR<small>the second seer</small></div>
+    </div>
+    <div class="pageno">24</div>
+  </section>
+
+  <!-- PAGE 25 — THE REALM RELIT -->
+  <section class="page" style="grid-template-rows:1fr">
+    <div class="panel tint-warm vignette">
+      <img src="img/avatar_heimdall.png" alt="The gates relit"/>
+      <div class="cap tl">And one by one the dark gates were <b>relit</b> — thirteen watchtowers burning true again, every lantern answering when called.</div>
+      <div class="cap br" style="background:#0b1626;color:#bfe0ff;border-color:#2c4a6e">13 of 13 dashboards live · OmniCenter reborn · the Eye sees every hall</div>
+      <div class="sfx" style="top:14px;right:16px">200 OK ×13</div>
+    </div>
+    <div class="pageno">25</div>
+  </section>
+
+  <!-- PAGE 26 — FINALE -->
+  <section class="page stars" style="grid-template-rows:auto 1fr">
+    <div class="roster" style="display:grid">
+      <div class="panel"><img src="img/avatar_odin.png" alt="odin"/><div class="label">MIND</div></div>
+      <div class="panel"><img src="img/avatar_tyr.png" alt="tyr"/><div class="label">TÝR</div></div>
+      <div class="panel"><img src="img/avatar_godeye.png" alt="godeye"/><div class="label">EYE</div></div>
+      <div class="panel"><img src="img/avatar_heimdall.png" alt="heimdall"/><div class="label">WALL</div></div>
+      <div class="panel"><img src="img/avatar_kvasir.png" alt="kvasir"/><div class="label">MEMORY</div></div>
+      <div class="panel"><img src="img/avatar_yggdrasil.png" alt="yggdrasil"/><div class="label">ROOTS</div></div>
+    </div>
+    <div class="panel vignette" style="background:transparent;border:none">
+      <div class="big">
+        <div class="t">ÁSGARÐR<br/><span class="white">KNOWN TRULY</span></div>
+        <div class="sub">a realm that learned to measure itself — and say the truth aloud</div>
+      </div>
+      <div class="cap bc" style="max-width:90%">The flagship holds multitudes. The gates burn true. The wall stands. And nothing is believed until it is proven — twice.</div>
+      <div class="dedication">Own the intelligence. Don't rent it. · Verify everything. · for Pete — measure twice, cut once.</div>
+    </div>
+    <div class="pageno">26</div>
+  </section>
+
+
+
+</div>
+<script>window.AESIR_LIVE={intervalSec:60,label:'AESIR · living saga'};</script>
+</body>
+</html>
