@@ -1,0 +1,32 @@
+name: General question for the Questions page
+description: Submit one public, de-identified, non-urgent question for possible review.
+title: "[Question] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a public editorial inbox, not private advice, therapy, crisis care, or an urgent-help channel. Your GitHub account name and the issue remain public even if the question is later paraphrased without attribution.
+
+        Ask one general question without telling a personal story. Remove names, usernames, exact dates, locations, diagnoses, account details, contact details, transcript excerpts, private communications, and any combination of facts that could identify a person. Do not attach files or screenshots.
+
+        A submitted question may be reviewed, declined, held for qualified review, or adapted for the public Questions page. Submission never authorizes publication of identifying details, unrelated issue history, or another person’s information.
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Public, de-identified, and non-urgent
+      options:
+        - label: I understand this issue and my GitHub account name are public, and this is not a channel for urgent help or personal advice.
+          required: true
+        - label: I removed names, exact dates, locations, diagnoses, account and contact details, transcripts, private communications, screenshots, files, and identifying combinations of facts.
+          required: true
+        - label: I consent to this question being reviewed and, if selected, quoted or paraphrased only in de-identified form on Project Euphoria’s public Questions page.
+          required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: General question
+      description: One question that can be answered without knowing who you or anyone else is. Do not include background narrative.
+      placeholder: How can a household…?
+    validations:
+      required: true
+

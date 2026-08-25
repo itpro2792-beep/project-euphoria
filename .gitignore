@@ -1,1 +1,4 @@
 PACKET_*.md
+node_modules
+test-results/
+playwright-report/

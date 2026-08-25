@@ -1,78 +1,121 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Receipts — Project Euphoria</title>
-<meta name="description" content="The public ledger: what Project Euphoria has actually shipped, with dates — and the honest zeroes that haven't moved yet.">
-<meta property="og:title" content="Receipts — Project Euphoria">
-<meta property="og:description" content="Big claims stay honest one way: a ledger, both columns, with dates. This is ours, in public.">
-<meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
-<meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/receipts/">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/receipts/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%BE%3C/text%3E%3C/svg%3E">
-<style>
-:root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; } }
-:root[data-theme="dark"] { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; }
-* { box-sizing:border-box; margin:0; }
-body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.7; font-size:1.1rem; }
-.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.1rem; justify-content:center; padding:.6rem 1rem; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
-.topnav a { color:var(--soft); text-decoration:none; }
-.topnav a:hover, .topnav a.here { color:var(--accent); }
-main { max-width:46rem; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
-.kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
-h1 { font-weight:normal; font-size:clamp(2.2rem,6vw,3rem); letter-spacing:.08em; color:var(--accent); margin:.4rem 0 .5rem; }
-.sub { font-style:italic; color:var(--soft); margin-bottom:1.8rem; }
-h2 { font-size:1.6rem; font-weight:normal; margin:2.2rem 0 .9rem; }
-p { margin-bottom:.7rem; }
-a { color:var(--accent); }
-.rcpt { list-style:none; padding:0; }
-.rcpt li { display:flex; gap:1.1rem; align-items:baseline; padding:.6rem 0; border-bottom:1px solid var(--line); }
-.rcpt .d { color:var(--accent); font-family:ui-monospace,monospace; font-size:.82rem; white-space:nowrap; min-width:6.2rem; }
-.zeroes { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.2rem 1.4rem; }
-.zeroes .z { display:flex; justify-content:space-between; gap:1rem; padding:.45rem 0; border-bottom:1px dashed var(--line); align-items:baseline; }
-.zeroes .z:last-child { border-bottom:0; }
-.zeroes .num { font-family:ui-monospace,monospace; color:var(--accent); font-size:1.15rem; }
-.note { font-size:.9rem; color:var(--soft); font-style:italic; }
-footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
-</style></head><body>
-<nav class="topnav"><a href="../">Home</a><a href="../toolbox/">The Toolbox</a><a href="../questions/">Questions</a><a href="../book/">The Book</a><a href="../music/">The Catalog</a><a href="../saga/">The Saga</a><a class="here" href="./">Receipts</a></nav>
-<main>
-  <div class="kicker">Tenet Applied to Ourselves</div>
-  <h1>RECEIPTS</h1>
-  <div class="sub">Big claims stay honest one way: a ledger, both columns, with dates. This is ours, kept in public. Vague claims don't get listed; pending stays marked pending.</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f0">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'none'; font-src 'none'; form-action 'none'; frame-src 'none'; img-src 'self' data:; media-src 'none'; object-src 'none'; script-src 'none'; style-src 'self'; worker-src 'none'">
+  <title>Receipts — Project Euphoria</title>
+  <meta name="description" content="A dated, provenance-labeled record of Project Euphoria's public builds, corrections, honest zeroes, and pending work.">
+  <meta property="og:title" content="Receipts — Project Euphoria">
+  <meta property="og:description" content="Builds, corrections, zeroes, and pending work—with dates, evidence classes, and limits.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
+  <meta property="og:image:alt" content="A painted world tree from Project Euphoria's house saga">
+  <meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/receipts/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/receipts/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%BE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the receipts</a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="../">Home</a>
+    <a href="../toolbox/">The Toolbox</a>
+    <a href="../questions/">Questions</a>
+    <a href="../status/">Status</a>
+    <a href="../book/">The Book</a>
+    <a href="../music/">The Catalog</a>
+    <a href="../saga/">The Saga</a>
+    <a href="./" aria-current="page">Receipts</a>
+  </nav>
 
-  <h2>Shipped, with dates</h2>
-  <ul class="rcpt">
-    <li><span class="d">2026-03-01</span><span>The wisdom corpus assembled — eight classical traditions gathered as grounding texts for the council engine.</span></li>
-    <li><span class="d">2026-07-17</span><span><a href="../book/">The Book of Euphoria</a> completed — ten simulated councils on universal well-being, with search, themes, and a concordance.</span></li>
-    <li><span class="d">2026-07-26</span><span>The seven-phase engineering directive adopted — evidence classes, doer-is-never-grader, no false greens. <a href="../#top">The Ascension</a>.</span></li>
-    <li><span class="d">2026-08-25</span><span>The founding night — mission, tenets, protocols, and the product stack, drafted before dawn by two architects and the machine that kept the record.</span></li>
-    <li><span class="d">2026-08-25</span><span>The public charter and this site went live — repo, GitHub Pages, one day from words to URL.</span></li>
-    <li><span class="d">2026-08-25</span><span><a href="../saga/">The Saga</a> published — three books, twenty-four paintings.</span></li>
-    <li><span class="d">2026-08-25</span><span>The album <a href="../music/">&ldquo;REV&hellip;ELATION 2&rdquo;</a> by N30BIRDIZDAWORD featured on the Catalog — five tracks, self-produced.</span></li>
-    <li><span class="d">2026-08-25</span><span><a href="../toolbox/">The Toolbox</a> public alpha 0.2 — local-first tools with a 24-test release suite, CI, and truthful storage disclosures.</span></li>
-    <li><span class="d">2026-08-25</span><span>The Producer (v0) ran its first production packets on our own hardware — words in, packet out, no rented intelligence.</span></li>
-    <li><span class="d">2026-08-25</span><span><a href="../questions/">We Answer the Question</a> opened — ten questions answered plainly, evidence status stated first.</span></li>
-  </ul>
+  <main id="main" tabindex="-1">
+    <header class="intro">
+      <div class="kicker">Tenet two, applied inward</div>
+      <h1>RECEIPTS</h1>
+      <p class="lede">A ledger is credible only when it carries provenance, limits, corrections, zeroes, and pending work—not just wins.</p>
+      <div class="release-line"><span class="badge candidate">Candidate</span><span>This reviewed rewrite ships with public-alpha 0.3; exact deployment is pending.</span></div>
+    </header>
 
-  <h2>The honest zeroes</h2>
-  <p>A receipts page that only lists wins is a pitch. These numbers are real today and this page changes when they do — not before:</p>
-  <div class="zeroes">
-    <div class="z"><span>Agency customers</span><span class="num">0</span></div>
-    <div class="z"><span>Revenue to date</span><span class="num">$0</span></div>
-    <div class="z"><span>Toolbox practices independently or clinically validated</span><span class="num">0</span></div>
-    <div class="z"><span>Days the founders have missed shipping since founding</span><span class="num">0</span></div>
-  </div>
-  <p class="note" style="margin-top:.8rem">Baseline platform burn is real too — roughly $600/month in AI subscriptions, stated in <a href="../#top">the plan</a>. The first retainer covers it. That's the whole game.</p>
+    <section class="method" aria-labelledby="methodTitle">
+      <div class="kicker">How to read this page</div>
+      <h2 id="methodTitle">Build receipts are not outcome evidence</h2>
+      <p>A repository commit can establish that source changed on a date. A live-page check can establish that a named build was served. Neither proves that a practice helps people, that a service works for customers, or that a financial claim is audited. Each item below names what its evidence does—and does not—establish.</p>
+      <p><a href="../status/">Read the full Status &amp; Evidence boundary</a>.</p>
+    </section>
 
-  <h2>Pending, marked pending</h2>
-  <ul class="rcpt">
-    <li><span class="d">pending</span><span>The three tenets await both architects' formal co-sign.</span></li>
-    <li><span class="d">pending</span><span>Agency customer one.</span></li>
-    <li><span class="d">pending</span><span>The Producer's ears (v1: audio in, packet out).</span></li>
-    <li><span class="d">pending</span><span>Qualified clinical and safeguarding review of the Toolbox practices.</span></li>
-  </ul>
+    <section aria-labelledby="buildTitle">
+      <div class="kicker">Public source record</div>
+      <h2 id="buildTitle">Built, dated, and bounded</h2>
+      <ol class="ledger">
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>Project site source assembled</h3><p>The public repository joined the hub and the first AI-simulated Book in <a href="https://github.com/itpro2792-beep/project-euphoria/commit/5c16121">commit 5c16121</a>. This establishes source history, not the truth of claims in that Book or an exact deployment time.</p><span class="evidence">Repository history</span></div>
+        </li>
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>The Saga entered the public source</h3><p><a href="https://github.com/itpro2792-beep/project-euphoria/commit/580a7a6">Commit 580a7a6</a> published the illustrated Saga. The Saga is mythologized project art, not an operational status record or consciousness evidence.</p><span class="evidence">Repository history · creative work</span></div>
+        </li>
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>The Catalog and album page entered the public source</h3><p><a href="https://github.com/itpro2792-beep/project-euphoria/commit/7ed16f6">Commit 7ed16f6</a> added the catalog page and its external embeds and links. That establishes source history; it does not establish audience, sales, ownership beyond the stated repository status, or critical reception.</p><span class="evidence">Repository history · catalog source</span></div>
+        </li>
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>The Toolbox 0.2 source landed</h3><p><a href="https://github.com/itpro2792-beep/project-euphoria/commit/bf3cc90">Commit bf3cc90</a> added the 0.2 trust, continuity, and fail-closed storage pass. Named software checks establish only the behaviors they exercise, not deployment, usefulness, privacy against the shared origin, or clinical suitability.</p><span class="evidence">Repository history · internal software checks</span></div>
+        </li>
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>Questions opened—and the candidate narrowed its claim</h3><p>The first Questions source landed in <a href="https://github.com/itpro2792-beep/project-euphoria/commit/7ed16f6">commit 7ed16f6</a>. The 0.3 candidate publishes five general entries and records only that five higher-risk items are held; medical, mental-health, and recovery publication remains disabled.</p><span class="evidence">Repository history · candidate structural gate</span></div>
+        </li>
+        <li>
+          <time datetime="2026-08-25">2026-08-25</time>
+          <div><h3>A public receipts page was added</h3><p><a href="https://github.com/itpro2792-beep/project-euphoria/commit/d9de799">Commit d9de799</a> created this route. That historical commit also contains the now-withdrawn Book-summary text and earlier unsupported receipt claims; linking it preserves provenance, not endorsement. The 0.3 candidate replaces those pages with review-gated records.</p><span class="evidence">Repository history · correction in candidate</span></div>
+        </li>
+      </ol>
+    </section>
 
-  <footer>&ldquo;You keep only what you defend.&rdquo; &mdash; tenet two, applied to our own claims</footer>
-</main>
-</body></html>
+    <section aria-labelledby="correctionTitle">
+      <div class="kicker">Negative column</div>
+      <h2 id="correctionTitle">Corrections are receipts too</h2>
+      <div class="correction">
+        <h3>The Book and its short summary are held</h3>
+        <p>The first Book and ten-minute summary condensed an AI role simulation into cultural, scientific, health-adjacent, and public-policy claims without sufficient sourcing or independent review. Calling simulated lines “verbatim” did not turn them into testimony from the traditions or experts named by the personas. The 0.3 candidate keeps the correction visible and withholds the reading text pending review.</p>
+        <p><a href="../book/">Read the Book archive notice</a> · <a href="../book/summary/">Read the summary hold notice</a></p>
+        <span class="evidence">Editorial correction · independent and qualified review pending</span>
+      </div>
+    </section>
+
+    <section aria-labelledby="zeroTitle">
+      <div class="kicker">The honest zeroes</div>
+      <h2 id="zeroTitle">Zero is a result, not a shame word</h2>
+      <p>These numbers are bounded to review records published by this project as of August 25, 2026. They do not make claims about work or evidence that may exist privately.</p>
+      <div class="zero-grid">
+        <article><span class="number">0</span><h3>Qualified clinical or safeguarding review records published</h3><p>The review gate remains open.</p></article>
+        <article><span class="number">0</span><h3>Independent accessibility-conformance reports published</h3><p>Internal checks are not independent conformance.</p></article>
+        <article><span class="number">0</span><h3>Dedicated-origin privacy review records published</h3><p>The current shared origin is not private-by-design.</p></article>
+        <article><span class="number">0</span><h3>Public human-outcome receipts published</h3><p>Build history is not a human-outcome receipt.</p></article>
+      </div>
+      <p class="note">A “days without missing a shipment” number is intentionally not reported: on a founding-day site it says very little, expires automatically, and would require a defined clock and maintained source.</p>
+    </section>
+
+    <section aria-labelledby="pendingTitle">
+      <div class="kicker">Pending means pending</div>
+      <h2 id="pendingTitle">Open gates</h2>
+      <ul class="pending">
+        <li>Deploy and smoke-check the exact public-alpha 0.3 release commit.</li>
+        <li>Qualified clinical-copy and safeguarding review of the household practices.</li>
+        <li>Independent accessibility, security, and privacy review.</li>
+        <li>A dedicated reviewed Toolbox origin before any private-by-design claim.</li>
+        <li>Customer and revenue milestones are not established by the public evidence record as of 2026-08-25.</li>
+        <li>Any public outcome receipt only after specific consent, redaction, evidence, and withdrawal boundaries exist.</li>
+      </ul>
+    </section>
+
+    <footer>“You keep only what you defend.” This page defends claims by narrowing them.</footer>
+  </main>
+</body>
+</html>

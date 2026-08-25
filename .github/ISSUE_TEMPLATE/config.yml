@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private vulnerability report
+    url: https://github.com/itpro2792-beep/project-euphoria/security/advisories/new
+    about: Use for sensitive security details. If unavailable, follow SECURITY.md and do not disclose details publicly.
+  - name: Immediate crisis support in the United States
+    url: https://988lifeline.org/
+    about: Call or text 988; call 911 for a life-threatening emergency. Elsewhere, use local crisis or emergency services.

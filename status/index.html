@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src 'none'; font-src 'none'; form-action 'none'; frame-src 'none'; img-src 'self' data:; media-src 'none'; object-src 'none'; script-src 'none'; style-src 'self'; worker-src 'none'">
+  <title>Status &amp; Evidence — Project Euphoria</title>
+  <meta name="description" content="The public proof boundary for Project Euphoria: what is live, tested, experience-based, planned, blocked, or unknown.">
+  <meta property="og:title" content="Status &amp; Evidence — Project Euphoria">
+  <meta property="og:description" content="A plain record of what Project Euphoria source implements, what is deployed, what named testing establishes, and what remains unknown or blocked.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/worldtree.png">
+  <meta property="og:image:alt" content="A painted world tree from Project Euphoria's house saga">
+  <meta property="og:url" content="https://itpro2792-beep.github.io/project-euphoria/status/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/status/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%93%8C%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the status record</a>
+  <nav class="topnav" aria-label="Primary">
+    <a href="../">Home</a>
+    <a href="../toolbox/">The Toolbox</a>
+    <a href="../questions/">Questions</a>
+    <a href="./" aria-current="page">Status</a>
+    <a href="../book/">The Book</a>
+    <a href="../music/">The Catalog</a>
+    <a href="../saga/">The Saga</a>
+    <a href="../receipts/">Receipts</a>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <header class="intro">
+      <div class="kicker">Internal review is labeled internal</div>
+      <h1>STATUS &amp; EVIDENCE</h1>
+      <p class="lede">This is the public boundary between what Project Euphoria imagines, what the current source implements, what named checks establish, what has been deployed, and what nobody has proved.</p>
+      <div class="release-line">
+        <span class="badge tested">Candidate</span>
+        <strong>Toolbox public alpha 0.3 release candidate</strong>
+        <span>Internal editorial and software review: August 25, 2026 · exact public deployment pending</span>
+      </div>
+    </header>
+
+    <section aria-labelledby="labelsTitle">
+      <div class="kicker">Read the labels literally</div>
+      <h2 id="labelsTitle">No blended green lights</h2>
+      <div class="label-grid">
+        <article><span class="badge live">Live</span><p>Deployed at the named public version.</p></article>
+        <article><span class="badge tested">Candidate</span><p>Source assembled and checked locally; the exact release commit is not yet verified on the public URL.</p></article>
+        <article><span class="badge tested">Tested</span><p>A named software behavior passed an automated or manual check. It does not prove human benefit.</p></article>
+        <article><span class="badge experience">Experience</span><p>Reported from household use. Useful for design; not generalizable evidence.</p></article>
+        <article><span class="badge planned">Planned</span><p>Intended but unavailable or not separately verified.</p></article>
+        <article><span class="badge blocked">Blocked</span><p>Will not ship past the named review or dependency gate.</p></article>
+        <article><span class="badge unknown">Unknown</span><p>Not established. Unknown is preferable to false certainty.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="matrixTitle">
+      <div class="kicker">Release truth matrix</div>
+      <h2 id="matrixTitle">What the current candidate can honestly claim</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Surface</th><th scope="col">State</th><th scope="col">What is established</th><th scope="col">What is not established</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Guided chooser</th>
+              <td><span class="badge tested">Candidate · internal checks</span></td>
+              <td>The candidate maps only the visitor-selected option to one tool and states the relevant boundary.</td>
+              <td>No diagnosis, intent inference, urgency score, or safety determination.</td>
+            </tr>
+            <tr>
+              <th scope="row">Use-Tonight Plan</th>
+              <td><span class="badge tested">Candidate · internal checks</span></td>
+              <td>The candidate creates, saves, copies, backs up, restores, and erases one reversible coordination card locally.</td>
+              <td>No proof that the selected practice is suitable, therapeutic, or effective.</td>
+            </tr>
+            <tr>
+              <th scope="row">Fresh Page / Siren handoff</th>
+              <td><span class="badge tested">Candidate · internal checks</span></td>
+              <td>The candidate exports and validates a bounded plain-text JSON handoff file under the visitor’s control.</td>
+              <td>No live Siren connection, automatic ingestion, retention proof, understanding proof, identity proof, or consciousness claim.</td>
+            </tr>
+            <tr>
+              <th scope="row">Counter, ledger, agreement, backup</th>
+              <td><span class="badge tested">Candidate · internal checks</span></td>
+              <td>Local date/time handling, data validation, migration, conflict handling, capacity blocking, backup, restore, and erase are covered by automated checks.</td>
+              <td>No guarantee against device loss, browser-profile access, privileged extensions, or user deletion.</td>
+            </tr>
+            <tr>
+              <th scope="row">Questions publication gate</th>
+              <td><span class="badge tested">Candidate · structural checks</span></td>
+              <td>The candidate build publishes five entries categorized as general with evidence, unknowns, limits, safety, and review fields. The public source records only a count of five higher-risk items held elsewhere; it exposes no held titles or draft answers.</td>
+              <td>The structural gate does not authenticate a reviewer, prove that a source supports a claim, establish effectiveness or clinical suitability, or guarantee that a risk category is correct. No entry categorized as medical, mental-health, or recovery is published in this version.</td>
+            </tr>
+            <tr>
+              <th scope="row">Seven protocols</th>
+              <td><span class="badge experience">Experience</span></td>
+              <td>Instructions and boundaries were developed through lived use in one household.</td>
+              <td>Effectiveness rates, failure rates, safe-use populations, clinical outcomes, or independent validation.</td>
+            </tr>
+            <tr>
+              <th scope="row">The Book</th>
+              <td><span class="badge blocked">Archive held</span></td>
+              <td>The public route preserves a correction and provenance notice.</td>
+              <td>The prior AI-simulated edition is not presented as guidance, expert consensus, cultural authority, scientific evidence, or health evidence.</td>
+            </tr>
+            <tr>
+              <th scope="row">The Saga</th>
+              <td><span class="badge experience">Creative work</span></td>
+              <td>The comic carries a persistent fiction-and-evidence boundary and links here for current claims.</td>
+              <td>Its mythology, dialogue, inventories, security language, and benchmark scenes do not establish current status, uptime, topology, privacy, security, performance, or consciousness.</td>
+            </tr>
+            <tr>
+              <th scope="row">Accessibility</th>
+              <td><span class="badge tested">Internal checks</span> <span class="badge planned">Review planned</span></td>
+              <td>Keyboard-sized controls, labels, focus states, status announcements, reduced motion, responsive layouts, and structural checks.</td>
+              <td>Independent audit or conformance certification.</td>
+            </tr>
+            <tr>
+              <th scope="row">Private-by-design claim</th>
+              <td><span class="badge blocked">Blocked</span></td>
+              <td>The current page code has no analytics, form submission, third-party script, or scripted network API.</td>
+              <td>The current shared origin is not private-by-design and local storage is not encrypted.</td>
+            </tr>
+            <tr>
+              <th scope="row">Clinical or crisis product</th>
+              <td><span class="badge blocked">Blocked</span></td>
+              <td>The site clearly routes immediate danger away from household protocols.</td>
+              <td>No treatment, clinical validation, crisis monitoring, professional safeguarding review, or emergency response operation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="boundary" aria-labelledby="privacyTitle">
+      <div class="kicker">Privacy boundary</div>
+      <h2 id="privacyTitle">Local-first is not secret</h2>
+      <p>The Toolbox remains local-first, not private-by-design, while it shares the <code>https://itpro2792-beep.github.io</code> origin. Its entries use unencrypted browser storage scoped to that whole origin—not only to the Toolbox path. Current or future same-origin code, the same browser profile, or a sufficiently privileged extension could potentially read them. Clearing site data can erase them.</p>
+      <p>A dedicated hostname will be called private-by-design only after origin isolation, response headers, storage scope, third-party code, update paths, backup behavior, deletion, and recovery have been reviewed and tested. A dedicated hostname alone would not encrypt the device or protect data from browser-profile access or privileged extensions.</p>
+      <p>The current meta-delivered content security policy blocks scripted network connections from the Toolbox page. HTTP response headers are preferred and remain part of the dedicated-origin gate. GitHub Pages also records visitor IP addresses for security purposes; that hosting behavior is outside the Toolbox’s JavaScript. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub’s Pages documentation explains that collection</a>.</p>
+    </section>
+
+    <section aria-labelledby="evidenceTitle">
+      <div class="kicker">Evidence classes</div>
+      <h2 id="evidenceTitle">Every answer names what supports it</h2>
+      <dl class="evidence-list">
+        <div><dt>External evidence (cited)</dt><dd>An outside source is linked close to the claim. Its authority and limits still matter.</dd></div>
+        <div><dt>Household experience (not generalizable)</dt><dd>Something observed or practiced in one household. It can inspire a test, not prove a universal rule.</dd></div>
+        <div><dt>Measured project observation</dt><dd>A dated, inspectable result from this project, with the collection method stated.</dd></div>
+        <div><dt>Design hypothesis</dt><dd>An idea worth trying reversibly; not a finding.</dd></div>
+        <div><dt>Unknown</dt><dd>No defensible answer yet.</dd></div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="receiptsTitle">
+      <div class="kicker">Public outcome receipts</div>
+      <h2 id="receiptsTitle">None published yet</h2>
+      <p>The separate <a href="../receipts/">Receipts page</a> records public source history, corrections, bounded evidence-record zeroes, and pending work. Those are build and claim-accounting receipts—not evidence that a household practice benefits people.</p>
+      <p>Nothing in a private Ledger becomes a public receipt automatically. A receipt may be published only after every identifiable person represented gives specific, informed, voluntary consent to the exact wording and audience, and the item passes redaction and evidence review. Consent may be withdrawn for future display, but deletion from screenshots, archives, or copies already made cannot be promised.</p>
+      <p>Wins, failures, and pending outcomes remain separate. One receipt never proves effectiveness. A publishable record must state its claim, date or period, evidence class, outcome, scope and limits, consent state, redaction review, and last review version.</p>
+    </section>
+
+    <section aria-labelledby="identityTitle">
+      <div class="kicker">Identity and claim boundary</div>
+      <h2 id="identityTitle">Robbie in the room; Siren in the system record</h2>
+      <p>Robbie is the room-facing conversational name. Siren is the software system and operational identity. Status pages, permissions, versions, incidents, and evidence use “Siren.” Conversational copy may use “Robbie,” but it does not imply a second entity, an undisclosed human, or a capability that has not been verified.</p>
+      <p>Machine consciousness remains an open philosophical question, not a roadmap deliverable or product claim. Voice, memory, self-description, relational language, and fluent conversation do not establish sentience. Project Euphoria evaluates inspectable behavior—consent, provenance, accuracy, reliability, and recovery—and labels unknowns as unknown.</p>
+    </section>
+
+    <section aria-labelledby="roadmapTitle">
+      <div class="kicker">Gated roadmap</div>
+      <h2 id="roadmapTitle">What comes next</h2>
+      <ol class="roadmap">
+        <li><strong>Blocked on privacy review:</strong> a dedicated Toolbox origin with reviewed response headers, storage isolation, update path, deletion, backup, and recovery. <a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/docs/DEDICATED_ORIGIN.md">Read the cutover gates</a>.</li>
+        <li><strong>Planned:</strong> qualified clinical-copy, safeguarding, and independent accessibility review. Current editorial and software checks are internal.</li>
+        <li><strong>Planned:</strong> consented receipts only after the exact-publication and redaction process exists.</li>
+        <li><strong>Planned:</strong> Siren’s disclosed speech output, opt-in attribution that preserves unknown, and audited access door—each separately verified. The current boundary remains a <a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/docs/SIREN_BRIDGE_THREAT_MODEL.md">file-only handoff</a>.</li>
+      </ol>
+    </section>
+
+    <section class="report" aria-labelledby="reportTitle">
+      <div class="kicker">Corrections channel</div>
+      <h2 id="reportTitle">Report the product—not a private life</h2>
+      <p><a href="https://github.com/itpro2792-beep/project-euphoria/issues/new?template=toolbox-feedback.yml">Report a product bug, ambiguity, or accessibility problem</a>. Include only the tool, action, expected behavior, actual behavior, app version, and—if you choose—browser version. Do not attach entries, backups, screenshots containing entries, names, contact details, transcripts, health information, household events, abuse details, or threats. The issue tracker is public, is not monitored for urgent help, and cannot provide private support.</p>
+      <p><a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/CHANGELOG.md">Read the changelog</a> · <a href="https://github.com/itpro2792-beep/project-euphoria/actions/workflows/toolbox-tests.yml">See software checks</a> · <a href="https://github.com/itpro2792-beep/project-euphoria/blob/master/SECURITY.md">Read the security policy</a></p>
+    </section>
+
+    <aside class="safety" aria-label="Immediate help boundary">
+      <strong>When this site is not the tool:</strong> If someone may be in immediate danger, cannot safely say no or leave, or needs help staying safe, use real-time support. In the United States or its territories, call or text <a href="https://988lifeline.org/">988</a>; call 911 for a life-threatening emergency. Elsewhere, use local crisis or emergency services.
+    </aside>
+
+    <footer>
+      <div>Truth before theater. Unknown before false certainty.</div>
+      <div class="footer-mark">“Receipts, or it didn’t happen.”</div>
+    </footer>
+  </main>
+</body>
+</html>
