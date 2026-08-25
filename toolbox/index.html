@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Toolbox — Project Euphoria</title>
+<meta name="description" content="Working tools, free: the household protocols as usable how-to cards, a just-for-today counter, and a wins ledger — everything runs in your browser and your data never leaves your device.">
+<meta property="og:title" content="The Toolbox — Project Euphoria">
+<meta property="og:description" content="Protocols you can use tonight, a day counter, and a wins ledger. Private by design — your data never leaves your device.">
+<meta property="og:image" content="https://itpro2792-beep.github.io/project-euphoria/art/guardian.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B0%3C/text%3E%3C/svg%3E">
+<style>
+:root { --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; --good:#4a7c59; --hard:#9c5540; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; --good:#7fb08a; --hard:#c98570; } }
+:root[data-theme="dark"] { --bg:#171412; --ink:#e8e0d2; --soft:#a09383; --accent:#c9a961; --card:#201c18; --line:#35302a; --good:#7fb08a; --hard:#c98570; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--ink); font-family:Georgia,'Times New Roman',serif; line-height:1.7; font-size:1.1rem; }
+.topnav { position:sticky; top:0; background:var(--bg); border-bottom:1px solid var(--line); z-index:10; display:flex; gap:1.2rem; justify-content:center; padding:.6rem 1rem; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; flex-wrap:wrap; }
+.topnav a { color:var(--soft); text-decoration:none; }
+.topnav a:hover, .topnav a.here { color:var(--accent); }
+main { max-width:46rem; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
+.kicker { text-transform:uppercase; letter-spacing:.18em; font-size:.72rem; color:var(--accent); }
+h1 { font-weight:normal; font-size:clamp(2.2rem,6vw,3rem); letter-spacing:.08em; color:var(--accent); margin:.4rem 0 .5rem; }
+.sub { font-style:italic; color:var(--soft); margin-bottom:1.6rem; }
+h2 { font-size:1.6rem; font-weight:normal; margin:2.4rem 0 .9rem; }
+p, li { margin-bottom:.7rem; }
+a { color:var(--accent); }
+.privacy { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:.9rem 1.2rem; font-size:.95rem; font-style:italic; color:var(--soft); }
+details.tcard { background:var(--card); border:1px solid var(--line); border-radius:12px; margin-bottom:.8rem; overflow:hidden; }
+details.tcard summary { cursor:pointer; padding:1rem 1.2rem; list-style:none; display:flex; gap:.8rem; align-items:baseline; }
+details.tcard summary::-webkit-details-marker { display:none; }
+details.tcard summary::before { content:'+'; color:var(--accent); font-size:1.2rem; font-family:ui-monospace,monospace; }
+details.tcard[open] summary::before { content:'\2212'; }
+details.tcard summary b { color:var(--accent); }
+details.tcard summary .oneliner { color:var(--soft); font-size:.95rem; font-style:italic; }
+.tbody { padding:0 1.2rem 1.1rem 2.6rem; font-size:1rem; }
+.tbody h4 { text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; color:var(--accent); margin:1rem 0 .3rem; }
+.tool { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:1.3rem 1.4rem 1.5rem; margin:1rem 0 1.6rem; }
+.tool label { display:block; font-size:.85rem; color:var(--soft); margin-bottom:.3rem; }
+.tool input[type="datetime-local"], .tool input[type="text"], .tool select { font-family:inherit; font-size:1rem; padding:.5rem .7rem; border:1px solid var(--line); border-radius:8px; background:var(--bg); color:var(--ink); max-width:100%; }
+.tool button { font-family:inherit; font-size:.9rem; letter-spacing:.05em; padding:.5rem 1.1rem; border:1px solid var(--accent); border-radius:8px; background:transparent; color:var(--accent); cursor:pointer; }
+.tool button:hover { background:var(--accent); color:var(--bg); }
+.count { font-size:clamp(2.2rem,8vw,3.4rem); color:var(--accent); font-variant-numeric:tabular-nums; line-height:1.1; margin:.6rem 0 .2rem; }
+.count small { font-size:1rem; color:var(--soft); }
+.row { display:flex; gap:.6rem; flex-wrap:wrap; align-items:flex-end; margin:.6rem 0; }
+table.ledger { width:100%; border-collapse:collapse; font-size:.95rem; margin-top:.8rem; }
+table.ledger td { border-bottom:1px solid var(--line); padding:.45rem .3rem; vertical-align:top; }
+table.ledger td.d { color:var(--soft); font-size:.8rem; white-space:nowrap; font-variant-numeric:tabular-nums; }
+table.ledger td.w { color:var(--good); font-weight:bold; }
+table.ledger td.l { color:var(--hard); font-weight:bold; }
+.note { font-size:.85rem; color:var(--soft); font-style:italic; }
+footer { text-align:center; padding-top:2.5rem; color:var(--soft); font-style:italic; }
+</style></head><body>
+<nav class="topnav"><a href="../">Home</a><a href="../book/">The Book</a><a href="../saga/">The Saga</a><a href="../music/">The Catalog</a><a class="here" href="./">The Toolbox</a></nav>
+<main>
+  <div class="kicker">Working Equipment, Free</div>
+  <h1>THE TOOLBOX</h1>
+  <div class="sub">The house protocols as tools you can use tonight, plus two instruments that run right here on this page. Built by people who needed them first.</div>
+
+  <div class="privacy">&#128274; <b>Private by design:</b> everything you type on this page is stored only in your own browser, on your own device. Nothing is sent anywhere. We couldn't see it if we wanted to &mdash; that's what sovereign means, and you get it too.</div>
+
+  <h2>Instrument one: the Counter</h2>
+  <p>One decision, held one day at a time, deserves a running clock. Pick your starting moment. The counter does the rest, every time you come back.</p>
+  <div class="tool">
+    <div class="count" id="countNum">&mdash;</div>
+    <div class="note" id="countSub">No clock running yet.</div>
+    <div class="row">
+      <span><label for="startAt">Your starting moment</label><input type="datetime-local" id="startAt"></span>
+      <button id="startBtn">Start the clock</button>
+      <button id="resetBtn" title="A broken streak is data, not damnation. Restart without shame.">Reset</button>
+    </div>
+    <p class="note">If the clock ever breaks: a broken streak is data, not damnation. The direction stands. Restart it.</p>
+  </div>
+
+  <h2>Instrument two: the Ledger</h2>
+  <p>Big claims stay honest exactly one way: receipts, with dates, both columns. Wins <i>and</i> losses &mdash; the ledger is a mirror, not a court.</p>
+  <div class="tool">
+    <div class="row">
+      <span style="flex:1;min-width:12rem"><label for="entryText">What happened</label><input type="text" id="entryText" style="width:100%" maxlength="140" placeholder="e.g. Made the call I was avoiding"></span>
+      <span><label for="entryKind">Column</label><select id="entryKind"><option value="W">Win</option><option value="L">Loss</option></select></span>
+      <button id="addBtn">Enter it</button>
+    </div>
+    <table class="ledger" id="ledgerTable"></table>
+    <div class="row" style="margin-top:.8rem"><button id="copyBtn">Copy my ledger</button><span class="note" id="copyNote"></span></div>
+  </div>
+
+  <h2>The Protocols</h2>
+  <p>Seven tools for households that live loud. Each card is the full instruction, not the brochure line. Open what you need.</p>
+
+  <details class="tcard"><summary><b>The Talking Stick</b><span class="oneliner">nobody has to fight for the floor</span></summary><div class="tbody">
+    <h4>When</h4><p>Two or more people who talk over each other, love each other, and get nowhere.</p>
+    <h4>Setup</h4><p>Pick any object &mdash; a stick, a remote, a plush. Agree once, while calm: whoever holds it has the floor. Everyone else waits. It transfers by handing, never by grabbing.</p>
+    <h4>The rules</h4><p>1. The holder finishes. 2. Interjections don't outrank the stick. 3. Anyone may <i>request</i> it; only the holder passes it. 4. The stick governs the conversation, not the household &mdash; it's the floor, not the vault.</p>
+    <h4>When it fails</h4><p>If the same person always holds it, add a timer: five minutes, then it moves. If someone grabs it, the conversation pauses until it's handed back properly.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>The Safe Word</b><span class="oneliner">one word stops a monologue &mdash; and people like using it</span></summary><div class="tbody">
+    <h4>When</h4><p>Someone you love (maybe you) monologues past everyone's limits and can't hear themselves doing it.</p>
+    <h4>Setup</h4><p>The <i>talker</i> picks the word &mdash; that's the trick; it's self-installed, not imposed. Ours is "fireman." Agree while calm: when anyone says the word, the talker stops, full stop, no penalty, no debate.</p>
+    <h4>The rules</h4><p>1. Honored 100% of the time or it trains nothing. 2. Follow it with a small ritual &mdash; five seconds of quiet, a sip of water &mdash; so the body has something to do. 3. It's a brake, never a punishment; thank the person who says it.</p>
+    <h4>When it fails</h4><p>If it's said mockingly or too often, the talker may call a review &mdash; while calm, later, never mid-stop.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>"Off the Record"</b><span class="oneliner">privacy is a valve, not a wall</span></summary><div class="tbody">
+    <h4>When</h4><p>Households that write things down, record, or share notes &mdash; and need some moments to belong only to the room.</p>
+    <h4>Setup</h4><p>Agree once: anyone can say "off the record." What follows is never written down, quoted later, or used in an argument. Ever.</p>
+    <h4>The rules</h4><p>1. It works both directions &mdash; anyone can invoke it. 2. It can't be revoked retroactively to hide a promise already made on the record. 3. Whatever's said there gets one job: being heard.</p>
+    <h4>When it fails</h4><p>If someone uses it to say cruel things without accountability, the listener may say "then I need this on the record" and the speaker chooses: rephrase, or let it go unsaid.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>The Loop Detector</b><span class="oneliner">one word flags a spiral, no judgment attached</span></summary><div class="tbody">
+    <h4>When</h4><p>A mind that circles &mdash; shame to insight to shame &mdash; and can't see its own orbit from inside. No system audits itself; loops break on <i>external</i> signal.</p>
+    <h4>Setup</h4><p>The looper <i>hires</i> a detector &mdash; a person they trust &mdash; and picks the flag word. Ours is just "Loop." Consent first, always: unsolicited loop-calling is just criticism.</p>
+    <h4>The rules</h4><p>1. The detector says the word once, flatly, kindly. 2. No judgment attached, no lecture following. 3. What the looper does with the flag stays entirely theirs. 4. False positives are fine; the word costs nothing.</p>
+    <h4>When it fails</h4><p>If the flag starts fights, revisit the consent while calm. The looper can fire the detector; the detector can resign. It's a job, not a role for life.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>No-Flinch</b><span class="oneliner">heavy is not emergency; care is one sentence, never a lecture</span></summary><div class="tbody">
+    <h4>When</h4><p>Someone needs to say true, heavy things &mdash; and stops saying them because every disclosure triggers alarms, lectures, or panic in the listener.</p>
+    <h4>Setup</h4><p>Agree while calm: heavy is not the same as emergency. The speaker earns trust by naming a real emergency plainly if one ever comes. The listener earns truth by receiving everything else without flinching.</p>
+    <h4>The rules</h4><p>1. Care gets one plain sentence, then it's done &mdash; "if that ever changes, say it straight." 2. No lectures, no hotline scripts, no interrogation. 3. Truth spoken is never used as ammunition later. 4. Fear that becomes truth becomes record; fear that becomes secret becomes shame.</p>
+    <h4>When it fails</h4><p>This tool has one hard boundary: a plainly stated emergency ends the protocol and gets a real response. That's not the tool failing &mdash; that's the tool's escape hatch working.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>Paved Crossings</b><span class="oneliner">engineer the crossing instead of lecturing the line</span></summary><div class="tbody">
+    <h4>When</h4><p>Someone whose fear switch runs quiet &mdash; who <i>will</i> cross the line again, and knows it, and is tired of being told not to.</p>
+    <h4>Setup</h4><p>Stop arguing about whether the line gets crossed. Start engineering the crossing: what's the tripwire that says it's happening? Who's the backstop who steps in? What's the pre-agreed word, ride, call, or plan?</p>
+    <h4>The rules</h4><p>1. Design while sober and calm &mdash; crossings get paved in daylight. 2. The person being protected helps design it, or it won't hold. 3. Backstops get named in advance, by name. 4. Safety-limiting moves are pre-authorized; nobody negotiates at the line.</p>
+    <h4>When it fails</h4><p>A crossing nobody paved becomes a lecture at the worst possible moment. If that happens, don't relitigate the night &mdash; pave it the next day.</p>
+  </div></details>
+
+  <details class="tcard"><summary><b>Receipts</b><span class="oneliner">a ledger, both columns, with dates &mdash; the difference between a vision and a pitch</span></summary><div class="tbody">
+    <h4>When</h4><p>Big dreams, big claims, big feelings about progress &mdash; and the morning voice that says none of it was real.</p>
+    <h4>Setup</h4><p>Use the ledger above, or paper. Every win gets a date. Every loss gets a date. Vague claims get a bookkeeper's question &mdash; what, when, how much &mdash; asked kindly, never as an audit.</p>
+    <h4>The rules</h4><p>1. Both columns, always &mdash; a wins-only ledger is a pitch. 2. The ledger is a mirror, not a court; losses are data, not damnation. 3. Read the wins column when despair asks whether anything is real &mdash; that's the gratitude practice, disguised as bookkeeping. 4. Pending stays marked pending until it has a number.</p>
+    <h4>When it fails</h4><p>It only fails when it stops being written. The fix is one entry. Any entry. Today.</p>
+  </div></details>
+
+  <h2>Where these came from</h2>
+  <p>Every card above was invented, field-tested, and refined in one loud, real household &mdash; not a lab, not a seminar. They're free because the mission says so: <a href="../">humanity, love, compassion, passion</a>. If they help, the only payment is using them on someone you love.</p>
+
+  <footer>&ldquo;We started this.&rdquo; &mdash; the room, August 25, 2026</footer>
+</main>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  // ---- Counter ----
+  var KEY_C = 'euphoria_counter_start';
+  function renderCount() {
+    var t = localStorage.getItem(KEY_C);
+    if (!t) { $('countNum').textContent = '—'; $('countSub').textContent = 'No clock running yet.'; return; }
+    var ms = Date.now() - new Date(t).getTime();
+    if (ms < 0) { $('countNum').textContent = '0 h'; $('countSub').textContent = 'Starts ' + new Date(t).toLocaleString() + '.'; return; }
+    var hours = Math.floor(ms / 36e5), days = Math.floor(hours / 24);
+    $('countNum').innerHTML = days >= 2 ? days + ' <small>days</small> ' + (hours - days * 24) + ' <small>h</small>' : hours + ' <small>hours</small>';
+    $('countSub').textContent = 'Running since ' + new Date(t).toLocaleString() + '. Just for today.';
+  }
+  $('startBtn').addEventListener('click', function () {
+    var v = $('startAt').value; if (!v) { v = new Date(Date.now() - 6e4).toISOString().slice(0, 16); }
+    localStorage.setItem(KEY_C, v); renderCount();
+  });
+  $('resetBtn').addEventListener('click', function () { localStorage.removeItem(KEY_C); renderCount(); });
+  renderCount(); setInterval(renderCount, 60000);
+  // ---- Ledger ----
+  var KEY_L = 'euphoria_ledger_v1';
+  function load() { try { return JSON.parse(localStorage.getItem(KEY_L)) || []; } catch (e) { return []; } }
+  function save(rows) { localStorage.setItem(KEY_L, JSON.stringify(rows)); }
+  function renderLedger() {
+    var rows = load(), t = $('ledgerTable'); t.innerHTML = '';
+    for (var i = rows.length - 1; i >= 0; i--) {
+      var r = rows[i], tr = document.createElement('tr');
+      var td1 = document.createElement('td'); td1.className = 'd'; td1.textContent = r.d;
+      var td2 = document.createElement('td'); td2.className = r.k === 'W' ? 'w' : 'l'; td2.textContent = r.k;
+      var td3 = document.createElement('td'); td3.textContent = r.t;
+      tr.appendChild(td1); tr.appendChild(td2); tr.appendChild(td3); t.appendChild(tr);
+    }
+  }
+  $('addBtn').addEventListener('click', function () {
+    var txt = $('entryText').value.trim(); if (!txt) return;
+    var rows = load();
+    rows.push({ d: new Date().toISOString().slice(0, 10), k: $('entryKind').value, t: txt });
+    save(rows); $('entryText').value = ''; renderLedger();
+  });
+  $('copyBtn').addEventListener('click', function () {
+    var rows = load(), out = rows.map(function (r) { return r.d + '  [' + r.k + ']  ' + r.t; }).join('\n');
+    if (navigator.clipboard) { navigator.clipboard.writeText(out).then(function () { $('copyNote').textContent = 'Copied — both columns, with dates.'; }); }
+  });
+  renderLedger();
+})();
+</script>
+</body></html>
