@@ -1,0 +1,123 @@
+{
+  "schema": "project-euphoria-questions",
+  "version": 1,
+  "lastReviewed": "2026-08-25",
+  "heldCount": 5,
+  "entries": [
+    {
+      "id": "living-amends",
+      "slug": "living-amends",
+      "status": "publish",
+      "riskClass": "general",
+      "question": "How do I atone for something I can never fully fix?",
+      "answerFirst": "Repair what can still be repaired, and let future conduct carry the part that cannot be undone.",
+      "bodyParagraphs": [
+        "Project Euphoria calls this living amends: a calendar, not an altar. The point is not to perform guilt until it feels impressive. The point is to name the harm accurately, repair what is still repairable, stop repeating it, and direct the changed behavior toward people who are still here.",
+        "This does not guarantee forgiveness, reconciliation, or relief. Those outcomes belong partly to other people and partly to time. The reversible part is smaller: choose one repair that does not demand contact, absolution, or emotional labor from the person harmed, then do it consistently."
+      ],
+      "evidenceClass": "Household experience (not generalizable)",
+      "sources": [],
+      "unknowns": "Whether repair, contact, apology, restitution, distance, or professional guidance is appropriate depends on the actual harm and the wishes and safety of the people affected.",
+      "limits": "Living amends does not erase accountability, legal duties, restitution, boundaries, or another person’s right not to reconcile.",
+      "nextStep": "Write one sentence naming what you will stop repeating and one repair you can make without asking the harmed person to comfort you.",
+      "safetyBoundary": "If guilt is driving thoughts of self-harm, immediate danger, or an urge to confront someone who has asked for no contact, stop this exercise and use appropriate real-time or professional support.",
+      "lastReviewed": "2026-08-25",
+      "review": {
+        "status": "editorial-reviewed",
+        "reviewerRole": "Project editor"
+      }
+    },
+    {
+      "id": "clarity-record",
+      "slug": "clarity-record",
+      "status": "publish",
+      "riskClass": "general",
+      "question": "A thought feels clear at night and distant by morning. How do I keep it?",
+      "answerFirst": "Do not rely on recreating the feeling; leave your future self a short, dated record.",
+      "bodyParagraphs": [
+        "Memory, energy, and certainty change across a day. That does not prove the night thought was true, and the morning distance does not prove it was false. A record preserves the claim so it can be reviewed when the state has changed.",
+        "Keep the note concrete: what you noticed, what evidence you had, and one action that can be reversed. Read it later without demanding the same emotion. The record holds continuity; later evidence still gets to correct it."
+      ],
+      "evidenceClass": "Household experience (not generalizable)",
+      "sources": [],
+      "unknowns": "This household method has not been tested for accuracy or benefit across different people, sleep states, medications, or health conditions.",
+      "limits": "A dated note is memory support, not proof that the thought is accurate and not a substitute for sleep, medical advice, or outside judgment.",
+      "nextStep": "Write three lines: what I noticed; what supports it; what small, reversible action can wait until I have slept.",
+      "safetyBoundary": "Do not use a late-night note as authority for an irreversible, dangerous, financial, medical, or legal decision.",
+      "lastReviewed": "2026-08-25",
+      "review": {
+        "status": "editorial-reviewed",
+        "reviewerRole": "Project editor"
+      }
+    },
+    {
+      "id": "ordinary-maintenance",
+      "slug": "ordinary-maintenance",
+      "status": "publish",
+      "riskClass": "general",
+      "question": "Why can a demanding project be easier to organize than routine upkeep?",
+      "answerFirst": "A project can offer one visible target, while upkeep arrives as a stream of small tasks; use that as a planning observation, not a judgment about ability.",
+      "bodyParagraphs": [
+        "A demanding project often has a deadline, a named outcome, and an obvious next action. Routine household upkeep can have a diffuse finish line: each completed task eventually returns, and several small tasks compete for attention.",
+        "This is a description of task shape observed in one household, not an explanation of anyone’s health, motivation, character, or capacity. A practical experiment is to choose one visible maintenance action and define what done means before starting."
+      ],
+      "evidenceClass": "Household experience (not generalizable)",
+      "sources": [],
+      "unknowns": "We do not know how broadly this task-shape framing applies or whether it improves follow-through outside the founding household.",
+      "limits": "This framing does not explain why a task is difficult and should not be used to label a person, infer capacity, or deny accommodations or outside advice.",
+      "nextStep": "Choose one upkeep task that takes under ten minutes. Write a one-sentence finish line, do only that task, and note whether the definition made starting or stopping clearer.",
+      "safetyBoundary": "Stop if the exercise becomes punitive, controlling, or is used to deny rest, food, access needs, or a request for help.",
+      "lastReviewed": "2026-08-25",
+      "review": {
+        "status": "editorial-reviewed",
+        "reviewerRole": "Project editor"
+      }
+    },
+    {
+      "id": "voluntary-interruption",
+      "slug": "voluntary-interruption",
+      "status": "publish",
+      "riskClass": "general",
+      "question": "Someone I love talks past my capacity. How can we interrupt without making it a fight?",
+      "answerFirst": "Design the interruption together while calm: the talker chooses a signal, either person can stop, and using it carries no penalty.",
+      "bodyParagraphs": [
+        "A pre-agreed signal can be easier to hear than a new argument inside an overloaded moment. In the Project Euphoria Safe Word protocol, the talker chooses the word and defines the pause. The listener says it once; the talker stops; both decide later whether to continue.",
+        "The signal is equipment only while it remains voluntary. Retaliation, ridicule, repeated misuse, or using the signal to block danger ends the agreement."
+      ],
+      "evidenceClass": "Household experience (not generalizable)",
+      "sources": [],
+      "unknowns": "Project Euphoria has no effectiveness or failure-rate data beyond lived use in one household.",
+      "limits": "This is not appropriate where someone is afraid to decline, cannot safely leave, or where one person controls the other.",
+      "nextStep": "Ask: “Would you like to choose a word that means pause for both of us? Either of us can retire the agreement.” If the answer is not a free yes, do not install it.",
+      "safetyBoundary": "A signal never blocks someone from naming harm, leaving, seeking outside help, or responding to an urgent need.",
+      "lastReviewed": "2026-08-25",
+      "review": {
+        "status": "editorial-reviewed",
+        "reviewerRole": "Project editor"
+      }
+    },
+    {
+      "id": "witnessed-mattering",
+      "slug": "witnessed-mattering",
+      "status": "publish",
+      "riskClass": "general",
+      "question": "What do people actually want from a space like this?",
+      "answerFirst": "Our design hypothesis is witnessed mattering: a person can tell they were heard because the response accurately preserves what mattered.",
+      "bodyParagraphs": [
+        "That is a hypothesis, not a universal statement about human need. Project Euphoria uses it as a design test: did the person get room to finish, did the response reflect the actual question, did consent remain intact, and can the record be corrected or deleted?",
+        "Membership, ritual, technology, and beautiful language can support that result, but none of them guarantees it. The receipt is observable behavior: accurate listening, an answer that addresses the question, and repair when the system gets it wrong."
+      ],
+      "evidenceClass": "Design hypothesis",
+      "sources": [],
+      "unknowns": "We do not know how broadly this framing applies or whether it improves outcomes outside the founding household.",
+      "limits": "Witnessing is not treatment, rescue, agreement, or proof that the listener understands everything. Some people want privacy, distance, practical help, or no response.",
+      "nextStep": "Before responding, say back the question in one sentence and ask whether you preserved it accurately.",
+      "safetyBoundary": "Do not use “mattering” language to pressure disclosure, demand intimacy, retain a record without consent, or substitute a household space for urgent or professional support.",
+      "lastReviewed": "2026-08-25",
+      "review": {
+        "status": "editorial-reviewed",
+        "reviewerRole": "Project editor"
+      }
+    }
+  ]
+}

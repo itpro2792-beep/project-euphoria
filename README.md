@@ -1,6 +1,6 @@
 # PROJECT EUPHORIA
 
-**🔥 Live site: https://itpro2792-beep.github.io/project-euphoria/ · 🧰 [Use the Toolbox](https://itpro2792-beep.github.io/project-euphoria/toolbox/) · 📖 [The Book of Euphoria](https://itpro2792-beep.github.io/project-euphoria/book/)**
+**🔥 Live site: https://itpro2792-beep.github.io/project-euphoria/ · 🧰 [Use the Toolbox](https://itpro2792-beep.github.io/project-euphoria/toolbox/) · ❓ [Read Questions](https://itpro2792-beep.github.io/project-euphoria/questions/) · 📌 [Check Status & Evidence](https://itpro2792-beep.github.io/project-euphoria/status/) · 🧾 [Read Receipts](https://itpro2792-beep.github.io/project-euphoria/receipts/) · 📖 [The Book archive](https://itpro2792-beep.github.io/project-euphoria/book/)**
 
 *Local-first tools, a sovereign-intelligence architecture, a studio on a desk, and a conditional path toward a peer-support layer.*
 
@@ -38,12 +38,13 @@ That is a design goal, not a consciousness claim and not a statement that every 
 
 **4. The Content Engine — throughout.** The pipeline that founded this project *is* the product demo: raw voice → record → distillation → artifact. Channels run answer-first short-form as the doorway into long-form and the catalog. Organic spine first; paid spend only where a format proves retention.
 
-## The Toolbox — public alpha 0.2
+## The Toolbox — public alpha 0.3 release candidate
 
-The site’s first working surface now delivers:
+The current source includes:
 
-- a plain-language “What is happening right now?” router;
-- a Fresh Page Card for preserving a thought across interruption or a new tab;
+- a deterministic “What is happening right now?” chooser that maps only the visitor’s selected option—without diagnosis, inference, or risk scoring;
+- a locally saved Use-Tonight Plan for one observable situation, one reversible step, one stop condition, and one review time;
+- a Fresh Page Card for preserving a thought across interruption or a new tab, plus an expiring, user-controlled Siren file handoff whose page code makes no network request during file export;
 - a mutual protocol-agreement builder with an after-use check-in;
 - an elapsed-time counter that archives prior chapters instead of deleting them;
 - an editable local-date ledger with Worked / Did not work / Pending;
@@ -52,7 +53,7 @@ The site’s first working surface now delivers:
 
 **Evidence status:** these practices grew from lived use in one household. They have not been independently or clinically validated. Qualified clinical and safeguarding review is pending.
 
-**Data status:** the Toolbox has no analytics, account, form submission, or third-party JavaScript. Its content security policy blocks fetch-, XHR-, WebSocket-, EventSource-, and beacon-style connections from the page’s JavaScript; it is not a general browser privacy boundary. Entries use unencrypted browser storage shared across the entire `https://itpro2792-beep.github.io` origin—not just this project path. Someone with the same browser profile, a privileged extension, or current or future code on any same-origin path could read them, and clearing site data can erase them. Persistence is single-writer: one Toolbox tab holds an exclusive Web Lock; other tabs are read-only for persistence, and browsers without Web Locks keep new changes in-tab rather than risk concurrent overwrite. A dedicated reviewed origin is required before this can honestly be called private-by-design. Export anything you cannot afford to lose.
+**Data status:** the Toolbox has no analytics, account, form submission, or third-party JavaScript. Its content security policy blocks fetch-, XHR-, WebSocket-, EventSource-, and beacon-style connections from the page’s JavaScript; it is not a general browser privacy boundary. Entries use unencrypted browser storage shared across the entire `https://itpro2792-beep.github.io` origin—not just this project path. Someone with the same browser profile, a privileged extension, or current or future code on any same-origin path could read them, and clearing site data can erase them. Persistence is single-writer: one Toolbox tab holds an exclusive Web Lock; other tabs are read-only for persistence, and browsers without Web Locks keep new changes in-tab rather than risk concurrent overwrite. Older data migrates only after that lock is held: the original bytes are first verified inside a strict recovery record in the historical schema-2 slot, then schema 4 is written and validated in the historical schema-3 slot. This preserves the immediately previous 0.2 page’s erase/restore path; cached releases older than 0.2 are not guaranteed compatible and should be reloaded before erasing or restoring. A recovery record remains until the visitor deletes it or erases all local data. If a destructive action is interrupted after removing the active record, a recovery record left by itself is treated as ambiguous and is never restored automatically; the page blocks writes and offers a byte-exact backup so the visitor can preserve it before choosing erase or restore. A dedicated reviewed origin is required before this can honestly be called private-by-design. Export anything you cannot afford to lose.
 
 ## Siren — the flagship architecture
 
@@ -60,7 +61,7 @@ A self-hosted assistant designed around six pillars. This list is architecture, 
 
 - **The Ear** — consent-governed capture with a visible recording state and defined retention and deletion controls.
 - **The Name** — opt-in speaker attribution that preserves “unknown” and uncertainty rather than claiming recognition.
-- **The Voice** — she talks back, in a voice pinned in config where it can't wander off.
+- **The Voice** — planned, disclosed speech output using a voice pinned in configuration; it remains unverified until separately tested.
 - **The Memory** — records stored with provenance, scoped access, retention, and deletion controls.
 - **The Door** — sign in from a browser, ask anything; admin power gated, audited, allowlisted.
 - **The Protocols** — the household-practice layer. The public versions remain an unvalidated alpha.
@@ -72,14 +73,22 @@ A self-hosted assistant designed around six pillars. This list is architecture, 
 - **The talking stick** — the floor is managed, so nobody has to fight for it.
 - **The safe word** — a talker-chosen word pauses a monologue under a voluntary agreement; never use it to block danger or urgent help.
 - **"Off the record"** — agree on privacy before disclosure, with explicit safety, abuse, and legal limits.
-- **The loop detector** — one word flags a spiral. No judgment attached. Loops break on external signal.
-- **No-flinch** — heavy is not automatically emergency; direct safety questions and outside help remain available when concern is real.
+- **The loop detector** — one agreed word can flag suspected repetition without judgment; either person may reject the label or end the agreement.
+- **No-flinch** — heavy subject matter alone is not an immediate-emergency determination; listen without repeatedly restarting the conversation, ask plainly when safety is unclear, and reassess if information changes.
 - **Paved crossings** — co-design a lawful, noncoercive plan before a known risk; never force, restraint, confinement, surveillance, confiscation, retaliation, or blocked care.
-- **Receipts** — big claims stay honest one way: a ledger, both columns, with dates.
+- **Receipts** — dated positive, negative, and pending records can make a claim more inspectable; one entry does not prove effectiveness.
 
-## We Answer the Question — public page
+## We Answer the Question — gated public page
 
-The house standard, practiced in the open at [`/questions/`](https://itpro2792-beep.github.io/project-euphoria/questions/): real questions — atonement, cravings, starting to quit, dreams versus delusions, the morning after clarity, self-talk, what people actually want — each answered plainly in the first line, then walked through. Same evidence status as the Toolbox: lived household experience, not clinical training or validation; urgent situations are pointed to emergency services and crisis lines instead.
+The house standard is practiced in the open at [`/questions/`](https://itpro2792-beep.github.io/project-euphoria/questions/): the answer first, with its evidence class, unknowns, limits, reversible next step, safety boundary, and review state beside it. Five general household/design entries are published in version 1. The public source records only that five higher-risk items are held elsewhere; it exposes no held titles or draft answers. This release disables medical, mental-health, and recovery publication. Its structural checks reject incomplete or improperly classified records, but they do not authenticate credentials, prove that a source supports a claim, or authorize release. All rendered fields are escaped, and the public page has no JavaScript or free-text submission form.
+
+## The Book archive
+
+The first Book was an AI debate simulation, not a council of participating human experts. Its public reading text is held because named-persona, cultural, scientific, and health-adjacent claims need sourcing, attribution, and qualified review. The [`/book/`](https://itpro2792-beep.github.io/project-euphoria/book/) route preserves a plain archive notice and correction without presenting the prior edition as guidance. The later ten-minute summary condensed the same unsupported material and is held at [`/book/summary/`](https://itpro2792-beep.github.io/project-euphoria/book/summary/) under the same gate.
+
+## Receipts—with limits attached
+
+The [`/receipts/`](https://itpro2792-beep.github.io/project-euphoria/receipts/) route records public repository history, corrections, bounded evidence-record zeroes, and pending work. Commit links establish source history, not human benefit or exact deployment time. The page deliberately separates build and claim-accounting receipts from public human-outcome evidence, of which none is published. Customer and revenue milestones are not established by the public evidence record.
 
 ## The first harvest
 
@@ -89,16 +98,18 @@ Original titles coined in the founding session, dated 2026-08-25:
 
 ## Roadmap
 
-- **Now:** the founders relocate; life first — tenet three governs.
-- **Next:** the cluster reassembles in its new home; the memory well gets its ingestion funnel; Siren gets her voice, her speaker recognition, and her door.
-- **Then:** agency customer one; one channel, one repeatable format; first releases from the catalog.
-- **Later:** the Layer — built on proof, with professionals, for the people the pews never reached.
+- **Release candidate — Toolbox alpha 0.3:** bounded local-first tools, explicit data controls, a deterministic chooser, the Use-Tonight Plan, and a file-only Siren handoff. It becomes Live only after this exact release commit is deployed and smoke-checked.
+- **Blocked on privacy review — dedicated Toolbox origin:** origin isolation, response headers, storage scope, update and rollback paths, backup, recovery, and deletion must be reviewed and tested before “private-by-design” language is earned. See [`docs/DEDICATED_ORIGIN.md`](docs/DEDICATED_ORIGIN.md).
+- **Planned — qualified review:** clinical copy, safeguarding, and independent accessibility review.
+- **Planned — Siren engineering:** disclosed speech output, opt-in attribution that preserves unknown, and an audited access door; each must be verified separately. The current handoff remains file-only. See [`docs/SIREN_BRIDGE_THREAT_MODEL.md`](docs/SIREN_BRIDGE_THREAT_MODEL.md).
+- **Then:** agency customer one; one channel, one repeatable format; first releases from the catalog. The people building this remain ahead of every deliverable.
+- **Later:** the Layer—built on evidence, with qualified professionals, if its safeguarding and operating gates can be met.
 
 ## Verification
 
-The Toolbox behavior is split into testable browser-independent functions. Run npm test and npm run test:timezones.
+Install the pinned development dependencies with `npm ci`, install the pinned Playwright browser with `npx playwright install chromium`, then run `npm test`, `npm run test:timezones`, and `npm run test:e2e`. On a clean Linux CI host, `npx playwright install --with-deps chromium` also installs the required system packages.
 
-The checks cover local-date/time handling in New York, UTC, and Auckland; state normalization; seven-card structure; safety boundaries; privacy copy; CSP; accessible status plumbing; and the absence of network-capable APIs in Toolbox JavaScript. GitHub Actions repeats the suite on pushes and pull requests.
+The checks cover local-date/time handling in New York, UTC, and Auckland; v1/v2/v3→v4 migration under the writer gate; byte-exact recovery; deployed-0.2 cache transitions; split-brain, future-version, quota, conflict, and capacity failure; backup/restore/erase; plan state; the deterministic chooser; Siren handoff field, expiry, and file-validation behavior; the Questions structural publication gate; seven-card structure; safety and privacy copy; CSP; local links and fragments; accessible status plumbing; preserved versioned Toolbox assets; and the absence of network-capable APIs in current Toolbox JavaScript. Browser checks exercise Web Locks, two-tab behavior, persistence, route/plan behavior, immediate-state handoff refusal, keyboard use, and print privacy. Passing checks establishes only the named software behavior; it does not establish user benefit, qualified clinical review, independent accessibility conformance, or a successful live Siren ingestion. GitHub Actions repeats the suite on pushes and pull requests.
 
 ## Legal status
 

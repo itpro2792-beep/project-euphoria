@@ -1,0 +1,71 @@
+name: Toolbox functional feedback
+description: Report a public, non-urgent Toolbox behavior without sharing private details.
+title: "[Toolbox feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public and is not monitored for urgent help. Your GitHub account name and everything you submit will be visible to others.
+
+        Submit only: the tool, the action you took, the expected result, the actual result, and your browser/app name and version. Do not include or attach private details, Toolbox entries, backup or handoff files, screenshots, names, contact details, transcripts, health information, household events, abuse, or threats.
+
+        If someone may be in immediate danger, use local emergency services or appropriate real-time support. In the United States and its territories, call or text 988; call 911 for a life-threatening emergency.
+  - type: checkboxes
+    id: public_boundary
+    attributes:
+      label: Public and non-urgent boundary
+      options:
+        - label: I understand this report is public, is not an urgent-help channel, and contains none of the prohibited private material listed above.
+          required: true
+        - label: I have not attached a screenshot, Toolbox entry, backup, handoff file, transcript, or copied private content.
+          required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Tool
+      description: Choose only the public interface where the behavior occurred.
+      options:
+        - Situation chooser
+        - Use-Tonight Plan
+        - Fresh Page / Siren handoff
+        - Shared agreement
+        - Just-for-today counter
+        - Wins ledger
+        - Protocol cards
+        - Data controls / backup
+        - Questions
+        - Status & Evidence
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: action
+    attributes:
+      label: Action you took
+      description: Describe only the interface action. Use synthetic examples, never real household or health details.
+      placeholder: I selected…, pressed…, entered the synthetic text “example,” and then…
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: State the public behavior you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: State the visible behavior only. Do not paste console dumps if they contain private content.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser or app
+      description: Give only the browser/app name and version, for example “Firefox 141.” Do not include an account, device name, profile path, IP address, or contact detail.
+      placeholder: Browser/app and version
+    validations:
+      required: true
+

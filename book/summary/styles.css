@@ -1,0 +1,26 @@
+:root { color-scheme: light dark; --bg:#faf7f0; --ink:#2a2520; --soft:#6b6157; --accent:#8a6d3b; --card:#fffdf8; --line:#e6ddcc; --hold:#8b3a3a; }
+@media (prefers-color-scheme: dark) { :root { --bg:#171412; --ink:#e8e0d2; --soft:#b2a697; --accent:#d2b36e; --card:#201c18; --line:#3e3730; --hold:#f0a3a3; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:1.07rem/1.72 Georgia,"Times New Roman",serif; }
+a { color:var(--accent); text-underline-offset:.16em; }
+a:focus-visible, [tabindex="-1"]:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.skip-link { position:absolute; left:-10000px; top:.5rem; z-index:30; padding:.6rem .8rem; background:var(--ink); color:var(--bg); }
+.skip-link:focus { left:.5rem; }
+.topnav { position:sticky; top:0; z-index:20; display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; padding:.65rem 1rem; border-bottom:1px solid var(--line); background:var(--bg); font:700 .74rem/1.4 system-ui,sans-serif; letter-spacing:.09em; text-transform:uppercase; }
+.topnav a { color:var(--soft); text-decoration:none; }
+.topnav a:hover, .topnav a:focus-visible, .topnav a[aria-current="page"] { color:var(--accent); }
+main { width:min(47rem,calc(100% - 2rem)); margin:0 auto; padding:4rem 0 6rem; }
+.kicker { color:var(--hold); font:700 .74rem/1.4 system-ui,sans-serif; letter-spacing:.17em; text-transform:uppercase; }
+h1 { margin:.3rem 0 .8rem; color:var(--accent); font-size:clamp(2.4rem,8vw,4.7rem); font-weight:normal; line-height:1; text-wrap:balance; }
+h2 { margin:.1rem 0 .6rem; color:var(--accent); font-size:1.35rem; font-weight:normal; }
+p { margin:.25rem 0 .9rem; }
+.lede { max-width:41rem; color:var(--soft); font-size:1.2rem; }
+.hold { margin:2rem 0; padding:1.3rem 1.4rem; border:1px solid var(--line); border-left:5px solid var(--hold); border-radius:14px; background:var(--card); }
+.hold h2 { color:var(--hold); }
+.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.3rem 0 2rem; }
+.grid section { padding:1.2rem; border:1px solid var(--line); border-radius:14px; background:var(--card); }
+ul { margin:.3rem 0 0; padding-left:1.2rem; }
+li { margin:.45rem 0; }
+.actions { padding-top:1rem; border-top:1px solid var(--line); }
+footer { margin-top:2.5rem; color:var(--soft); font-style:italic; text-align:center; }
+@media (max-width:650px) { main { padding-top:2.5rem; } .grid { grid-template-columns:1fr; } }

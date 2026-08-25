@@ -16,7 +16,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://itpro2792-beep.github.io/project-euphoria/toolbox/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B0%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.v0.3.0.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to the tools</a>
@@ -24,30 +24,17 @@
     <a href="../">Home</a>
     <a href="./" aria-current="page">The Toolbox</a>
     <a href="../questions/">Questions</a>
-    <a href="../status/">Status</a>
     <a href="../book/">The Book</a>
     <a href="../music/">The Catalog</a>
     <a href="../saga/">The Saga</a>
-    <a href="../receipts/">Receipts</a>
   </nav>
 
-  <main id="main" tabindex="-1">
+  <main id="main">
     <header class="intro">
-      <div class="kicker">Working equipment · public alpha 0.3</div>
+      <div class="kicker">Working equipment · public alpha 0.2</div>
       <h1>THE TOOLBOX</h1>
       <p class="lede">Conversation tools developed through lived household use. Choose what is happening, try one thing, and keep only what actually helps.</p>
     </header>
-    <section class="quick-map" aria-labelledby="quickMapTitle">
-      <div class="kicker">The Toolbox in sixty seconds</div>
-      <h2 id="quickMapTitle">Choose · plan · try · review · keep or retire</h2>
-      <ol>
-        <li>Use the chooser below; it matches only the answer you select.</li>
-        <li>Make a small, voluntary plan with a stop condition.</li>
-        <li>Try one protocol only while everyone can freely say no or leave.</li>
-        <li>Record Worked, Did not work, or Pending—never just the win.</li>
-        <li>Back up what matters. Erase what should not remain here.</li>
-      </ol>
-    </section>
     <noscript>
       <div class="notice warning">The protocol cards remain readable, but the router, Fresh Page Card, agreement builder, counter, ledger, and data controls require JavaScript.</div>
     </noscript>
@@ -57,7 +44,6 @@
       <h2>What is happening right now?</h2>
       <form id="routeForm" class="route-form">
         <label for="needPicker">Choose the closest fit</label>
-        <p class="chooser-boundary">This chooser matches the option you select to a tool. It does not diagnose, assess risk, infer intent, or decide what is safe for you.</p>
         <div class="control-row">
           <select id="needPicker" required>
             <option value="">Select one…</option>
@@ -68,20 +54,12 @@
             <option value="loop-detector">We are stuck in a loop</option>
             <option value="no-flinch">I need calm listening while safety remains clear</option>
             <option value="paved-crossings">We need a voluntary plan around a known risk</option>
-            <option value="tonight-plan">I need one small, reversible plan for tonight</option>
             <option value="agreement">We want to turn a protocol into a shared agreement</option>
             <option value="counter">I want to count time from a decision</option>
             <option value="ledger">I want an honest record of what happened</option>
             <option value="immediate-help">Someone may be unsafe right now</option>
           </select>
-          <button type="submit">Recommend one tool</button>
-        </div>
-        <div id="routeResult" class="route-result" hidden>
-          <div class="kicker">Closest match</div>
-          <h3 id="routeTitle">Recommended tool</h3>
-          <p id="routeReason"></p>
-          <p id="routeBoundary" class="route-boundary"></p>
-          <button type="button" id="routeOpenBtn">Open this tool</button>
+          <button type="submit">Show me the tool</button>
         </div>
         <p id="routeStatus" class="status" aria-live="polite"></p>
       </form>
@@ -109,79 +87,17 @@
       <p>If you are in the United States or its territories, call or text <a href="https://988lifeline.org/">988</a> for crisis support. In a life-threatening emergency, call 911. Elsewhere, use your local emergency or crisis service. Reaching outside the household never violates a protocol.</p>
     </section>
 
-    <section id="tonight-plan" class="tool-section" tabindex="-1">
-      <div class="section-heading">
-        <div>
-          <div class="kicker">Instrument one</div>
-          <h2>The Use-Tonight Plan</h2>
-        </div>
-        <span class="status-chip">New</span>
-      </div>
-      <p>Turn one situation into one reversible next step. This is a household coordination card—not diagnosis, treatment, crisis planning, permission to control anyone, or proof that the selected protocol is appropriate.</p>
-      <div class="tool">
-        <form id="planForm">
-          <div class="field-grid">
-            <div class="field">
-              <label for="planTitle">Plan name</label>
-              <input id="planTitle" type="text" maxlength="80" placeholder="For example: Finish one thought tonight">
-            </div>
-            <div class="field">
-              <label for="planProtocol">Protocol to try</label>
-              <select id="planProtocol">
-                <option value="Talking Stick">Talking Stick</option>
-                <option value="Safe Word">Safe Word</option>
-                <option value="Off the Record">Off the Record</option>
-                <option value="Loop Detector">Loop Detector</option>
-                <option value="No-Flinch">No-Flinch</option>
-                <option value="Paved Crossings">Paved Crossings</option>
-                <option value="Receipts">Receipts</option>
-              </select>
-            </div>
-          </div>
-          <p id="planProtocolBoundary" class="route-boundary"></p>
-          <div class="field">
-            <label for="planSituation">The observable situation—not a label for a person</label>
-            <input id="planSituation" type="text" maxlength="240" placeholder="For example: we interrupt before either person reaches the end of a thought">
-          </div>
-          <div class="field">
-            <label for="planFirstStep">Our first small step</label>
-            <textarea id="planFirstStep" maxlength="400" rows="3" placeholder="Exact words or action we will try once…"></textarea>
-          </div>
-          <div class="field-grid">
-            <div class="field">
-              <label for="planStopCondition">When we stop or leave this plan</label>
-              <textarea id="planStopCondition" maxlength="400" rows="3" placeholder="What either person can say or do, without penalty…"></textarea>
-            </div>
-            <div class="field">
-              <label for="planCheckAt">When we review what happened</label>
-              <input id="planCheckAt" type="datetime-local">
-            </div>
-          </div>
-          <label class="consent-check">
-            <input id="planConsent" type="checkbox">
-            <span>Everyone involved can freely decline, pause, leave, or seek outside help. This plan authorizes no force, restraint, confinement, surveillance, confiscation, retaliation, blocked communication or care, or secrecy about abuse, threats, or imminent harm.</span>
-          </label>
-          <div class="button-row">
-            <button type="submit">Save plan</button>
-            <button type="button" id="copyPlanBtn">Copy plan</button>
-            <button type="button" id="clearPlanBtn" class="quiet-button">Clear</button>
-          </div>
-          <p id="planStatus" class="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
-
     <section id="fresh-page" class="tool-section" tabindex="-1">
       <div class="section-heading">
         <div>
-          <div class="kicker">Instrument two</div>
+          <div class="kicker">Instrument one</div>
           <h2>The Fresh Page Card</h2>
         </div>
         <span class="status-chip">New</span>
       </div>
       <p>When an interruption, a new tab, or a lost train of thought costs the thread, preserve the minimum handoff. You hold the meaning; this card holds the thread.</p>
       <div class="tool">
-        <div id="continuityForm">
+        <form id="continuityForm">
           <div class="field">
             <label for="continuityThread">Where I was going</label>
             <textarea id="continuityThread" maxlength="700" rows="4" placeholder="The thought I was trying to finish…"></textarea>
@@ -206,21 +122,16 @@
             A handoff card is not enough for an immediate safety concern. Use the real-time help boundary above.
           </div>
           <div class="button-row">
-            <button type="button" id="saveContinuityBtn">Save Fresh Page Card</button>
             <button type="button" id="copyContinuityBtn">Copy clean handoff</button>
-            <button type="button" id="exportSirenBtn" class="quiet-button">Download Siren handoff</button>
-            <button type="button" id="importSirenBtn" class="quiet-button">Import Siren handoff</button>
-            <input id="sirenImportFile" hidden tabindex="-1" type="file" accept="application/json,.json">
             <button type="button" id="clearContinuityBtn" class="quiet-button">Clear this card</button>
           </div>
-          <p class="handoff-boundary"><b>Robbie/Siren boundary:</b> Robbie is the room-facing name; Siren is the software identity. This file handoff only downloads or imports a plain-text file that you control. It does not contact Siren, upload anything, prove memory ingestion, or establish consciousness.</p>
           <p id="continuityStatus" class="status" aria-live="polite"></p>
-        </div>
+        </form>
       </div>
     </section>
 
     <section id="agreement" class="tool-section" tabindex="-1">
-      <div class="kicker">Instrument three</div>
+      <div class="kicker">Instrument two</div>
       <h2>The Protocol Agreement</h2>
       <p>A principle becomes equipment when everyone knows the signal, the stop condition, and when the plan will be reviewed. This builder produces one shared, copyable agreement.</p>
       <div class="tool">
@@ -237,7 +148,6 @@
                 <option value="Paved Crossings">Paved Crossings</option>
                 <option value="Receipts">Receipts</option>
               </select>
-              <p id="agreementProtocolBoundary" class="field-note"></p>
             </div>
             <div class="field">
               <label for="agreementPeople">People or roles <span class="optional">(optional)</span></label>
@@ -294,10 +204,10 @@
                   <option value="Lower">Lower</option>
                   <option value="Same">About the same</option>
                   <option value="Higher">Higher</option>
-              </select>
+                </select>
+              </div>
             </div>
-          </div>
-          <div class="field">
+            <div class="field">
               <label for="checkinWorked">What worked?</label>
               <textarea id="checkinWorked" maxlength="400" rows="2"></textarea>
             </div>
@@ -322,7 +232,7 @@
     </section>
 
     <section id="counter" class="tool-section" tabindex="-1">
-      <div class="kicker">Instrument four</div>
+      <div class="kicker">Instrument three</div>
       <h2>The Since Counter</h2>
       <p>This is an elapsed-time counter, not a judgment and not a promise of permanence. Give the decision a name. Starting again archives the previous chapter instead of erasing it.</p>
       <div class="tool">
@@ -354,7 +264,7 @@
     </section>
 
     <section id="ledger" class="tool-section" tabindex="-1">
-      <div class="kicker">Instrument five</div>
+      <div class="kicker">Instrument four</div>
       <h2>The Ledger</h2>
       <p>Big claims stay honest with dated evidence: what worked, what did not, and what is still pending. The ledger is a mirror, not a court.</p>
       <div class="tool">
@@ -550,12 +460,11 @@
     <section id="my-data" class="data-section" tabindex="-1">
       <div class="kicker">Your control</div>
       <h2>Back up or erase your local data</h2>
-      <p>Clearing browser data, using a private window, changing browser profiles, or losing this device can erase local entries. A full Toolbox backup is the only portable copy containing the complete active dataset; the page can also create clipboard copies, a Siren handoff, and a ledger CSV.</p>
+      <p>Clearing browser data, using a private window, changing browser profiles, or losing this device can erase local entries. A downloaded backup is the only portable copy this page creates.</p>
       <div class="button-row">
         <button type="button" id="exportBtn">Download backup</button>
         <button type="button" id="importBtn" class="file-button">Restore backup</button>
         <input id="importFile" hidden tabindex="-1" type="file" accept="application/json,.json">
-        <button type="button" id="clearMigrationRecoveryBtn" class="quiet-button" hidden>Delete migration recovery copy</button>
         <button type="button" id="clearAllBtn" class="danger-button">Erase all local data</button>
       </div>
       <p id="dataStatus" class="status" aria-live="polite"></p>
@@ -565,8 +474,6 @@
           <p>The page has no analytics, account, form submission, advertising code, or third-party script. Its browser policy blocks fetch, XHR, WebSocket, EventSource, and beacon-style connections from this page’s JavaScript; that policy does not make the browser, extensions, clipboard, downloads, or shared-origin storage private.</p>
           <p>Entries are stored with <code>localStorage</code> for the shared <code>https://itpro2792-beep.github.io</code> origin. Browser storage is scoped to that entire origin, not to <code>/project-euphoria/toolbox/</code>; code on another path under the same origin can potentially read it. A dedicated origin with reviewed isolation is required before this can honestly be called private-by-design. Clipboard contents may also be visible to your operating system, browser, or synced devices after you copy them.</p>
           <p>To prevent two tabs from writing at the same time, the page requires an exclusive browser Web Lock for persistence. A second Toolbox tab can read, copy, and export but cannot save; close the writer tab and reload the other tab to transfer control. If the browser does not support Web Locks, persistence stays disabled instead of risking a last-writer-wins overwrite.</p>
-          <p>When schema-3 or older Toolbox data is upgraded, migration occurs only after the page holds that writer lock. The page first puts the original bytes into a strict recovery record in the historical schema-2 storage slot and verifies them; only then may it write and validate schema 4 in the historical schema-3 slot. The immediately previous 0.2 page cannot normally save over schema 4, while its existing erase and restore controls remain recoverable: erase removes both slots, and restore writes schema 3 for this version to migrate again on reload. Cached releases older than 0.2 do not have that compatibility guarantee; reload the current page before erasing or restoring from one of them.</p>
-          <p>The recovery record is included in a full backup and remains on this same shared origin until you delete it with the control above or erase all local data. Deleting it removes the rollback copy, not the active schema-4 data. If an interrupted destructive action leaves a recovery record with no active record, this page treats it as ambiguous: it will not resurrect the data or allow new writes. Download the byte-exact recovery backup before you deliberately erase or restore.</p>
         </div>
       </details>
     </section>
@@ -576,8 +483,7 @@
       <h2>What we know—and what we do not</h2>
       <p>These practices grew from lived use in one household. That is experience, not validation. We have not established effectiveness rates, failure rates, safe-use populations, or clinical outcomes. The public alpha exists so the instructions, limits, and failures can become more honest—not so early experience can masquerade as proof.</p>
       <p>Last safety-and-truth review: August 25, 2026. Qualified clinical and safeguarding review is still pending. Do not promote these tools as treatment or proven intervention.</p>
-      <p><a href="../status/">Read the version, evidence, privacy, and known-limitations record</a>.</p>
-      <p><a href="https://github.com/itpro2792-beep/project-euphoria/issues/new?template=toolbox-feedback.yml">Report a product bug, ambiguity, or accessibility problem</a> in the public issue tracker. Give only the tool, action, expected behavior, actual behavior, app version, and—if you choose—browser version. Do not attach entries, backups, screenshots containing entries, names, contact details, transcripts, health information, household events, abuse details, or threats. This channel is public, is not monitored for urgent help, and cannot provide private support.</p>
+      <p><a href="https://github.com/itpro2792-beep/project-euphoria/issues">Report a failure, ambiguity, or accessibility problem</a>. Do not put private health or household details in a public issue.</p>
     </section>
 
     <footer>
@@ -585,6 +491,6 @@
       <div class="footer-mark">“The truth is the solution.”</div>
     </footer>
   </main>
-  <script type="module" src="app.v0.3.0.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>

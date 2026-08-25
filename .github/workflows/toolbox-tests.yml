@@ -6,19 +6,84 @@ on:
   pull_request:
 
 permissions:
+  attestations: read
   contents: read
 
+concurrency:
+  group: toolbox-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
+  verify:
+    name: test (${{ matrix.timezone }})
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         timezone: [America/New_York, UTC, Pacific/Auckland]
     env:
       TZ: ${{ matrix.timezone }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
-      - run: npm test
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Check JavaScript syntax
+        run: |
+          node --check toolbox/app.v0.3.0.js
+          find scripts tests -type f -name '*.mjs' -print0 | sort -z | xargs -0 -n1 node --check
+          node --check playwright.config.mjs
+      - name: Lint GitHub Actions workflow
+        if: matrix.timezone == 'America/New_York'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/project-euphoria-actionlint
+          gh release download v1.7.11 --repo rhysd/actionlint --pattern 'actionlint_1.7.11_linux_amd64.tar.gz' --dir /tmp/project-euphoria-actionlint
+          echo '900919a84f2229bac68ca9cd4103ea297abc35e9689ebb842c6e34a3d1b01b0a  /tmp/project-euphoria-actionlint/actionlint_1.7.11_linux_amd64.tar.gz' | sha256sum --check --strict
+          gh attestation verify /tmp/project-euphoria-actionlint/actionlint_1.7.11_linux_amd64.tar.gz --repo rhysd/actionlint
+          tar -xzf /tmp/project-euphoria-actionlint/actionlint_1.7.11_linux_amd64.tar.gz -C /tmp/project-euphoria-actionlint
+          /tmp/project-euphoria-actionlint/actionlint
+      - name: Verify generated Questions page
+        run: node scripts/build-questions.mjs --check
+      - name: Run unit tests
+        run: node --test tests/*.test.mjs
+      - name: Run static assertions
+        run: node scripts/static-check.mjs
+      - name: Validate changed HTML surfaces
+        run: npm run test:html
+      - name: Check local links, assets, and fragments
+        run: node scripts/site-check.mjs --root . --base-path /project-euphoria
+
+  browser:
+    name: Browser contract (Chromium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install exact dependencies
+        run: npm ci
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser tests
+        run: npx playwright test --project=chromium
+      - name: Upload browser failure report
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          if-no-files-found: ignore
+          retention-days: 7

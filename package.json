@@ -3,7 +3,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test tests/*.test.mjs && node scripts/static-check.mjs",
-    "test:timezones": "TZ=America/New_York node --test tests/toolbox.test.mjs && TZ=UTC node --test tests/toolbox.test.mjs && TZ=Pacific/Auckland node --test tests/toolbox.test.mjs"
+    "questions:build": "node scripts/build-questions.mjs",
+    "questions:check": "node scripts/build-questions.mjs --check",
+    "test": "npm run questions:check && node --test tests/*.test.mjs && npm run test:static && npm run test:html && npm run test:site",
+    "test:html": "html-validate index.html toolbox/index.html questions/index.html status/index.html book/index.html book/summary/index.html music/index.html saga/index.html receipts/index.html",
+    "test:static": "node scripts/static-check.mjs",
+    "test:site": "node scripts/site-check.mjs",
+    "test:timezones": "TZ=America/New_York node --test tests/toolbox.test.mjs && TZ=UTC node --test tests/toolbox.test.mjs && TZ=Pacific/Auckland node --test tests/toolbox.test.mjs",
+    "test:e2e": "playwright test",
+    "serve": "node scripts/serve-static.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "html-validate": "11.8.0"
   }
 }
